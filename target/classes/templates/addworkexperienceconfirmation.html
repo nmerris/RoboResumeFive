@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments :: headerFragment"></head>
+
+<body>
+
+<!-- pass a bunch of boolean variables over to the nav fragment, so it knows which links to enable and highlight -->
+<nav th:replace="fragments :: navbar(${pageState})"></nav>
+
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 text-center">
+                <h2 class="" th:text="'Resume for ' + ${firstAndLastName}"></h2>
+                <span class="glyphicon glyphicon-briefcase"></span>
+                <span th:text="${currentNumRecords} + ' of 10 work experiences entered'"></span>
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><h4><b>Work Experience</b></h4></div>
+                    <ul class="list-group">
+                        <li class="list-group-item" th:text="'Company: ' + ${workExperienceJustAdded.company}"></li>
+                        <li class="list-group-item" th:text="'Job Title: ' + ${workExperienceJustAdded.jobTitle}"></li>
+                        <li class="list-group-item" th:text="'Start date: ' + ${#dates.format(workExperienceJustAdded.dateStart, 'MMM dd, yyyy')}"></li>
+                        <li class="list-group-item" th:text="'End date: ' + ${dateEndString}"></li>
+                        <li class="list-group-item" th:text="'Duty one: ' + ${workExperienceJustAdded.dutyOne}"></li>
+                        <li class="list-group-item" th:text="'Duty two: ' + ${workExperienceJustAdded.dutyTwo}"></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <a class="btn btn-primary bold-input" th:href="@{/addworkexperience}" th:disabled="${disableSubmit}">+ Add Another</a>
+            </div>
+        </div>
+    </div>
+
+<!-- Footer -->
+<footer th:replace="fragments :: footer"></footer>
+
+<!-- javascript -->
+<!-- th:block goes away after processing, but what's inside stays, so it won't affect the page layout -->
+<th:block th:replace="fragments :: javaScriptTemplate"></th:block>
+
+<th:block th:replace="fragments :: modals"></th:block>
+
+</body>
+
+</html>

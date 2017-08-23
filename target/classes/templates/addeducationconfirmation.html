@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments :: headerFragment"></head>
+
+<body id="page-top">
+
+<!-- pass a bunch of boolean variables over to the nav fragment, so it knows which links to enable and highlight -->
+<nav th:replace="fragments :: navbar(${pageState})"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 text-center">
+            <h2 th:text="'Resume for ' + ${firstAndLastName}"></h2>
+            <span class="glyphicon glyphicon-education"></span>
+            <span th:text="${currentNumRecords} + ' of 10 educational achievements entered'"></span>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading"><h4><b>Educational Achievement</b></h4></div>
+                <ul class="list-group">
+                    <li class="list-group-item" th:text="${'School: ' + edAchievementJustAdded.school}"></li>
+                    <li class="list-group-item" th:text="${'Major: ' + edAchievementJustAdded.major}"></li>
+                    <li class="list-group-item" th:text="${'Graduation Year: ' + edAchievementJustAdded.graduationYear}"></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <a class="btn btn-primary bold-input" th:href="@{/addeducation}" th:disabled="${disableSubmit}"><b>+ Add Another</b></a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer th:replace="fragments :: footer"></footer>
+
+<!-- javascript -->
+<!-- th:block goes away after processing, but what's inside stays, so it won't affect the page layout -->
+<th:block th:replace="fragments :: javaScriptTemplate"></th:block>
+
+<th:block th:replace="fragments :: modals"></th:block>
+
+</body>
+
+</html>
