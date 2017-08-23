@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments :: headerFragment"></head>
+<body>
+
+  <!-- pass a bunch of boolean variables over to the nav fragment, so it knows which links to enable and highlight -->
+  <nav th:replace="fragments :: navbar(${pageState})"></nav>
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <h2 th:text="'Resume for ' + ${firstAndLastName}"></h2>
+            <span class="glyphicon glyphicon-briefcase"></span>
+            <span th:text="${currentNumRecords} + ' of 10 work experiences entered'"></span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+
+            <form action="#" th:action="@{/addworkexperience}" th:object="${newWorkExperience}" method="post">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+
+                  <!-- need this or id is zero every time and keep getting additional records when updating -->
+                  <input type="hidden" th:field="*{id}" />
+
+                  <div class="form-group">
+                    <label class="section-heading" for="jobTitle">Job Title</label>
+                    <input id="jobTitle" class="form-control" type="text" th:field="*{jobTitle}"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}"></p>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="section-heading" for="company">Company</label>
+                    <input id="company" class="form-control" type="text" th:field="*{company}"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('company')}" th:errors="*{company}"></p>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="section-heading" for="startDate">Start Date</label>
+                    <input id="startDate" class="form-control" type="text" th:field="*{dateStart}" th:placeholder="'Jul 4, 1976'"/>
+                    <!-- I can note get @Temporal validation to work with messages.properties, so I just put it here -->
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('dateStart')}" th:errors="*{dateStart}" th:text="'please enter a day, month, and year'"></p>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="section-heading" for="endDate">End Date - leave empty if currently employed</label>
+                    <input id="endDate" class="form-control" type="text" th:field="*{dateEnd}" th:placeholder="'Dec 25, 2000'"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('dateEnd')}" th:errors="*{dateEnd}" th:text="'please enter a day, month, and year'"></p>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="section-heading" for="firstDuty">Duty One</label>
+                    <input id="firstDuty" class="form-control" type="text" th:field="*{dutyOne}"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('dutyOne')}" th:errors="*{dutyOne}"></p>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="section-heading" for="secondDuty">Duty Two</label>
+                    <input id="secondDuty" class="form-control" type="text" th:field="*{dutyTwo}"/>
+                  </div>
+
+                <div class="clearfix"></div>
+                <input class="btn btn-primary bold-input" type="submit" value="Submit" th:disabled="${disableSubmit}"/>
+
+              </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div><!-- container -->
+
+<!-- Footer -->
+<footer th:replace="fragments :: footer"></footer>
+
+<!-- javascript -->
+<!-- th:block goes away after processing, but what's inside stays, so it won't affect the page layout -->
+<th:block th:replace="fragments :: javaScriptTemplate"></th:block>
+
+<th:block th:replace="fragments :: modals"></th:block>
+
+</body>
+
+</html>

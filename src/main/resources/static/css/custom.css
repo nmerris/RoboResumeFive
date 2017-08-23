@@ -1,0 +1,71 @@
+body {
+    min-height: 2000px;
+    padding-top: 70px;
+}
+
+.disable-click {
+    pointer-events: none;
+    cursor: default;
+}
+
+.bold-input {
+    font-weight:bold;
+}
+
+.glyphicon {
+    color: #428BCA;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.alert {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.panel-primary {
+    margin-top: 10px;
+}
+
+input[type="radio"] {
+    margin-top: 4px;
+    margin-left: 3px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+}
+
+.btn-danger {
+    margin-top: 50px;
+}
+
+table {
+    width:100%;
+    /*border-collapse: collapse;*/
+    /*table-layout: fixed;*/
+}
+
+thead {
+    color: white;
+    background-color: #428bca;
+}
+
+/* can end up with really wide tables if you don't truncate the cells contents */
+.truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    /*max-height: 50px;*/
+}
+
+.modal-header {
+    background-color: #5bc0de;
+    color: white;
+}
+
+/* TODO make the warning glyph white */
+.glyphicon-warning-sign {
+    color: white;
+    background-color: white;
+    text-color: white;
+}
