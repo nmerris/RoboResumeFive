@@ -236,6 +236,10 @@ public class MainController {
         model.addAttribute("dateEndString", Utilities.getMonthDayYearFromDate(workExperience.getDateEnd()));
 
 
+        // TODO: figure out why empty end date is causing a null pointer exception when on heroku.. postgresql thing maybe??
+
+
+
         workExperienceRepo.save(workExperience);
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightWorkNav(true);
