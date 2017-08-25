@@ -9,93 +9,81 @@
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
 
+
+
 <div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-body">
 
-
-
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <section id="person" class="section-heading">
-
-                <table class="table table-hover">
-                    <caption><h3><b>Personal Information</b></h3></caption>
-                    <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <th:block th:each="item:${persons}">
-                        <tbody>
-                        <tr>
-                            <td><p th:text="${item.nameFirst}"></p></td>
-                            <td><p th:text="${item.nameLast}"></p></td>
-                            <td><p th:text="${item.email}"></p></td>
-                            <td>
-                                <a th:href="@{|/update/${item.id}?type=person|}" class="action-link">Edit</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </th:block>
-                </table>
-
-            </section>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <section id="education">
-
-                <table class="table table-hover">
-                    <caption><h3><b>Educational Achievements</b></h3></caption>
-                    <thead>
-                    <tr>
-                        <th>Major</th>
-                        <th>School</th>
-                        <th>Grad Year</th>
-                        <th colspan="2">Action</th>
-                    </tr>
-                    </thead>
-                    <th:block th:each="item:${edAchievements}">
-                        <tbody>
-                        <tr>
-                            <td><p class="truncate" th:text="${item.major}"></p></td>
-                            <td><p class="truncate" th:text="${item.school}"></p></td>
-                            <td><p th:text="${item.graduationYear}"></p></td>
-                            <td>
-                                <!-- send both a path variable AND a request param for delete. easy with thymeleaf literal substitution -->
-                                <a th:href="@{|/update/${item.id}/?type=ed|}" class="action-link">Edit</a>
-                            </td>
-                            <td>
-                                <a th:href="@{|/delete/${item.id}?type=ed|}" class="action-link">Delete</a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </th:block>
-                </table>
-
-            </section>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <section id="workexperiences">
-
-                <table class="table table-hover">
-                    <caption><h3><b>Work Experiences</b></h3></caption>
+                <section id="person" class="section-heading">
+                    <table class="table table-hover">
+                        <caption><h3><b>Personal Information</b></h3></caption>
                         <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <th:block th:each="item:${persons}">
+                            <tbody>
                             <tr>
-                                <!-- don't need to show every detail here, fits on screen better without so many columns -->
-                                <th>Job Title</th>
-                                <th>Company</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <!--<th>Duty One</th>-->
-                                <!--<th>Duty Two</th>-->
+                                <td><p th:text="${item.nameFirst}"></p></td>
+                                <td><p th:text="${item.nameLast}"></p></td>
+                                <td><p th:text="${item.email}"></p></td>
+                                <td>
+                                    <a th:href="@{|/update/${item.id}?type=person|}" class="action-link">Edit</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </th:block>
+                    </table>
+                </section>
+
+                <section id="education" class="section-heading">
+                    <table class="table table-hover">
+                        <caption><h3><b>Educational Achievements</b></h3></caption>
+                        <thead>
+                        <tr>
+                            <th>Major</th>
+                            <th>School</th>
+                            <th>Grad Year</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                        </thead>
+                        <th:block th:each="item:${edAchievements}">
+                            <tbody>
+                            <tr>
+                                <td><p class="truncate" th:text="${item.major}"></p></td>
+                                <td><p class="truncate" th:text="${item.school}"></p></td>
+                                <td><p th:text="${item.graduationYear}"></p></td>
+                                <td>
+                                    <!-- send both a path variable AND a request param for delete. easy with thymeleaf literal substitution -->
+                                    <a th:href="@{|/update/${item.id}/?type=ed|}" class="action-link">Edit</a>
+                                </td>
+                                <td>
+                                    <a th:href="@{|/delete/${item.id}?type=ed|}" class="action-link">Delete</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </th:block>
+                    </table>
+                </section>
+
+                <section id="workexperiences" class="section-heading">
+                    <table class="table table-hover">
+                        <caption><h3><b>Work Experiences</b></h3></caption>
+                        <thead>
+                        <tr>
+                            <!-- don't need to show every detail here, fits on screen better without so many columns -->
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <!--<th>Duty One</th>-->
+                            <!--<th>Duty Two</th>-->
                             <th colspan="2">Action</th>
                         </tr>
                         </thead>
@@ -119,59 +107,49 @@
                             </tbody>
                         </th:block>
                     </table>
+                </section>
 
-           </section>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <section id="skills">
-
-                <table class="table table-hover">
-                    <caption><h3><b>Skills</b></h3></caption>
-                    <thead>
-                    <tr>
-                        <th>Skill</th>
-                        <th>Rating</th>
-                        <th colspan="2">Action</th>
-                    </tr>
-                    </thead>
-
-                    <th:block th:each="item:${skills}">
-                        <tbody>
+                <section id="skills" class="section-heading">
+                    <table class="table table-hover">
+                        <caption><h3><b>Skills</b></h3></caption>
+                        <thead>
                         <tr>
-                            <td><p th:text="${item.skill}"></p></td>
-                            <td><p th:text="${item.rating}"></p></td>
-                            <td>
-                                <!-- send both a path variable AND a request param for delete. easy with thymeleaf literal substitution -->
-                                <a th:href="@{|/update/${item.id}/?type=skill|}" class="action-link">Edit</a>
-                            </td>
-                            <td>
-                                <a th:href="@{|/delete/${item.id}?type=skill|}" class="action-link">Delete</a>
-                            </td>
+                            <th>Skill</th>
+                            <th>Rating</th>
+                            <th colspan="2">Action</th>
                         </tr>
-                        </tbody>
-                    </th:block>
-                </table>
+                        </thead>
 
-            </section>
-        </div>
-    </div>
+                        <th:block th:each="item:${skills}">
+                            <tbody>
+                            <tr>
+                                <td><p th:text="${item.skill}"></p></td>
+                                <td><p th:text="${item.rating}"></p></td>
+                                <td>
+                                    <!-- send both a path variable AND a request param for delete. easy with thymeleaf literal substitution -->
+                                    <a th:href="@{|/update/${item.id}/?type=skill|}" class="action-link">Edit</a>
+                                </td>
+                                <td>
+                                    <a th:href="@{|/delete/${item.id}?type=skill|}" class="action-link">Delete</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </th:block>
+                    </table>
+                </section>
 
-    <div class="row">
-        <div class="col-sm-12 text-center">
-            <!-- TODO add warning popup for Delete All! -->
+                <div class="col-sm-12 text-center">
+                    <!-- TODO add warning popup for Delete All! -->
 
-            <!-- use server relative URL so starting over doesn't take you to /delete/startover after you delete then click startover button -->
-            <a class="btn btn-danger bold-input" th:href="@{~/startover}">Delete Everything!</a>
+                    <!-- use server relative URL so starting over doesn't take you to /delete/startover after you delete then click startover button -->
+                    <a class="btn btn-danger bold-input" th:href="@{~/startover}">Delete Everything!</a>
 
-        </div>
-    </div>
+                </div>
 
-
-</div>
-
+            </div><!-- panel body -->
+        </div><!-- panel panel-default -->
+    </div><!-- col-sm-8 col-sm-offset-2 -->
+</div><!-- container -->
 
 
 
