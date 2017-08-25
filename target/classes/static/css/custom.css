@@ -1,6 +1,18 @@
 body {
-    min-height: 2000px;
+    /*min-height: 2000px;*/
     padding-top: 70px;
+}
+
+.login-page {
+    background-image: url("../img/login-background.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+
+
+}
+
+.feedback {
+    margin-bottom: 20px;
 }
 
 .disable-click {
