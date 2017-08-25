@@ -28,10 +28,15 @@ public class MainController {
     WorkExperienceRepo workExperienceRepo;
 
 
-    // home page, start a new resume from here
-    @GetMapping(value = {"/index", "/"})
+
+    @GetMapping("/")
     public String indexPageGet() {
         return "index";
+    }
+
+    @PostMapping("/")
+    public String indexPagePost() {
+        return "addperson";
     }
 
 

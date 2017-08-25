@@ -31,22 +31,9 @@ public class Utilities {
             dateString += (dateFormatYear.format(date));
         } catch (Exception e) {
             // this should only happen if date is null, because if anything was entered by user, it would have been validated otherwise
-            // if end date was left empty by user, we assume they are still working there, so return 'Present'
+            // if end date was left empty by user
             dateString += "Present";
         }
-
-
-        //        if(date != null) {
-//            SimpleDateFormat dateFormatMonth = new SimpleDateFormat("MMM");
-//            dateString += (dateFormatMonth.format(date) + " ");
-//            SimpleDateFormat dateFormatDay = new SimpleDateFormat("dd");
-//            dateString += (dateFormatDay.format(date) + ", ");
-//            SimpleDateFormat dateFormatYear = new SimpleDateFormat("yyyy");
-//            dateString += (dateFormatYear.format(date));
-//        }
-//        else {
-//            dateString += "Present";
-//        }
 
         return dateString;
     }
