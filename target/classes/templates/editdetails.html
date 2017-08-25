@@ -8,12 +8,10 @@
 <!-- pass a bunch of boolean variables over to the nav fragment, so it knows which links to enable and highlight -->
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
-
-
-
 <div class="container">
+
     <div class="col-sm-8 col-sm-offset-2">
-        <div class="panel panel-default">
+        <div class="panel panel-default card card-3">
             <div class="panel-body">
 
                 <section id="person" class="section-heading">
@@ -140,12 +138,10 @@
 
                 <div class="col-sm-12 text-center">
                     <!-- TODO add warning popup for Delete All! -->
-
                     <!-- use server relative URL so starting over doesn't take you to /delete/startover after you delete then click startover button -->
                     <a class="btn btn-danger bold-input" th:href="@{~/startover}">Delete Everything!</a>
-
                 </div>
-                
+
             </div><!-- panel body -->
         </div><!-- panel panel-default -->
     </div><!-- col-sm-8 col-sm-offset-2 -->
