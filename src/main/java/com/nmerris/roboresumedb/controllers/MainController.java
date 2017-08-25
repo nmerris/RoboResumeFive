@@ -35,6 +35,13 @@ public class MainController {
     }
 
 
+    @GetMapping("/logout")
+    public String logout() {
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /logOUT GET route ++++++++++++++++++");
+        return "login";
+    }
+
+
     @GetMapping("/")
     public String indexPageGet(Model model) {
         System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /DEFAULT GET route ++++++++++++++++++");
@@ -51,13 +58,6 @@ public class MainController {
 
         return "addperson";
     }
-
-    // this is never called
-//    @PostMapping("/")
-//    public String indexPagePost() {
-//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /DEFAULT POST route ++++++++++++++++++");
-//        return "addperson";
-//    }
 
 
     // any time this route is called, all db tables are wiped out
