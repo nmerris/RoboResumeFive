@@ -49,7 +49,7 @@ public class MainController {
         skillRepo.deleteAll();
         workExperienceRepo.deleteAll();
 
-        return "index";
+        return "addperson";
     }
 
     @GetMapping("/addperson")
