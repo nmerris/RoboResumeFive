@@ -14,16 +14,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/css/**", "/js/**", "/fonts/**", "/img/**")
+                .antMatchers("/css/**", "/js/**", "/fonts/**", "/img/**")
                     .permitAll()
                 .antMatchers("/add*", "/startover", "/editdetails", "/delete/*", "/update/*", "/finalresume")
                     .access("hasRole('ROLE_USER')")
                 .anyRequest()
                     .authenticated()
-                .and().formLogin().loginPage("/")
+                .and().formLogin().loginPage("/login")
                     .permitAll()
                 .and().httpBasic() // allows authentication in the URL itself
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
     }// TODO add logout page and functionality
 
     @Override

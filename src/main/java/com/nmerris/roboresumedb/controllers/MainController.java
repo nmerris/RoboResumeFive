@@ -28,16 +28,36 @@ public class MainController {
     WorkExperienceRepo workExperienceRepo;
 
 
+    @GetMapping("/login")
+    public String login() {
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /login GET route ++++++++++++++++++");
+        return "login";
+    }
+
 
     @GetMapping("/")
-    public String indexPageGet() {
-        return "index";
-    }
+    public String indexPageGet(Model model) {
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /DEFAULT GET route ++++++++++++++++++");
 
-    @PostMapping("/")
-    public String indexPagePost() {
+        model.addAttribute("currentNumRecords", personRepo.count());
+        model.addAttribute("newPerson", new Person());
+        model.addAttribute("disableSubmit", personRepo.count() >= 1);
+//        setLinkEnabledBooleans(model);
+        NavBarState pageState = getPageLinkState();
+        pageState.setHighlightPersonNav(true);
+        model.addAttribute("pageState", pageState);
+
+        addDbTableCountsToModel(model);
+
         return "addperson";
     }
+
+    // this is never called
+//    @PostMapping("/")
+//    public String indexPagePost() {
+//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /DEFAULT POST route ++++++++++++++++++");
+//        return "addperson";
+//    }
 
 
     // any time this route is called, all db tables are wiped out
@@ -49,11 +69,13 @@ public class MainController {
         skillRepo.deleteAll();
         workExperienceRepo.deleteAll();
 
-        return "addperson";
+        return "startover";
     }
 
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson GET route ++++++++++++++++++");
+
         model.addAttribute("currentNumRecords", personRepo.count());
         model.addAttribute("newPerson", new Person());
         model.addAttribute("disableSubmit", personRepo.count() >= 1);
@@ -73,7 +95,8 @@ public class MainController {
     @PostMapping("/addperson")
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
-//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson POST route ++++++++++++++++++");
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson POST route ++++++++++++++++++");
+
         model.addAttribute("currentNumRecords", personRepo.count());
         addDbTableCountsToModel(model);
 //        setLinkEnabledBooleans(model);
