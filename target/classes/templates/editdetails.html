@@ -163,7 +163,8 @@
         <div class="col-sm-12 text-center">
             <!-- TODO add warning popup for Delete All! -->
 
-            <a class="btn btn-danger bold-input" href="startover">
+            <!-- use server relative URL so starting over doesn't take you to /delete/startover after you delete then click startover button -->
+            <a class="btn btn-danger bold-input" th:href="@{~/startover}">
                 <span class="glyphicon glyphicon-warning-sign"></span>Delete Everything!</a>
         </div>
     </div>
