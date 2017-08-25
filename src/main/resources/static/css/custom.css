@@ -64,11 +64,11 @@ thead {
 }
 
 /* TODO make the warning glyph white */
-.glyphicon-warning-sign {
-    color: white;
-    background-color: white;
-    text-color: white;
-}
+/*.glyphicon-warning-sign {*/
+    /*color: white;*/
+    /*background-color: white;*/
+    /*text-color: white;*/
+/*}*/
 
 
 .inner-addon {

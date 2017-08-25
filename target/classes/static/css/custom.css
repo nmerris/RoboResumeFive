@@ -64,8 +64,26 @@ thead {
 }
 
 /* TODO make the warning glyph white */
-.glyphicon-warning-sign {
-    color: white;
-    background-color: white;
-    text-color: white;
+/*.glyphicon-warning-sign {*/
+    /*color: white;*/
+    /*background-color: white;*/
+    /*text-color: white;*/
+/*}*/
+
+
+.inner-addon {
+    position: relative;
 }
+
+/* style glyphicon */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
