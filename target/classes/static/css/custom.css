@@ -73,6 +73,10 @@ thead {
 .modal-header {
     background-color: #5bc0de;
     color: white;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
 /* material design shadow classes */

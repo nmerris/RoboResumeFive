@@ -8,51 +8,44 @@
 <!-- pass a bunch of boolean variables over to the nav fragment, so it knows which links to enable and highlight -->
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <h2 th:text="'Resume for ' + ${firstAndLastName}"></h2>
-                <span class="glyphicon glyphicon-star"></span>
-                <span th:text="${currentNumRecords} + ' of 20 skills entered'"></span>
-            </div>
-        </div>
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="panel panel-default card card-3">
+            <div class="panel-body">
 
-        <div class="row">
-            <div class="col-sm-12">
+                <div class="text-center feedback">
+                    <h2 th:text="'Resume for ' + ${firstAndLastName}"></h2>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span th:text="${currentNumRecords} + ' of 20 skills entered'"></span>
+                </div>
 
                 <form action="#" th:action="@{/addskill}" th:object="${newSkill}" method="post">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
+                    <!-- need this or id is zero every time and keep getting additional records when updating -->
+                    <input type="hidden" th:field="*{id}" />
 
-                            <!-- need this or id is zero every time and keep getting additional records when updating -->
-                            <input type="hidden" th:field="*{id}" />
-
-                            <div class="form-group">
-                                <label class="section-heading" for="skill">Skill</label>
-                                <input id="skill" class="form-control" type="text" th:field="*{skill}"/>
-                                <p class="alert alert-danger" th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}"></p>
-                            </div>
-
-                            <!-- label allows user to click the text OR the radio button to select, for convenience -->
-                            <label class="section-heading" for="expertId">Expert</label>
-                            <input type="radio" name="rating" id="expertId" value="Expert" th:field="*{rating}"/>
-                            <label class="section-heading" for="proficientId">Proficient</label>
-                            <input type="radio" name="rating" id="proficientId" value="Proficient" th:field="*{rating}"/>
-                            <label class="section-heading" for="familiarId">Familiar</label>
-                            <input type="radio" name="rating" id="familiarId" value="Familiar" th:field="*{rating}"/>
-                            <p class="alert alert-danger" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></p>
-
-
-                        <div class="clearfix"></div>
-                        <input class="btn btn-primary bold-input" type="submit" value="Submit" th:disabled="${disableSubmit}"/>
-
-                        </div>
+                    <div class="form-group">
+                        <label class="section-heading" for="skill">Skill</label>
+                        <input id="skill" class="form-control" type="text" th:field="*{skill}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}"></p>
                     </div>
+
+                    <!-- label allows user to click the text OR the radio button to select, for convenience -->
+                    <label class="section-heading" for="expertId">Expert</label>
+                    <input type="radio" name="rating" id="expertId" value="Expert" th:field="*{rating}"/>
+                    <label class="section-heading" for="proficientId">Proficient</label>
+                    <input type="radio" name="rating" id="proficientId" value="Proficient" th:field="*{rating}"/>
+                    <label class="section-heading" for="familiarId">Familiar</label>
+                    <input type="radio" name="rating" id="familiarId" value="Familiar" th:field="*{rating}"/>
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></p>
+
+                    <div class="clearfix"></div>
+                    <input class="btn btn-primary bold-input" type="submit" value="Submit" th:disabled="${disableSubmit}"/>
                 </form>
 
             </div>
         </div>
     </div>
+</div>
 
 <!-- Footer -->
 <footer th:replace="fragments :: footer"></footer>
