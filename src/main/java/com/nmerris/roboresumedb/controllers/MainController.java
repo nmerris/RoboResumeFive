@@ -360,21 +360,27 @@ public class MainController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, @RequestParam("type") String type, Model model)
     {
-//        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ path var: " + id);
-//        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ request param: " + type);
 
-        switch (type) {
-            case "ed" :
-                educationRepo.delete(id);
-                break;
-            case "person" :
-                personRepo.delete(id);
-                break;
-            case "workexp" :
-                workExperienceRepo.delete(id);
-                break;
-            case "skill" :
-                skillRepo.delete(id);
+
+        try {
+            switch (type) {
+                case "ed" :
+                    educationRepo.delete(id);
+                    break;
+                case "person" :
+                    personRepo.delete(id);
+                    break;
+                case "workexp" :
+                    workExperienceRepo.delete(id);
+                    break;
+                case "skill" :
+                    skillRepo.delete(id);
+            }
+        } catch (Exception e) {
+            // need to catch an exception that may be thrown if user refreshes the page after deleting an item
+            // refreshing the page will attempt to delete the same ID from the db, which will not exist anymore if
+            // they just deleted it.  catching the exception will prevent the app from crashing, and the same page
+            // will simply be redisplayed
         }
 
         NavBarState pageState = getPageLinkState();
