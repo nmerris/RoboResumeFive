@@ -27,6 +27,7 @@
         <div class="container">
 
             <div class="navbar-header">
+                <!-- hamburger menu only shows if width < 992px -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
                     <!-- make a basic hamburger icon from 3 bars -->
                     <span class="icon-bar"></span>
@@ -45,13 +46,16 @@
                     </li>
 
                     <li th:classappend="${navState.highlightEdNav ? 'active' : ''}">
-                        <a th:href="@{/addeducation}" th:classappend="${navState.disableAddEdLink ? 'disable-click' : ''}">Education</a>
+                        <a th:href="@{/addeducation}" th:classappend="${navState.disableAddEdLink ? 'disable-click' : ''}">
+                            Education <span class="badge" th:text="${navState.numEdAchievements}"></span></a>
                     </li>
                     <li th:classappend="${navState.highlightWorkNav ? 'active' : ''}">
-                        <a th:href="@{/addworkexperience}" th:classappend="${navState.disableAddWorkExpLink ? 'disable-click' : ''}">Work</a>
+                        <a th:href="@{/addworkexperience}" th:classappend="${navState.disableAddWorkExpLink ? 'disable-click' : ''}">
+                            Work <span class="badge" th:text="${navState.numWorkExps}"></span></a>
                     </li>
                     <li th:classappend="${navState.highlightSkillNav ? 'active' : ''}">
-                        <a th:href="@{/addskill}" th:classappend="${navState.disableAddSkillLink ? 'disable-click' : ''}">Skills</a>
+                        <a th:href="@{/addskill}" th:classappend="${navState.disableAddSkillLink ? 'disable-click' : ''}">
+                            Skills <span class="badge" th:text="${navState.numSkills}"></span></a>
                     </li>
                 </ul>
 
