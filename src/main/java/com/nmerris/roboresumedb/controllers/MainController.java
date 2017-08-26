@@ -119,7 +119,12 @@ public class MainController {
 
         // person should have first and last names, and email at this point
         // the collections in Person are null at this point, which shows up as a BLOB in the db!  ...blob is you uncle
-        personRepo.save(person);
+        // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
+        // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
+        // only allow one person per resume, so only one person at all, for now
+        if(personRepo.count() < 1) {
+            personRepo.save(person);
+        }
 
         // go to education section automatically, it's the most logical
         return "redirect:/addeducation";
@@ -182,7 +187,11 @@ public class MainController {
             return "addeducation";
         }
 
-        educationRepo.save(educationAchievement);
+        // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
+        // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
+        if(educationRepo.count() < 10) {
+            educationRepo.save(educationAchievement);
+        }
 
         // need to get the count AFTER successfully adding to db, so it is up to date
         model.addAttribute("currentNumRecords", educationRepo.count());
@@ -264,11 +273,13 @@ public class MainController {
         model.addAttribute("dateEndString", Utilities.getMonthDayYearFromDate(workExperience.getDateEnd()));
 
 
-        // TODO: figure out why empty end date is causing a null pointer exception when on heroku.. postgresql thing maybe??
+        // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
+        // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
+        if(workExperienceRepo.count() < 10) {
+            workExperienceRepo.save(workExperience);
+        }
 
 
-
-        workExperienceRepo.save(workExperience);
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightWorkNav(true);
         model.addAttribute("pageState", pageState);
@@ -327,7 +338,11 @@ public class MainController {
             return "addskill";
         }
 
-        skillRepo.save(skill);
+        // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
+        // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on co
+        if(skillRepo.count() < 20) {
+            skillRepo.save(skill);
+        }
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightSkillNav(true);
@@ -467,6 +482,11 @@ public class MainController {
         // the navi links are disabled depending on the number of records in the various db tables
         // note: the 'highlighted' nav bar choice is set in each route
         NavBarState pageState = new NavBarState();
+
+        // add the current stat of the table counts, so the navbar badges know what to display
+        pageState.setNumSkills(skillRepo.count());
+        pageState.setNumWorkExps(workExperienceRepo.count());
+        pageState.setNumEdAchievements(educationRepo.count());
 
         pageState.setDisablePersonLink(personRepo.count() > 0);
 

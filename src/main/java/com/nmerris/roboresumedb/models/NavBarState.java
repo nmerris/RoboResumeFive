@@ -15,23 +15,10 @@ public class NavBarState {
     private boolean disableAddWorkExpLink;
     private boolean disableEditDetailsLink;
     private boolean disableShowFinalLink;
-    
-    
-    public NavBarState() {
-//        highlightPersonNav = false;
-//        highlightEdNav = false;
-//        highlightWorkNav = false;
-//        highlightSkillNav = false;
-//        highlightEditNav = false;
-//        highlightFinalNav = false;
 
-//        disablePersonLink = false;
-//        disableAddEdLink = false;
-//        disableAddSkillLink = false;
-//        disableAddWorkExpLink = false;
-//        disableEditDetailsLink = false;
-//        disableShowFinalLink = false;
-    }
+    private long numEdAchievements;
+    private long numWorkExps;
+    private long numSkills;
 
     public boolean getHighlightPersonNav() {
         return highlightPersonNav;
@@ -129,4 +116,27 @@ public class NavBarState {
         this.disableShowFinalLink = disableShowFinalLink;
     }
 
+    public long getNumEdAchievements() {
+        return numEdAchievements;
+    }
+
+    public void setNumEdAchievements(long numEdAchievements) {
+        this.numEdAchievements = numEdAchievements;
+    }
+
+    public long getNumWorkExps() {
+        return numWorkExps;
+    }
+
+    public void setNumWorkExps(long numWorkExps) {
+        this.numWorkExps = numWorkExps;
+    }
+
+    public long getNumSkills() {
+        return numSkills;
+    }
+
+    public void setNumSkills(long numSkills) {
+        this.numSkills = numSkills;
+    }
 }
