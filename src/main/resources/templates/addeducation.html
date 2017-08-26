@@ -8,54 +8,45 @@
 <!-- pass a bunch of boolean variables over to the nav fragment, so it knows which links to enable or not -->
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
-    <div class="container">
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="panel panel-default card card-3">
+            <div class="panel-body">
 
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <h2 th:text="'Resume for ' + ${firstAndLastName}"></h2>
-                <span class="glyphicon glyphicon-apple"></span>
-                <span th:text="${currentNumRecords} + ' of 10 educational achievements entered'"></span>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
+                <div class="text-center feedback">
+                    <h2 th:text="'Resume for ' + ${firstAndLastName}"></h2>
+                    <span class="glyphicon glyphicon-apple"></span>
+                    <span th:text="${currentNumRecords} + ' of 10 educational achievements entered'"></span>
+                </div>
 
                 <form action="#" th:action="@{/addeducation}" th:object="${newEdAchievement}" method="post">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
+                    <!-- need this or id is zero every time and keep getting additional records when updating -->
+                    <input type="hidden" th:field="*{id}" />
 
-                            <!-- need this or id is zero every time and keep getting additional records when updating -->
-                            <input type="hidden" th:field="*{id}" />
-
-
-                            <div class="form-group">
-                                <label class="section-heading" for="school">School</label>
-                                <input id="school" class="form-control" type="text" th:field="*{school}"/>
-                                <p class="alert alert-danger" th:if="${#fields.hasErrors('school')}" th:errors="*{school}"></p>
-                            </div>
-                            <div class="form-group">
-                                <label class="section-heading" for="major">Major</label>
-                                <input id="major" class="form-control" type="text" th:field="*{major}"/>
-                                <p class="alert alert-danger" th:if="${#fields.hasErrors('major')}" th:errors="*{major}"></p>
-                            </div>
-                            <div class="form-group">
-                                <label class="section-heading" for="graduationYear">Graduation Year</label>
-                                <input id="graduationYear" class="form-control" placeholder="1985" type="text" th:field="*{graduationYear}"/>
-                                <p class="alert alert-danger" th:if="${#fields.hasErrors('graduationYear')}" th:errors="*{graduationYear}"></p>
-                            </div>
-
-                            <div class="clearfix"></div>
-                            <input class="btn btn-primary bold-input" type="submit" value="Submit" th:disabled="${disableSubmit}"/>
-
-                        </div>
+                    <div class="form-group">
+                        <label class="section-heading" for="school">School</label>
+                        <input id="school" class="form-control" type="text" th:field="*{school}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('school')}" th:errors="*{school}"></p>
                     </div>
+                    <div class="form-group">
+                        <label class="section-heading" for="major">Major</label>
+                        <input id="major" class="form-control" type="text" th:field="*{major}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('major')}" th:errors="*{major}"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="section-heading" for="graduationYear">Graduation Year</label>
+                        <input id="graduationYear" class="form-control" placeholder="1985" type="text" th:field="*{graduationYear}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('graduationYear')}" th:errors="*{graduationYear}"></p>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <input class="btn btn-primary bold-input" type="submit" value="Submit" th:disabled="${disableSubmit}"/>
                 </form>
 
             </div>
         </div>
-    </div><!-- container -->
-
+    </div>
+</div><!-- container -->
 
 <!-- Footer -->
 <footer th:replace="fragments :: footer"></footer>

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments :: headerFragment"></head>
+
+<body class="login-page">
+
+<div class="container">
+    <div class="col-sm-4 col-sm-offset-4">
+        <div class="panel panel-default card card-3">
+            <div class="panel-body">
+                <h1 class="section-heading text-center">Robo Resume</h1>
+                <h4 class="section-heading text-center">Create you own resume online</h4>
+                <br/>
+                <br/>
+
+                <!-- '?error' is appended automatically by spring if there is a login problem.. cool! -->
+                <!-- and 'param' must be a thymeleaf keyword, it just picks up the param, nothing else needed -->
+
+                <form class="form-signin" th:action="@{/login}" method="post">
+                    <div class="inner-addon left-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input type="text" name="username" class="form-control" placeholder="username" autofocus>
+                    </div>
+                    <br/>
+                    <div class="inner-addon left-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                        <input type="text" name="password" class="form-control" placeholder="password">
+                    </div>
+
+                    <br/>
+                    <p class="alert alert-danger" th:if="${param.error}">Invalid username or password</p>
+                    <p class="alert alert-success" th:if="${param.logout}">You have been logged out</p>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <button class="btn btn-lg btn-primary text-center" type="submit">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer th:replace="fragments :: footer"></footer>
+
+<!-- javascript -->
+<!-- th:block goes away after processing, but what's inside stays, so it won't affect the page layout -->
+<th:block th:replace="fragments :: javaScriptTemplate"></th:block>
+
+</body>
+
+</html>

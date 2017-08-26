@@ -8,9 +8,13 @@
 <!-- pass a bunch of boolean variables over to the nav fragment, so it knows which links to enable and highlight -->
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="panel panel-default card card-3">
+            <div class="panel-body">
+                <div class="text-center feedback">
+                    <h2>Please enter personal details</h2>
+                </div>
 
                 <form action="#" th:action="@{/addperson}" th:object="${newPerson}" method="post">
                     <!-- need this or id is zero every time and keep getting additional records when updating -->
@@ -39,6 +43,7 @@
             </div>
         </div>
     </div>
+</div>
 
 <!-- Footer -->
 <footer th:replace="fragments :: footer"></footer>

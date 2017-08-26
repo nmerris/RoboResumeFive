@@ -28,14 +28,34 @@ public class MainController {
     WorkExperienceRepo workExperienceRepo;
 
 
-
-    @GetMapping("/")
-    public String indexPageGet() {
-        return "index";
+    @GetMapping("/login")
+    public String login() {
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /login GET route ++++++++++++++++++");
+        return "login";
     }
 
-    @PostMapping("/")
-    public String indexPagePost() {
+
+    @GetMapping("/logout")
+    public String logout() {
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /logOUT GET route ++++++++++++++++++");
+        return "login";
+    }
+
+
+    @GetMapping("/")
+    public String indexPageGet(Model model) {
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /DEFAULT GET route ++++++++++++++++++");
+
+        model.addAttribute("currentNumRecords", personRepo.count());
+        model.addAttribute("newPerson", new Person());
+        model.addAttribute("disableSubmit", personRepo.count() >= 1);
+//        setLinkEnabledBooleans(model);
+        NavBarState pageState = getPageLinkState();
+        pageState.setHighlightPersonNav(true);
+        model.addAttribute("pageState", pageState);
+
+        addDbTableCountsToModel(model);
+
         return "addperson";
     }
 
@@ -49,11 +69,13 @@ public class MainController {
         skillRepo.deleteAll();
         workExperienceRepo.deleteAll();
 
-        return "addperson";
+        return "startover";
     }
 
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson GET route ++++++++++++++++++");
+
         model.addAttribute("currentNumRecords", personRepo.count());
         model.addAttribute("newPerson", new Person());
         model.addAttribute("disableSubmit", personRepo.count() >= 1);
@@ -73,7 +95,8 @@ public class MainController {
     @PostMapping("/addperson")
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
-//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson POST route ++++++++++++++++++");
+        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson POST route ++++++++++++++++++");
+
         model.addAttribute("currentNumRecords", personRepo.count());
         addDbTableCountsToModel(model);
 //        setLinkEnabledBooleans(model);
