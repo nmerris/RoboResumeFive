@@ -52,13 +52,17 @@ input[type="radio"] {
 
 table {
     width:100%;
-    /*border-collapse: collapse;*/
-    /*table-layout: fixed;*/
+    box-sizing: border-box;
 }
 
 thead {
     color: white;
     background-color: #428bca;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+
 }
 
 /* can end up with really wide tables if you don't truncate the cells contents */
