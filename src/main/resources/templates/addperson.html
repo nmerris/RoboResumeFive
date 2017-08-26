@@ -22,7 +22,7 @@
 
                         <div class="form-group">
                             <label class="section-heading" for="nameFirst">First Name</label>
-                            <input id="nameFirst" class="form-control" type="text" th:field="*{nameFirst}"/>
+                            <input id="nameFirst" class="form-control" type="text" th:field="*{nameFirst}" autofocus/>
                             <p class="alert alert-danger" th:if="${#fields.hasErrors('nameFirst')}" th:errors="*{nameFirst}"></p>
                         </div>
                         <div class="form-group">

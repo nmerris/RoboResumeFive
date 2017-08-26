@@ -8,13 +8,15 @@
 <!-- pass a bunch of boolean variables over to the nav fragment, so it knows which links to enable and highlight -->
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 text-center">
-                <h2 class="" th:text="'Resume for ' + ${firstAndLastName}"></h2>
-                <span class="glyphicon glyphicon-briefcase"></span>
-                <span th:text="${currentNumRecords} + ' of 10 work experiences entered'"></span>
+<div class="container">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="panel panel-default card card-3">
+            <div class="panel-body">
+                <div class="text-center feedback">
+                    <h2 class="" th:text="'Resume for ' + ${firstAndLastName}"></h2>
+                    <span class="glyphicon glyphicon-briefcase"></span>
+                    <span th:text="${currentNumRecords} + ' of 10 work experiences entered'"></span>
+                </div>
 
                 <div class="panel panel-primary">
                     <div class="panel-heading"><h4><b>Work Experience</b></h4></div>
@@ -27,16 +29,11 @@
                         <li class="list-group-item" th:text="'Duty two: ' + ${workExperienceJustAdded.dutyTwo}"></li>
                     </ul>
                 </div>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
                 <a class="btn btn-primary bold-input" th:href="@{/addworkexperience}" th:disabled="${disableSubmit}">+ Add Another</a>
             </div>
         </div>
     </div>
+</div>
 
 <!-- Footer -->
 <footer th:replace="fragments :: footer"></footer>
