@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/fragments.html" afterPath="$PROJECT_DIR$/target/classes/templates/fragments.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,8 +49,8 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="720">
-                  <caret line="382" column="41" lean-forward="false" selection-start-line="382" selection-start-column="41" selection-end-line="382" selection-end-column="41" />
+                <state relative-caret-position="405">
+                  <caret line="361" column="5" lean-forward="true" selection-start-line="361" selection-start-column="5" selection-end-line="361" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -480,7 +478,7 @@
       <workItem from="1503577600969" duration="2643000" />
       <workItem from="1503617368715" duration="6555000" />
       <workItem from="1503749000892" duration="649000" />
-      <workItem from="1503751677840" duration="14275000" />
+      <workItem from="1503751677840" duration="14586000" />
     </task>
     <task id="LOCAL-00001" summary="fixed bug in editdetails.html">
       <created>1503410238929</created>
@@ -657,11 +655,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503766098924</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fix bug: if user refreshed editdetails page after deleting an item, the app will no longer crash, also added custom mobile hamburger menu if navbar collapses under 992px">
+      <created>1503766499260</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1503766499260</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38604000" />
+    <option name="totallyTimeSpent" value="38915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2145" y="42" width="2562" height="1440" extended-state="6" />
@@ -712,7 +717,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="fixed bug in editdetails.html" />
     <MESSAGE value="fixed end date bug in finalresume.html" />
     <MESSAGE value="working on delete all! warning glyph" />
     <MESSAGE value="trying to get heroku working with gresql" />
@@ -737,7 +741,8 @@
     <MESSAGE value="navbar collapses to hamburger button for small screens, need to make alter it a bit so it looks nice when collapsed" />
     <MESSAGE value="add custom @media query css to change navbar collapse breakpoint to 1000px instead of the default 768px" />
     <MESSAGE value="navbar collapses at 992px, and displays a slightly different menu that looks nicer on mobile devices" />
-    <option name="LAST_COMMIT_MESSAGE" value="navbar collapses at 992px, and displays a slightly different menu that looks nicer on mobile devices" />
+    <MESSAGE value="fix bug: if user refreshed editdetails page after deleting an item, the app will no longer crash, also added custom mobile hamburger menu if navbar collapses under 992px" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug: if user refreshed editdetails page after deleting an item, the app will no longer crash, also added custom mobile hamburger menu if navbar collapses under 992px" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1138,8 +1143,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="382" column="41" lean-forward="false" selection-start-line="382" selection-start-column="41" selection-end-line="382" selection-end-column="41" />
+        <state relative-caret-position="405">
+          <caret line="361" column="5" lean-forward="true" selection-start-line="361" selection-start-column="5" selection-end-line="361" selection-end-column="5" />
           <folding />
         </state>
       </provider>
