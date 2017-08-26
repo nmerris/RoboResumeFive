@@ -70,6 +70,7 @@ thead {
     /*max-height: 50px;*/
 }
 
+/* changing the background color makes the border-radius go away, so need to add it back in here */
 .modal-header {
     background-color: #5bc0de;
     color: white;

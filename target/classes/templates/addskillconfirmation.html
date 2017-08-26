@@ -9,25 +9,24 @@
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 text-center">
-            <h2 th:text="'Resume for ' + ${firstAndLastName}"></h2>
-            <span class="glyphicon glyphicon-education"></span>
-            <span th:text="${currentNumRecords} + ' of 20 skills entered'"></span>
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="panel panel-default card card-3">
+            <div class="panel-body">
+                <div class="text-center feedback">
+                    <h2 th:text="'Resume for ' + ${firstAndLastName}"></h2>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span th:text="${currentNumRecords} + ' of 20 skills entered'"></span>
+                </div>
 
-            <div class="panel panel-primary">
-                <div class="panel-heading"><h4><b>Skill</b></h4></div>
-                <ul class="list-group">
-                    <li class="list-group-item" th:text="${skillJustAdded.skill}"></li>
-                    <li class="list-group-item" th:text="${'Rating: ' + skillJustAdded.rating}"></li>
-                </ul>
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><h4><b>Skill</b></h4></div>
+                    <ul class="list-group">
+                        <li class="list-group-item" th:text="${skillJustAdded.skill}"></li>
+                        <li class="list-group-item" th:text="${'Rating: ' + skillJustAdded.rating}"></li>
+                    </ul>
+                </div>
+                <a class="btn btn-primary bold-input" th:href="@{/addskill}" th:disabled="${disableSubmit}">+ Add Another</a>
             </div>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-sm-offset-3">
-            <a class="btn btn-primary bold-input" th:href="@{/addskill}" th:disabled="${disableSubmit}">+ Add Another</a>
         </div>
     </div>
 </div>
