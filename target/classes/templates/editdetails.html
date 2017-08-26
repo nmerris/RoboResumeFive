@@ -147,7 +147,7 @@
                 <div class="col-lg-12 text-center">
                     <!-- TODO add warning popup for Delete All! -->
                     <!-- use server relative URL so starting over doesn't take you to /delete/startover after you delete then click startover button -->
-                    <a class="btn btn-danger bold-input" th:href="@{~/startover}">Delete Everything!</a>
+                    <button type="button" class="btn btn-danger bold-input" data-toggle="modal" data-target="#deleteAllWarningModal">Delete Everything!</button>
                 </div>
 
             </div><!-- panel body -->
@@ -166,6 +166,21 @@
 <th:block th:replace="fragments :: javaScriptTemplate"></th:block>
 
 <th:block th:replace="fragments :: modals"></th:block>
+
+<!-- delete everything warning modal -->
+<div class="modal fade" id="deleteAllWarningModal" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Are you sure you want to delete everything?</h4>
+            </div>
+            <div class="modal-footer">
+                <a th:href="@{~/startover}" class="btn btn-default">Yes</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 

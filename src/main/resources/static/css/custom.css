@@ -75,13 +75,26 @@ thead {
 }
 
 /* changing the background color makes the border-radius go away, so need to add it back in here */
-.modal-header {
+#viewFinalModal .modal-header {
     background-color: #5bc0de;
     color: white;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
+}
+
+#deleteAllWarningModal .modal-header {
+    background-color: #d9534f;
+    color: white;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+#deleteAllWarningModal a {
+    float: left;
 }
 
 /* material design shadow classes */
