@@ -25,7 +25,7 @@
 
                     <div class="form-group">
                         <label class="section-heading" for="skill">Skill</label>
-                        <input id="skill" class="form-control" type="text" th:field="*{skill}"/>
+                        <input id="skill" class="form-control" type="text" th:field="*{skill}" autofocus/>
                         <p class="alert alert-danger" th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}"></p>
                     </div>
 
