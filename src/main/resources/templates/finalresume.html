@@ -10,7 +10,7 @@
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
 <div class="container">
-    <div class="col-lg-6 col-lg-offset-3">
+    <div class="col-lg-8 col-lg-offset-2">
         <div class="panel panel-default card card-3">
             <div class="panel-body final-panel">
 
@@ -35,18 +35,15 @@
                     <!-- always have thymeleaf format the start date because it MUST be present and valid -->
                     <!-- however, end date may be null, in which case we want thymeleaf to insert 'Present' instead -->
                     <!-- NOTE: app crashes if you feed a null Date to #dates.format(...) -->
-                    <h4 class="align-right" th:text="${item.company} + ', ' +
-                ${#dates.format(item.dateStart, 'MMM dd, yyyy')} +
-                ' to ' + (${item.dateEnd} ? ${#dates.format(item.dateEnd, 'MMM dd, yyyy'} : 'Present')"></h4>
+                    <h4 class="align-right" th:text="${#dates.format(item.dateStart, 'MMM yyyy')} + ' - ' +
+                        (${item.dateEnd != null} ? ${#dates.format(item.dateEnd, 'MMM yyyy')} : 'Present')"></h4>
 
-
-
-                    <p class="final-resume-p" th:text="${item.jobTitle}"></p>
-
-
-                <!--<p class="final-resume-p" th:text="${item.company} +', ' + ${item.dateStart} + ' to ' + ${item.dateEnd}"></p>-->
-                <p class="final-resume-p" th:text="'Duty 1: ' + ${item.dutyOne}"></p>
-                <p class="final-resume-p" th:if="${!#strings.isEmpty(item.dutyTwo)}" th:text="'Duty 2: ' + ${item.dutyTwo}"></p>
+                    <h4 class="final-item-title" th:text="${item.company}"></h4>
+                    <h4 th:text="${item.jobTitle}"></h4>
+                    <ul>
+                        <li th:text="${item.dutyOne}"></li>
+                        <li th:if="${!#strings.isEmpty(item.dutyTwo)}" th:text="${item.dutyTwo}"></li>
+                    </ul>
                 </th:block>
 
                 <div class="final-section-header">
