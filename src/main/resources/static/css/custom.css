@@ -30,6 +30,12 @@ body {
     padding-right: 10px;
 }
 
+.glyphicon-user {
+    color: #777;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .alert {
     padding-top: 6px;
     padding-bottom: 6px;
