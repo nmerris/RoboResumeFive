@@ -38,21 +38,20 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- remove sql dependency if usign gresql! -->
-		<!--<dependency>-->
-			<!--<groupId>mysql</groupId>-->
-			<!--<artifactId>mysql-connector-java</artifactId>-->
-			<!--<scope>runtime</scope>-->
-		<!--</dependency>-->
-
-		 <!--NOTE: really need to get the 'best' version from gresql's website, make sure they say it works with maven-->
-		 <!--this was causing ALL my problems to this point, because I was using an older version, but no exactly sure why-->
-		 <!--because it was working with Mahder's code.... -->
+		<!-- remove mysql dependency if usign postgresql! -->
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.4-1201-jdbc4</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
 		</dependency>
+
+		 <!--NOTE: really need to get the 'best' version from postgresql's website, make sure they say it works with maven-->
+		 <!--this was causing ALL my problems to this point, because I was using an older version, but no exactly sure why-->
+		<!--<dependency>-->
+			<!--<groupId>org.postgresql</groupId>-->
+			<!--<artifactId>postgresql</artifactId>-->
+			<!--<version>9.4-1201-jdbc4</version>-->
+		<!--</dependency>-->
 
 
 
