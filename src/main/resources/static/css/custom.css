@@ -63,6 +63,10 @@ footer {
     border-bottom: 1px solid black;
 }
 
+.item-skill {
+    margin-bottom: 20px;
+}
+
 .final-header {
     margin-bottom: 50px;
 }
