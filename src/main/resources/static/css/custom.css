@@ -48,22 +48,27 @@ footer {
 }
 
 .final-panel {
+    background: url("../img/07final-panel.jpg") repeat center center;
     padding-left: 40px;
     padding-right:40px;
 }
 
 .final-section-header {
     width: 100%;
-    padding: 10px;
+    padding: 10px 0px 5px 0px;
     color: #52a3db;
-    background: #f1f1f1;
     font-size: large;
     font-weight: bold;
     margin-top: 30px;
+    border-bottom: 1px solid black;
 }
 
 .final-header {
     margin-bottom: 50px;
+}
+
+.final-header h1 {
+    font-weight: bold;
 }
 
 .final-item-title {
