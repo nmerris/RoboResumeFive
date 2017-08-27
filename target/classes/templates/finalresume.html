@@ -10,11 +10,11 @@
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
 <div class="container">
-    <div class="col-lg-8 col-lg-offset-2">
+    <div class="col-lg-6 col-lg-offset-3">
         <div class="panel panel-default card card-3">
             <div class="panel-body">
 
-                <div class="text-center">
+                <div class="text-center final-header">
                     <h1 th:text="${person.nameFirst + ' ' + person.nameLast}"></h1>
                     <h4 th:text="${person.email}"></h4>
                 </div>
@@ -22,7 +22,19 @@
                 <div class="final-section-header">
                     <span>Educational Achievements</span>
                 </div>
+                <th:block th:each="item:${person.educationAchievements}">
+                    <h4 class="align-right" th:text="'Graduated ' + ${item.graduationYear}"></h4>
+                    <h4 th:text="${item.school}"></h4>
+                    <p th:text="${item.major}"></p>
+                </th:block>
 
+                <div class="final-section-header">
+                    <span>Work Experiences</span>
+                </div>
+
+                <div class="final-section-header">
+                    <span>Skills</span>
+                </div>
 
             </div><!-- panel-body -->
         </div>

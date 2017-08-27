@@ -23,7 +23,7 @@
                     <span>Educational Achievements</span>
                 </div>
                 <th:block th:each="item:${person.educationAchievements}">
-                    <h4 class="align-right" th:text="${item.graduationYear}"></h4>
+                    <h4 class="align-right" th:text="'Graduated ' + ${item.graduationYear}"></h4>
                     <h4 th:text="${item.school}"></h4>
                     <p th:text="${item.major}"></p>
                 </th:block>
