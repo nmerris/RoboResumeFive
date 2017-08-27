@@ -23,7 +23,7 @@ footer {
 }
 
 .education-page {
-    background: url("../img/03education.jpeg") no-repeat center center;
+    background: url("../img/03education.jpg") no-repeat center center;
     min-height: 100%;
     background-size: cover;
 }
@@ -39,6 +39,26 @@ footer {
     min-height: 100%;
     background-size: cover;
 }
+
+
+.final-section-header {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    /*margin-top: 20px;*/
+    /*margin-bottom:30px;*/
+    color: #52a3db;
+    background: green;
+    /*background: #f1f1f1f1;*/
+    /*vertical-align: middle;*/
+}
+.final-section-header * {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
 
 .feedback {
     margin-bottom: 20px;

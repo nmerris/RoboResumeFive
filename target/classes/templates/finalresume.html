@@ -9,57 +9,71 @@
 <!-- pass a bunch of boolean variables over to the nav fragment, so it knows which links to enable and highlight -->
 <nav th:replace="fragments :: navbar(${pageState})"></nav>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 th:text="${person.nameFirst + ' ' + person.nameLast}"></h2>
-                        <h6 th:text="${person.email}"></h6>
-                    </div>
+<div class="container">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default card card-3">
+            <div class="panel-body">
+
+                <div class="text-center">
+                    <h1 th:text="${person.nameFirst + ' ' + person.nameLast}"></h1>
+                    <h4 th:text="${person.email}"></h4>
                 </div>
-                <hr/>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h4>Educational Achievements</h4>
-                        <th:block th:each="item:${person.educationAchievements}">
-                                <p class="final-resume-p" th:text="${item.major}"></p>
-                                <p class="final-resume-p" th:text="${item.school} +', ' + ${item.graduationYear}"></p>
-                                <br/>
-                        </th:block>
-                        <br/>
 
-                        <!-- TODO endDate errors out if not present, need to insert Present if no end date -->
-                        <!-- also check what happens if NO work exp entered at all -->
-                        <h4>Experience</h4>
-                        <th:block th:each="item:${person.workExperiences}">
-                            <p class="final-resume-p" th:text="${item.jobTitle}"></p>
-
-                            <!-- always have thymeleaf format the start date because it MUST be present and valid -->
-                            <!-- however, end date may be null, in which case we want thymeleaf to insert 'Present' instead -->
-                            <!-- NOTE: app crashes if you feed a null Date to #dates.format(...) -->
-                            <p class="final-resume-p" th:text="${item.company} + ', ' +
-                            ${#dates.format(item.dateStart, 'MMM dd, yyyy')} +
-                             ' to ' + (${item.dateEnd} ? ${#dates.format(item.dateEnd, 'MMM dd, yyyy'} : 'Present')"></p>
-
-                            <!--<p class="final-resume-p" th:text="${item.company} +', ' + ${item.dateStart} + ' to ' + ${item.dateEnd}"></p>-->
-                            <p class="final-resume-p" th:text="'Duty 1: ' + ${item.dutyOne}"></p>
-                            <p class="final-resume-p" th:if="${!#strings.isEmpty(item.dutyTwo)}" th:text="'Duty 2: ' + ${item.dutyTwo}"></p>
-
-                            <br/>
-                        </th:block>
-                        <br/>
-
-                        <h4>Skills</h4>
-                        <th:block th:each="item:${person.skills}">
-                            <p class="final-resume-p" th:text="${item.skill} + ', ' + ${item.rating}"></p>
-                            <br/>
-                        </th:block>
-                        <br/>
-                    </div>
+                <div class="final-section-header">
+                    <span>Educational Achievements</span>
                 </div>
-            </div>
 
-    <!-- Footer -->
-    <!--<footer th:replace="fragments :: footer"></footer>-->
+
+            </div><!-- panel-body -->
+        </div>
+    </div>
+</div><!-- container -->
+
+
+                <!--<div class="row">-->
+                    <!--<div class="col-lg-12">-->
+                        <!--<h4>Educational Achievements</h4>-->
+                        <!--<th:block th:each="item:${person.educationAchievements}">-->
+                                <!--<p class="final-resume-p" th:text="${item.major}"></p>-->
+                                <!--<p class="final-resume-p" th:text="${item.school} +', ' + ${item.graduationYear}"></p>-->
+                                <!--<br/>-->
+                        <!--</th:block>-->
+                        <!--<br/>-->
+
+                        <!--&lt;!&ndash; TODO endDate errors out if not present, need to insert Present if no end date &ndash;&gt;-->
+                        <!--&lt;!&ndash; also check what happens if NO work exp entered at all &ndash;&gt;-->
+                        <!--<h4>Experience</h4>-->
+                        <!--<th:block th:each="item:${person.workExperiences}">-->
+                            <!--<p class="final-resume-p" th:text="${item.jobTitle}"></p>-->
+
+                            <!--&lt;!&ndash; always have thymeleaf format the start date because it MUST be present and valid &ndash;&gt;-->
+                            <!--&lt;!&ndash; however, end date may be null, in which case we want thymeleaf to insert 'Present' instead &ndash;&gt;-->
+                            <!--&lt;!&ndash; NOTE: app crashes if you feed a null Date to #dates.format(...) &ndash;&gt;-->
+                            <!--<p class="final-resume-p" th:text="${item.company} + ', ' +-->
+                            <!--${#dates.format(item.dateStart, 'MMM dd, yyyy')} +-->
+                             <!--' to ' + (${item.dateEnd} ? ${#dates.format(item.dateEnd, 'MMM dd, yyyy'} : 'Present')"></p>-->
+
+                            <!--&lt;!&ndash;<p class="final-resume-p" th:text="${item.company} +', ' + ${item.dateStart} + ' to ' + ${item.dateEnd}"></p>&ndash;&gt;-->
+                            <!--<p class="final-resume-p" th:text="'Duty 1: ' + ${item.dutyOne}"></p>-->
+                            <!--<p class="final-resume-p" th:if="${!#strings.isEmpty(item.dutyTwo)}" th:text="'Duty 2: ' + ${item.dutyTwo}"></p>-->
+
+                            <!--<br/>-->
+                        <!--</th:block>-->
+                        <!--<br/>-->
+
+                        <!--<h4>Skills</h4>-->
+                        <!--<th:block th:each="item:${person.skills}">-->
+                            <!--<p class="final-resume-p" th:text="${item.skill} + ', ' + ${item.rating}"></p>-->
+                            <!--<br/>-->
+                        <!--</th:block>-->
+                        <!--<br/>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+
+
+
 
     <!-- javascript -->
     <!-- th:block goes away after processing, but what's inside stays, so it won't affect the page layout -->
