@@ -9,7 +9,7 @@ public class NavBarState {
     private boolean highlightEditNav;
     private boolean highlightFinalNav;
     
-    private boolean disablePersonLink;
+//    private boolean disablePersonLink;
     private boolean disableAddEdLink;
     private boolean disableAddSkillLink;
     private boolean disableAddWorkExpLink;
@@ -68,13 +68,13 @@ public class NavBarState {
         this.highlightFinalNav = highlightFinalNav;
     }
 
-    public boolean getDisablePersonLink() {
-        return disablePersonLink;
-    }
+//    public boolean getDisablePersonLink() {
+//        return disablePersonLink;
+//    }
 
-    public void setDisablePersonLink(boolean disablePersonLink) {
-        this.disablePersonLink = disablePersonLink;
-    }
+//    public void setDisablePersonLink(boolean disablePersonLink) {
+//        this.disablePersonLink = disablePersonLink;
+//    }
 
     public boolean getDisableAddEdLink() {
         return disableAddEdLink;

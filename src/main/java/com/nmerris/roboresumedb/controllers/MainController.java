@@ -519,7 +519,7 @@ public class MainController {
         pageState.setNumWorkExps(workExperienceRepo.count());
         pageState.setNumEdAchievements(educationRepo.count());
 
-        pageState.setDisablePersonLink(personRepo.count() > 0);
+//        pageState.setDisablePersonLink(personRepo.count() > 0);
 
         pageState.setDisableAddEdLink(personRepo.count() == 0 || educationRepo.count() >= 10);
 
