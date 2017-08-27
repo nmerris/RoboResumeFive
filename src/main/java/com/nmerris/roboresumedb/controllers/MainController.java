@@ -288,7 +288,6 @@ public class MainController {
 
     @GetMapping("/editdetails")
     public String editDetails(Model model) {
-        addPersonNameToModel(model);
         addDbContentsToModel(model);
 
         NavBarState pageState = getPageLinkState();
@@ -308,15 +307,19 @@ public class MainController {
             switch (type) {
                 case "ed" :
                     educationRepo.delete(id);
-                    break;
+                    return "redirect:/editdetails#education";
+//                break;
                 case "person" :
                     personRepo.delete(id);
-                    break;
+                    return "redirect:/editdetails#person";
+//                break;
                 case "workexp" :
                     workExperienceRepo.delete(id);
-                    break;
+                    return "redirect:/editdetails#workexperiences";
+//                    break;
                 case "skill" :
                     skillRepo.delete(id);
+                    return "redirect:/editdetails#skills";
             }
         } catch (Exception e) {
             // need to catch an exception that may be thrown if user refreshes the page after deleting an item.
@@ -325,15 +328,8 @@ public class MainController {
             // will simply be redisplayed
         }
 
-        NavBarState pageState = getPageLinkState();
-        pageState.setHighlightEditNav(true);
-        model.addAttribute("pageState", pageState);
-
-        addPersonNameToModel(model);
-        addDbContentsToModel(model);
-
-        // TODO would be nice to return with an anchor tag to the section user was just on, not as simple as it seems
-        return "editdetails";
+        // this should never happen, but is necessary to compile
+        return "redirect:/editdetails";
     }
 
 
