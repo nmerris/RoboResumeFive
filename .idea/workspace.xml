@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="tidy up a few things in MainController">
+    <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/css/custom.css" afterPath="$PROJECT_DIR$/target/classes/static/css/custom.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/fragments.html" afterPath="$PROJECT_DIR$/target/classes/templates/fragments.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +42,8 @@
           <file leaf-file-name="addeducation.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addeducation.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="690">
-                  <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+                <state relative-caret-position="315">
+                  <caret line="21" column="60" lean-forward="true" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
                   <folding />
                 </state>
               </provider>
@@ -108,8 +109,8 @@
           <file leaf-file-name="fragments.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1110">
-                  <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+                <state relative-caret-position="675">
+                  <caret line="57" column="94" lean-forward="false" selection-start-line="57" selection-start-column="94" selection-end-line="57" selection-end-column="94" />
                   <folding />
                 </state>
               </provider>
@@ -508,7 +509,7 @@
       <workItem from="1503617368715" duration="6555000" />
       <workItem from="1503749000892" duration="649000" />
       <workItem from="1503751677840" duration="22267000" />
-      <workItem from="1503832798143" duration="10482000" />
+      <workItem from="1503832798143" duration="10800000" />
     </task>
     <task id="LOCAL-00001" summary="fixed bug in editdetails.html">
       <created>1503410238929</created>
@@ -769,11 +770,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503840957531</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="refactor navbar in fragments: hiding glyphicons for certain items on larger screens, add logout text on smaller screens">
+      <created>1503848525668</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1503848525668</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57078000" />
+    <option name="totallyTimeSpent" value="57396000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -824,7 +832,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="add card to addskillconfirmation" />
     <MESSAGE value="add card to addworkexperienceconfirmation" />
     <MESSAGE value="all pages except finalresume should now have material design cards" />
     <MESSAGE value="remove unnecessary columns in addworkexperience" />
@@ -849,7 +856,8 @@
     <MESSAGE value="cleaned up MainController" />
     <MESSAGE value="modify delete route so that is redirects back to editdetails in every case, and uses an anchor tag to keep the user at roughly the same spot in the page, also removed all the now unnecessary model attributes" />
     <MESSAGE value="tidy up a few things in MainController" />
-    <option name="LAST_COMMIT_MESSAGE" value="tidy up a few things in MainController" />
+    <MESSAGE value="refactor navbar in fragments: hiding glyphicons for certain items on larger screens, add logout text on smaller screens" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor navbar in fragments: hiding glyphicons for certain items on larger screens, add logout text on smaller screens" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1234,18 +1242,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addeducation.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+        <state relative-caret-position="675">
+          <caret line="57" column="94" lean-forward="false" selection-start-line="57" selection-start-column="94" selection-end-line="57" selection-end-column="94" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addeducation.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="21" column="60" lean-forward="true" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
           <folding />
         </state>
       </provider>

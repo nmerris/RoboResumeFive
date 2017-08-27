@@ -47,18 +47,15 @@
 
                     <li th:classappend="${navState.highlightEdNav ? 'active' : ''}">
                         <a th:href="@{/addeducation}" th:classappend="${navState.disableAddEdLink ? 'disable-click' : ''}">
-                            <span class="glyphicon glyphicon-apple hidden-md hidden-lg"></span>
-                            Education  <span class="badge" th:text="${navState.numEdAchievements}"></span></a>
+                            <span class="glyphicon glyphicon-apple hidden-md hidden-lg"></span>Education  <span class="badge" th:text="${navState.numEdAchievements}"></span></a>
                     </li>
                     <li th:classappend="${navState.highlightWorkNav ? 'active' : ''}">
                         <a th:href="@{/addworkexperience}" th:classappend="${navState.disableAddWorkExpLink ? 'disable-click' : ''}">
-                            <span class="glyphicon glyphicon-briefcase hidden-md hidden-lg"></span>
-                            Work  <span class="badge" th:text="${navState.numWorkExps}"></span></a>
+                            <span class="glyphicon glyphicon-briefcase hidden-md hidden-lg"></span>Work  <span class="badge" th:text="${navState.numWorkExps}"></span></a>
                     </li>
                     <li th:classappend="${navState.highlightSkillNav ? 'active' : ''}">
                         <a th:href="@{/addskill}" th:classappend="${navState.disableAddSkillLink ? 'disable-click' : ''}">
-                            <span class="glyphicon glyphicon-star hidden-md hidden-lg"></span>
-                            Skills  <span class="badge" th:text="${navState.numSkills}"></span></a>
+                            <span class="glyphicon glyphicon-star hidden-md hidden-lg"></span>Skills  <span class="badge" th:text="${navState.numSkills}"></span></a>
                     </li>
                 </ul>
 
