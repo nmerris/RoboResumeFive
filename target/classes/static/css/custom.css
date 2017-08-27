@@ -1,14 +1,43 @@
+html {
+    height: 100%;
+}
+
 body {
-    /*min-height: 2000px;*/
     padding-top: 70px;
 }
 
+footer {
+    margin-bottom: 40px;
+}
+
 .login-page {
-    background-image: url("../img/login-background.jpg");
-    background-repeat: no-repeat;
-    background-position: top;
+    background: url("../img/01login.jpg") no-repeat center center;
+    min-height: 100%;
+    background-size: cover;
+}
 
+.person-page {
+    background: url("../img/02personal.jpg") no-repeat center center;
+    min-height: 100%;
+    background-size: cover;
+}
 
+.education-page {
+    background: url("../img/03education.jpeg") no-repeat center center;
+    min-height: 100%;
+    background-size: cover;
+}
+
+.work-page {
+    background: url("../img/04work.jpg") no-repeat center center;
+    min-height: 100%;
+    background-size: cover;
+}
+
+.skill-page {
+    background: url("../img/05skills.jpg") no-repeat center center;
+    min-height: 100%;
+    background-size: cover;
 }
 
 .feedback {
@@ -31,6 +60,12 @@ body {
 }
 
 .glyphicon-user {
+    color: #777;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.glyphicon-lock {
     color: #777;
     padding-left: 10px;
     padding-right: 10px;

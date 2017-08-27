@@ -15,7 +15,6 @@
                 <br/>
 
                 <!-- '?error' is appended automatically by spring if there is a login problem.. cool! -->
-                <!-- and 'param' must be a thymeleaf keyword, it just picks up the param, nothing else needed -->
 
                 <form class="form-signin" th:action="@{/login}" method="post">
                     <div class="inner-addon left-addon">
@@ -29,6 +28,7 @@
                     </div>
 
                     <br/>
+                    <!-- 'param' must be a thymeleaf keyword, it just picks up the param, nothing else needed -->
                     <p class="alert alert-danger" th:if="${param.error}">Invalid username or password</p>
                     <p class="alert alert-success" th:if="${param.logout}">You have been logged out</p>
 
