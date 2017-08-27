@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/SecurityConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/SecurityConfiguration.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,8 +30,8 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+                <state relative-caret-position="540">
+                  <caret line="130" column="50" lean-forward="true" selection-start-line="130" selection-start-column="50" selection-end-line="130" selection-end-column="50" />
                   <folding />
                 </state>
               </provider>
@@ -105,8 +104,8 @@
           <file leaf-file-name="addperson.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addperson.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+                <state relative-caret-position="360">
+                  <caret line="24" column="115" lean-forward="false" selection-start-line="24" selection-start-column="115" selection-end-line="24" selection-end-column="115" />
                   <folding />
                 </state>
               </provider>
@@ -163,6 +162,7 @@
       <find>sm-offset</find>
       <find>int</find>
       <find>numWo</find>
+      <find>current</find>
     </findStrings>
     <replaceStrings>
       <replace>ple</replace>
@@ -482,7 +482,7 @@
       <workItem from="1503617368715" duration="6555000" />
       <workItem from="1503749000892" duration="649000" />
       <workItem from="1503751677840" duration="22267000" />
-      <workItem from="1503832798143" duration="1975000" />
+      <workItem from="1503832798143" duration="3955000" />
     </task>
     <task id="LOCAL-00001" summary="fixed bug in editdetails.html">
       <created>1503410238929</created>
@@ -701,11 +701,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503776699505</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="removed addDbCountsToModel and all refs, from MainController">
+      <created>1503835415788</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1503835415788</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48571000" />
+    <option name="totallyTimeSpent" value="50551000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2755" y="0" width="2562" height="1440" extended-state="6" />
@@ -756,7 +763,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="finally working, needed to have the most recent version of gresql dependecy, best to check with their website to see what version is good to go with MAVEN" />
     <MESSAGE value="fix bug if end date in work exp was left empty" />
     <MESSAGE value="fix bug in delete all button in edit details, working on login security.. it's logging in and granting access, but not taking me to the desired page after login" />
     <MESSAGE value="actually login is working ok, it's just finnicky if browser session is not closed.. must implement logout feature" />
@@ -781,7 +787,8 @@
     <MESSAGE value="fix bug in education table in editdetails" />
     <MESSAGE value="added conditions on each repo save call, so that user can not refresh page and add more than the allowed number of entries for each section" />
     <MESSAGE value="comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="comments" />
+    <MESSAGE value="removed addDbCountsToModel and all refs, from MainController" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed addDbCountsToModel and all refs, from MainController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1159,16 +1166,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addperson.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="23" lean-forward="false" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        <state relative-caret-position="360">
+          <caret line="24" column="115" lean-forward="false" selection-start-line="24" selection-start-column="115" selection-end-line="24" selection-end-column="115" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+        <state relative-caret-position="540">
+          <caret line="130" column="50" lean-forward="true" selection-start-line="130" selection-start-column="50" selection-end-line="130" selection-end-column="50" />
           <folding />
         </state>
       </provider>

@@ -46,17 +46,18 @@ public class MainController {
     public String indexPageGet(Model model) {
         System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /DEFAULT GET route ++++++++++++++++++");
 
-        model.addAttribute("currentNumRecords", personRepo.count());
-        model.addAttribute("newPerson", new Person());
-        model.addAttribute("disableSubmit", personRepo.count() >= 1);
-//        setLinkEnabledBooleans(model);
-        NavBarState pageState = getPageLinkState();
-        pageState.setHighlightPersonNav(true);
-        model.addAttribute("pageState", pageState);
+//        model.addAttribute("currentNumRecords", personRepo.count());
+//        model.addAttribute("newPerson", new Person());
+//        model.addAttribute("disableSubmit", personRepo.count() >= 1);
+////        setLinkEnabledBooleans(model);
+//        NavBarState pageState = getPageLinkState();
+//        pageState.setHighlightPersonNav(true);
+//        model.addAttribute("pageState", pageState);
 
 //        addDbTableCountsToModel(model);
 
-        return "addperson";
+//        return "addperson";
+        return "redirect:/addperson";
     }
 
 
@@ -105,7 +106,7 @@ public class MainController {
 //        addDbTableCountsToModel(model);
 
 
-        System.out.println("############################################## disableAddEdLink" + pageState.getDisableAddEdLink());
+//        System.out.println("############################################## disableAddEdLink" + pageState.getDisableAddEdLink());
 
         return "addperson";
     }
@@ -115,36 +116,48 @@ public class MainController {
                                 BindingResult bindingResult, Model model) {
         System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson POST route ++++++++++++++++++");
 
-        model.addAttribute("currentNumRecords", personRepo.count());
-//        addDbTableCountsToModel(model);
-//        setLinkEnabledBooleans(model);
-        NavBarState pageState = getPageLinkState();
+//        model.addAttribute("currentNumRecords", personRepo.count());
+////        addDbTableCountsToModel(model);
+////        setLinkEnabledBooleans(model);
+//        NavBarState pageState = getPageLinkState();
 
 
         if(bindingResult.hasErrors()) {
+//            model.addAttribute("currentNumRecords", personRepo.count());
+//        addDbTableCountsToModel(model);
+//        setLinkEnabledBooleans(model);
+            NavBarState pageState = getPageLinkState();
+
             pageState.setHighlightPersonNav(true);
             model.addAttribute("pageState", pageState);
+
+//            pageState.setHighlightPersonNav(true);
+//            model.addAttribute("pageState", pageState);
+
+
+
             return "addperson";
         }
 
-        pageState.setHighlightEdNav(true);
-        model.addAttribute("pageState", pageState);
+//        pageState.setHighlightEdNav(true);
+//        model.addAttribute("pageState", pageState);
 
 
         // TODO remove res creation date from Person model, recreate db
         // set the resume creation date to right now
 //        person.setResumeCreationDate(new Date());
 
-        // person should have first and last names, and email at this point
-        // the collections in Person are null at this point, which shows up as a BLOB in the db!  ...blob is you uncle
-        // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
-        // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
-        // only allow one person per resume, so only one person at all, for now
-        if(personRepo.count() < 1) {
-            personRepo.save(person);
-        }
+        // there is no need to check to see if the Person table already has an entry here, there is only ever one
+        // entry, and the save method will automatically update the entry in question, it knows that if the id is the
+        // same, it should update the entry instead of creating a new one, this is true here even if the user
+        // refreshes the page.
+        personRepo.save(person);
 
         // go to education section automatically, it's the most logical
+        // since there is no confirmation page for addperson, we want to redirect here
+        // redirect means that if this route gets to this point, it's not even going to return a view at all, which
+        // is why no model stuff is needed here, redirect is basically like clicking on a link on a web page
+        // you can redirect to any internal route, or any external URL
         return "redirect:/addeducation";
     }
 
