@@ -57,8 +57,9 @@ footer {
     padding: 10px;
     color: #52a3db;
     background: #f1f1f1;
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
+    margin-top: 30px;
 }
 
 .final-header {
