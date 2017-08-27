@@ -301,7 +301,7 @@ public class MainController {
     // id is the id to delete
     // type is what table to delete from
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") long id, @RequestParam("type") String type, Model model)
+    public String delete(@PathVariable("id") long id, @RequestParam("type") String type)
     {
         try {
             switch (type) {
@@ -371,7 +371,7 @@ public class MainController {
         }
 
         // should never happen, but need it to compile
-        return"index";
+        return"editdetails";
     }
 
 

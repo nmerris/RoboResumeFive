@@ -30,8 +30,8 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="810">
-                  <caret line="330" column="64" lean-forward="false" selection-start-line="330" selection-start-column="64" selection-end-line="330" selection-end-column="64" />
+                <state relative-caret-position="780">
+                  <caret line="373" column="26" lean-forward="false" selection-start-line="373" selection-start-column="26" selection-end-line="373" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -496,7 +496,7 @@
       <workItem from="1503617368715" duration="6555000" />
       <workItem from="1503749000892" duration="649000" />
       <workItem from="1503751677840" duration="22267000" />
-      <workItem from="1503832798143" duration="7258000" />
+      <workItem from="1503832798143" duration="7516000" />
     </task>
     <task id="LOCAL-00001" summary="fixed bug in editdetails.html">
       <created>1503410238929</created>
@@ -743,11 +743,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503839567303</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="modify delete route so that is redirects back to editdetails in every case, and uses an anchor tag to keep the user at roughly the same spot in the page, also removed all the now unnecessary model attributes">
+      <created>1503840736711</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1503840736711</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53854000" />
+    <option name="totallyTimeSpent" value="54112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2755" y="0" width="2562" height="1440" extended-state="6" />
@@ -798,7 +805,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="view final resume modal top corners now have border radius" />
     <MESSAGE value="add card to addskill" />
     <MESSAGE value="add card to addskillconfirmation" />
     <MESSAGE value="add card to addworkexperienceconfirmation" />
@@ -823,7 +829,8 @@
     <MESSAGE value="changed default route to redirect to addperson route, removed unncessary model attributes from default route and adddperson get route" />
     <MESSAGE value="removed disableAddPerson link from NavBarState, MainController, and fragments.html, now user can click on Personal link in navbar OR 'edit' in editdetails to udpate their personal info" />
     <MESSAGE value="cleaned up MainController" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up MainController" />
+    <MESSAGE value="modify delete route so that is redirects back to editdetails in every case, and uses an anchor tag to keep the user at roughly the same spot in the page, also removed all the now unnecessary model attributes" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify delete route so that is redirects back to editdetails in every case, and uses an anchor tag to keep the user at roughly the same spot in the page, also removed all the now unnecessary model attributes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1213,8 +1220,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="330" column="64" lean-forward="false" selection-start-line="330" selection-start-column="64" selection-end-line="330" selection-end-column="64" />
+        <state relative-caret-position="780">
+          <caret line="373" column="26" lean-forward="false" selection-start-line="373" selection-start-column="26" selection-end-line="373" selection-end-column="26" />
           <folding />
         </state>
       </provider>
