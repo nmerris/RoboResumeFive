@@ -47,18 +47,26 @@ footer {
     /*background-size: cover;*/
 }
 
+.final-panel {
+    padding-left: 40px;
+    padding-right:40px;
+}
 
 .final-section-header {
     width: 100%;
     padding: 10px;
     color: #52a3db;
     background: #f1f1f1;
-    font-size: large;
+    font-size: x-large;
     font-weight: bold;
 }
 
 .final-header {
     margin-bottom: 50px;
+}
+
+.final-item-title {
+    font-weight: bold;
 }
 
 .align-right {

@@ -12,7 +12,7 @@
 <div class="container">
     <div class="col-lg-6 col-lg-offset-3">
         <div class="panel panel-default card card-3">
-            <div class="panel-body">
+            <div class="panel-body final-panel">
 
                 <div class="text-center final-header">
                     <h1 th:text="${person.nameFirst + ' ' + person.nameLast}"></h1>
@@ -24,7 +24,7 @@
                 </div>
                 <th:block th:each="item:${person.educationAchievements}">
                     <h4 class="align-right" th:text="'Graduated ' + ${item.graduationYear}"></h4>
-                    <h4 th:text="${item.school}"></h4>
+                    <h4 class="final-item-title" th:text="${item.school}"></h4>
                     <p th:text="${item.major}"></p>
                 </th:block>
 
