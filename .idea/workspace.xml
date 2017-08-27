@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/finalresume.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/finalresume.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +29,8 @@
           <file leaf-file-name="custom.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="765">
-                  <caret line="63" column="1" lean-forward="true" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+                <state relative-caret-position="690">
+                  <caret line="58" column="19" lean-forward="true" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
                   <folding />
                 </state>
               </provider>
@@ -456,14 +454,7 @@
       <workItem from="1503617368715" duration="6555000" />
       <workItem from="1503749000892" duration="649000" />
       <workItem from="1503751677840" duration="22267000" />
-      <workItem from="1503832798143" duration="30751000" />
-    </task>
-    <task id="LOCAL-00004" summary="trying to get heroku working with gresql">
-      <created>1503507703478</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1503507703481</updated>
+      <workItem from="1503832798143" duration="31158000" />
     </task>
     <task id="LOCAL-00005" summary="create">
       <created>1503508288036</created>
@@ -801,11 +792,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503875523952</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="fix skill list bug">
+      <created>1503876284384</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1503876284384</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77347000" />
+    <option name="totallyTimeSpent" value="77754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -856,7 +854,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="add comments" />
     <MESSAGE value="add modal confirmation to delete everything in editdetails" />
     <MESSAGE value="fix bug in education table in editdetails" />
     <MESSAGE value="added conditions on each repo save call, so that user can not refresh page and add more than the allowed number of entries for each section" />
@@ -881,7 +878,8 @@
     <MESSAGE value="final resume page looks nice" />
     <MESSAGE value="minor edits final page" />
     <MESSAGE value="properties file fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="properties file fix" />
+    <MESSAGE value="fix skill list bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix skill list bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1266,18 +1264,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="63" column="1" lean-forward="true" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/finalresume.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
           <caret line="52" column="42" lean-forward="false" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="58" column="19" lean-forward="true" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
           <folding />
         </state>
       </provider>
