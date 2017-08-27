@@ -54,14 +54,13 @@ public class MainController {
         pageState.setHighlightPersonNav(true);
         model.addAttribute("pageState", pageState);
 
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 
         return "addperson";
     }
 
 
     // any time this route is called, all db tables are wiped out
-    // TODO add a simple js popup alert box to avoid accidental data erasure
     @GetMapping("/startover")
     public String startOver() {
         personRepo.deleteAll();
@@ -76,15 +75,34 @@ public class MainController {
     public String addPersonGet(Model model) {
         System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson GET route ++++++++++++++++++");
 
-        model.addAttribute("currentNumRecords", personRepo.count());
-        model.addAttribute("newPerson", new Person());
-        model.addAttribute("disableSubmit", personRepo.count() >= 1);
+//        model.addAttribute("currentNumRecords", personRepo.count());
+
+        if(personRepo.count() < 1) {
+            // user has not yet entered personal details, so create a new Person and add it to the model so the user
+            // can enter their new personal details
+            model.addAttribute("newPerson", new Person());
+//            model.addAttribute("disableSubmit", false);
+
+        }
+        else {
+            // personRepo can only ever have one entry, although the id may change, so just get the existing single entry
+            // which we can use to populate the personal details form
+            model.addAttribute("newPerson", personRepo.findAll().iterator().next());
+        }
+
+
+//        model.addAttribute("newPerson", new Person());
+//        model.addAttribute("disableSubmit", personRepo.count() >= 1);
 //        setLinkEnabledBooleans(model);
+
+
+
+
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightPersonNav(true);
         model.addAttribute("pageState", pageState);
 
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 
 
         System.out.println("############################################## disableAddEdLink" + pageState.getDisableAddEdLink());
@@ -98,7 +116,7 @@ public class MainController {
         System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson POST route ++++++++++++++++++");
 
         model.addAttribute("currentNumRecords", personRepo.count());
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 //        setLinkEnabledBooleans(model);
         NavBarState pageState = getPageLinkState();
 
@@ -142,7 +160,7 @@ public class MainController {
         model.addAttribute("disableSubmit", educationRepo.count() >= 10);
         model.addAttribute("currentNumRecords", educationRepo.count());
 
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 //        setLinkEnabledBooleans(model);
 
         NavBarState pageState = getPageLinkState();
@@ -182,7 +200,7 @@ public class MainController {
             model.addAttribute("pageState", pageState);
             model.addAttribute("disableSubmit", educationRepo.count() >= 10);
             model.addAttribute("currentNumRecords", educationRepo.count());
-            addDbTableCountsToModel(model);
+//            addDbTableCountsToModel(model);
 
             return "addeducation";
         }
@@ -204,7 +222,7 @@ public class MainController {
         pageState.setHighlightEdNav(true);
         model.addAttribute("pageState", pageState);
 
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 
         return "addeducationconfirmation";
     }
@@ -217,7 +235,7 @@ public class MainController {
 
         // it would be nice to show todays date as placeholder text for end date
 //        model.addAttribute("todaysDate", Utilities.getTodaysDateString());
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 //        setLinkEnabledBooleans(model);
 
         NavBarState pageState = getPageLinkState();
@@ -257,7 +275,7 @@ public class MainController {
             model.addAttribute("pageState", pageState);
             model.addAttribute("currentNumRecords", workExperienceRepo.count());
             model.addAttribute("disableSubmit", workExperienceRepo.count() >= 10);
-            addDbTableCountsToModel(model);
+//            addDbTableCountsToModel(model);
 
             return "addworkexperience";
         }
@@ -286,7 +304,7 @@ public class MainController {
         model.addAttribute("currentNumRecords", workExperienceRepo.count());
         model.addAttribute("disableSubmit", workExperienceRepo.count() >= 10);
 
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 
         return "addworkexperienceconfirmation";
     }
@@ -300,7 +318,7 @@ public class MainController {
         addPersonNameToModel(model);
         model.addAttribute("currentNumRecords", skillRepo.count());
         model.addAttribute("newSkill", new Skill());
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 //        setLinkEnabledBooleans(model);
 
         model.addAttribute("disableSubmit", skillRepo.count() >= 20);
@@ -333,7 +351,7 @@ public class MainController {
             pageState.setHighlightSkillNav(true);
             model.addAttribute("pageState", pageState);
             model.addAttribute("currentNumRecords", skillRepo.count());
-            addDbTableCountsToModel(model);
+//            addDbTableCountsToModel(model);
 
             return "addskill";
         }
@@ -349,7 +367,7 @@ public class MainController {
         model.addAttribute("pageState", pageState);
         model.addAttribute("currentNumRecords", skillRepo.count());
         model.addAttribute("disableSubmit", skillRepo.count() >= 20);
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 
         return "addskillconfirmation";
     }
@@ -405,7 +423,7 @@ public class MainController {
         addPersonNameToModel(model);
         addDbContentsToModel(model);
 //        setLinkEnabledBooleans(model);
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 
         // TODO would be nice to return with an anchor tag to the section user was just on, not as simple as it seems
         return "editdetails";
@@ -419,7 +437,7 @@ public class MainController {
         model.addAttribute("disableSubmit", false);
         addPersonNameToModel(model);
 //        setLinkEnabledBooleans(model);
-        addDbTableCountsToModel(model);
+//        addDbTableCountsToModel(model);
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightEditNav(true);
@@ -572,12 +590,12 @@ public class MainController {
     }
 
 
-    private void addDbTableCountsToModel(Model model) {
-        // current db table record counts are used in various places in the template
-        model.addAttribute("numPersons", personRepo.count());
-        model.addAttribute("numEdAchievements", educationRepo.count());
-        model.addAttribute("numSkills", skillRepo.count());
-        model.addAttribute("numWorkExperiences", workExperienceRepo.count());
-    }
+//    private void addDbTableCountsToModel(Model model) {
+//        // current db table record counts are used in various places in the template
+//        model.addAttribute("numPersons", personRepo.count());
+//        model.addAttribute("numEdAchievements", educationRepo.count());
+//        model.addAttribute("numSkills", skillRepo.count());
+//        model.addAttribute("numWorkExperiences", workExperienceRepo.count());
+//    }
 
 }
