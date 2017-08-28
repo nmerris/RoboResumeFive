@@ -18,14 +18,34 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="136" column="63" lean-forward="false" selection-start-line="136" selection-start-column="63" selection-end-line="136" selection-end-column="63" />
+            <state relative-caret-position="324">
+              <caret line="368" column="46" lean-forward="false" selection-start-line="368" selection-start-column="46" selection-end-line="368" selection-end-column="46" />
               <folding>
                 <element signature="e#969#970#0" expanded="true" />
                 <element signature="e#999#1000#0" expanded="true" />
                 <element signature="e#1057#1058#0" expanded="true" />
                 <element signature="e#1087#1088#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addworkexperience.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addworkexperience.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="18" column="70" lean-forward="false" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addworkexperienceconfirmation.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addworkexperienceconfirmation.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="23" column="83" lean-forward="false" selection-start-line="23" selection-start-column="77" selection-end-line="23" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,6 +73,10 @@
       <find>login-p</find>
       <find>skills</find>
       <find>disablePerson</find>
+      <find>todays</find>
+      <find>workE</find>
+      <find>workEx</find>
+      <find>delete</find>
     </findStrings>
     <replaceStrings>
       <replace>ple</replace>
@@ -60,6 +84,7 @@
       <replace />
       <replace>sm-offset</replace>
       <replace>lg-offset</replace>
+      <replace>update</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -375,14 +400,7 @@
       <workItem from="1503749000892" duration="649000" />
       <workItem from="1503751677840" duration="22267000" />
       <workItem from="1503832798143" duration="31158000" />
-      <workItem from="1503925001322" duration="2790000" />
-    </task>
-    <task id="LOCAL-00006" summary="init">
-      <created>1503508474930</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1503508474933</updated>
+      <workItem from="1503925001322" duration="5103000" />
     </task>
     <task id="LOCAL-00007" summary="finally working, needed to have the most recent version of gresql dependecy, best to check with their website to see what version is good to go with MAVEN">
       <created>1503509956042</created>
@@ -720,11 +738,18 @@
       <option name="project" value="LOCAL" />
       <updated>1503925215647</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="adding comments">
+      <created>1503928508220</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1503928508220</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80544000" />
+    <option name="totallyTimeSpent" value="82857000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-1" width="1922" height="1061" extended-state="6" />
@@ -775,7 +800,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="fix bug in education table in editdetails" />
     <MESSAGE value="added conditions on each repo save call, so that user can not refresh page and add more than the allowed number of entries for each section" />
     <MESSAGE value="comments" />
     <MESSAGE value="removed addDbCountsToModel and all refs, from MainController" />
@@ -800,7 +824,8 @@
     <MESSAGE value="properties file fix" />
     <MESSAGE value="fix skill list bug" />
     <MESSAGE value="change login input type to password" />
-    <option name="LAST_COMMIT_MESSAGE" value="change login input type to password" />
+    <MESSAGE value="adding comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1075,13 +1100,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addworkexperience.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addeducationconfirmation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
@@ -1100,13 +1118,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addworkexperienceconfirmation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1192,10 +1203,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addworkexperience.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="18" column="70" lean-forward="false" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addworkexperienceconfirmation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="23" column="83" lean-forward="false" selection-start-line="23" selection-start-column="77" selection-end-line="23" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="136" column="63" lean-forward="false" selection-start-line="136" selection-start-column="63" selection-end-line="136" selection-end-column="63" />
+        <state relative-caret-position="324">
+          <caret line="368" column="46" lean-forward="false" selection-start-line="368" selection-start-column="46" selection-end-line="368" selection-end-column="46" />
           <folding>
             <element signature="e#969#970#0" expanded="true" />
             <element signature="e#999#1000#0" expanded="true" />

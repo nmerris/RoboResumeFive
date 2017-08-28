@@ -87,6 +87,7 @@ public class MainController {
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
 
+        // return the same view (now with validation error messages) if there were any validation problems
         if(bindingResult.hasErrors()) {
             // always need to set up the navbar, every time a view is returned
             NavBarState pageState = getPageLinkState();
@@ -122,7 +123,7 @@ public class MainController {
         // so I want to disable the submit button if they do that and there are already 10 records
         model.addAttribute("disableSubmit", educationRepo.count() >= 10);
 
-        // each resume section (expect personal) shows a running count of the number of records currently in the db
+        // each resume section (except personal) shows a running count of the number of records currently in the db
         model.addAttribute("currentNumRecords", educationRepo.count());
 
         NavBarState pageState = getPageLinkState();
@@ -140,19 +141,23 @@ public class MainController {
         return "addeducation";
     }
 
+    
     @PostMapping("/addeducation")
     public String addEdPost(@Valid @ModelAttribute("newEdAchievement") EducationAchievement educationAchievement,
                             BindingResult bindingResult, Model model) {
-//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addeducation POST route ++++++++++++++++++ ");
 
-        model.addAttribute("edAchievementJustAdded", educationAchievement);
+        // the persons name is show at the top of each 'add' section AND each confirmation page, so we want to add
+        // it to the model no matter which view is returned
         addPersonNameToModel(model);
 
+        // return the same view (now with validation error messages) if there were any validation problems
         if(bindingResult.hasErrors()) {
+            // update the navbar state and add it to our model
             NavBarState pageState = getPageLinkState();
             pageState.setHighlightEdNav(true);
             model.addAttribute("pageState", pageState);
 
+            // disable the form submit button if there are 10 or more records in the education repo
             model.addAttribute("disableSubmit", educationRepo.count() >= 10);
             model.addAttribute("currentNumRecords", educationRepo.count());
 
@@ -167,9 +172,14 @@ public class MainController {
 
         // need to get the count AFTER successfully adding to db, so it is up to date
         model.addAttribute("currentNumRecords", educationRepo.count());
+
+        // add the EducationAchievement just entered to the model, so we can show a confirmation page
+        model.addAttribute("edAchievementJustAdded", educationAchievement);
+        
         // also need to set disableSubmit flag AFTER adding to db, or user will think they can add more than 10
         // because the 'add another' button will work, but then the entry form button will be disabled, this
-        // way the user will not be confused
+        // way the user will not be confused... I am repurposing 'disableSubmit' here, it's actually being used to
+        // disable the 'Add Another' button in the confirmation page
         model.addAttribute("disableSubmit", educationRepo.count() >= 10);
 
         // the navbar state depends on the db table counts in various ways, so always need to have an updated navbar
@@ -182,11 +192,9 @@ public class MainController {
     }
 
 
-
+    // logic in this route is identical to /addeducation, see /addeducation GetMapping for explanatory comments
     @GetMapping("/addworkexperience")
     public String addWorkGet(Model model) {
-//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addworkexperience GET route ++++++++++++++++++");
-
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightWorkNav(true);
         model.addAttribute("pageState", pageState);
@@ -198,15 +206,13 @@ public class MainController {
 
         return "addworkexperience";
     }
-
+    
+    
+    // logic in this route is identical to /addeducation, see /addeducation PostMapping for explanatory comments
     @PostMapping("/addworkexperience")
     public String addWorkPost(@Valid @ModelAttribute("newWorkExperience") WorkExperience workExperience,
                             BindingResult bindingResult, Model model) {
-//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addworkexperience POST route ++++++++++++++++++ ");
 
-        // add a placeholder for end date that is todays date, because why not?
-        model.addAttribute("todaysDate", Utilities.getTodaysDateString());
-        model.addAttribute("workExperienceJustAdded", workExperience);
         addPersonNameToModel(model);
 
         if(bindingResult.hasErrors()) {
@@ -219,10 +225,11 @@ public class MainController {
             return "addworkexperience";
         }
 
+        // work experience end date can be left null by user, in which case we want to show 'Present' in the
+        // confirmation page
         model.addAttribute("dateEndString", Utilities.getMonthDayYearFromDate(workExperience.getDateEnd()));
+        model.addAttribute("workExperienceJustAdded", workExperience);
 
-        // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
-        // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
         if(workExperienceRepo.count() < 10) {
             workExperienceRepo.save(workExperience);
         }
@@ -235,13 +242,11 @@ public class MainController {
 
         return "addworkexperienceconfirmation";
     }
+
     
-
-
+    // logic in this route is identical to /addeducation, see /addeducation GetMapping for explanatory comments
     @GetMapping("/addskill")
     public String addSkillGet(Model model) {
-//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addskill GET route ++++++++++++++++++");
-
         addPersonNameToModel(model);
         model.addAttribute("currentNumRecords", skillRepo.count());
         model.addAttribute("newSkill", new Skill());
@@ -254,13 +259,13 @@ public class MainController {
         return "addskill";
     }
 
+
+    // logic in this route is identical to /addeducation, see /addeducation PostMapping for explanatory comments
     @PostMapping("/addskill")
     public String addSkillPost(@Valid @ModelAttribute("newSkill") Skill skill,
                               BindingResult bindingResult, Model model) {
-//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addskill POST route ++++++++++++++++++ ");
 
         addPersonNameToModel(model);
-        model.addAttribute("skillJustAdded", skill);
 
         if(bindingResult.hasErrors()) {
             NavBarState pageState = getPageLinkState();
@@ -271,8 +276,6 @@ public class MainController {
             return "addskill";
         }
 
-        // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
-        // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on co
         if(skillRepo.count() < 20) {
             skillRepo.save(skill);
         }
@@ -281,6 +284,7 @@ public class MainController {
         pageState.setHighlightSkillNav(true);
         model.addAttribute("pageState", pageState);
 
+        model.addAttribute("skillJustAdded", skill);
         model.addAttribute("currentNumRecords", skillRepo.count());
         model.addAttribute("disableSubmit", skillRepo.count() >= 20);
 
@@ -288,9 +292,12 @@ public class MainController {
     }
 
 
-
+    // this route returns a view that shows ALL the records from every repo
+    // every record can be edited by clicking a link next to it
+    // every record (except the single personal details record) can also be deleted by clicking a link next to it
     @GetMapping("/editdetails")
     public String editDetails(Model model) {
+        // add all the contents of every repo to the model, so the tables have data to display
         addDbContentsToModel(model);
 
         NavBarState pageState = getPageLinkState();
@@ -303,6 +310,8 @@ public class MainController {
 
     // id is the id to delete
     // type is what table to delete from
+    // this route is triggered when the user clicks on the 'delete' link next to a row in editdetails.html
+    // no model is needed here because all the returned views are redirects
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, @RequestParam("type") String type)
     {
@@ -310,16 +319,16 @@ public class MainController {
             switch (type) {
                 case "ed" :
                     educationRepo.delete(id);
+                    // return with an anchor tag so that the user is still at the same section after deleting
+                    // this is not perfect, but it's better than jumping to the top of the page each time
+                    // TODO have the page stay at the same position after deleting a record
                     return "redirect:/editdetails#education";
-//                break;
                 case "person" :
                     personRepo.delete(id);
                     return "redirect:/editdetails#person";
-//                break;
                 case "workexp" :
                     workExperienceRepo.delete(id);
                     return "redirect:/editdetails#workexperiences";
-//                    break;
                 case "skill" :
                     skillRepo.delete(id);
                     return "redirect:/editdetails#skills";
@@ -336,22 +345,28 @@ public class MainController {
     }
 
 
-
+    // id is the id to update
+    // type is what table to update
+    // this route is triggered when the user clicks on the 'update' link next to a row in editdetails.html
     @GetMapping("/update/{id}")
     public String update(@PathVariable("id") long id, @RequestParam("type") String type, Model model)
     {
+        // no matter what view is returned, we ALWAYS will allow the submit button to work, since the form that is
+        // displays can only contain a record that already exists in a repo
         model.addAttribute("disableSubmit", false);
         addPersonNameToModel(model);
 
         NavBarState pageState = getPageLinkState();
-        pageState.setHighlightEditNav(true);
-        model.addAttribute("pageState", pageState);
 
         switch (type) {
             case "person" :
+                // get the appropriate record from the repo
                 model.addAttribute("newPerson",personRepo.findOne(id));
+                // set the appropriate nav bar highlight
                 pageState.setHighlightPersonNav(true);
+                // add the navbar state object to the model
                 model.addAttribute("pageState", pageState);
+                // return the appropriate view
                 return "addperson";
             case "ed" :
                 model.addAttribute("newEdAchievement",educationRepo.findOne(id));
