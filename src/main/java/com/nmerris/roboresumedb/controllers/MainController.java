@@ -30,21 +30,19 @@ public class MainController {
 
     @GetMapping("/login")
     public String login() {
-        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /login GET route ++++++++++++++++++");
         return "login";
     }
 
 
     @GetMapping("/logout")
     public String logout() {
-        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /logOUT GET route ++++++++++++++++++");
         return "login";
     }
 
-
+    // default route takes user to addperson, but since basic authentication security is enabled, they will have to
+    // go through the login route first, then Spring will automatically take them to addperson
     @GetMapping("/")
     public String indexPageGet() {
-        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /DEFAULT GET route ++++++++++++++++++");
         // redirect is like clicking a link on a web page, this route will not even show a view, it just redirects
         // the user to the addperson route
         return "redirect:/addperson";
@@ -52,6 +50,7 @@ public class MainController {
 
 
     // any time this route is called, all db tables are wiped out
+    // there is a button to start a new resume in the startover.html view which this route displays
     @GetMapping("/startover")
     public String startOver() {
         personRepo.deleteAll();
@@ -61,10 +60,9 @@ public class MainController {
         return "startover";
     }
 
+
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
-        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson GET route ++++++++++++++++++");
-
         if(personRepo.count() < 1) {
             // user has not yet entered personal details, so create a new Person and add it to the model so the user
             // can enter their new personal details
@@ -77,18 +75,20 @@ public class MainController {
         }
 
         NavBarState pageState = getPageLinkState();
+        // set the navbar to highlight the appropriate link
         pageState.setHighlightPersonNav(true);
         model.addAttribute("pageState", pageState);
 
         return "addperson";
     }
 
+
     @PostMapping("/addperson")
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
-        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addperson POST route ++++++++++++++++++");
 
         if(bindingResult.hasErrors()) {
+            // always need to set up the navbar, every time a view is returned
             NavBarState pageState = getPageLinkState();
             pageState.setHighlightPersonNav(true);
             model.addAttribute("pageState", pageState);
@@ -115,23 +115,26 @@ public class MainController {
     }
 
 
-
     @GetMapping("/addeducation")
     public String addEdGet(Model model) {
-//        System.out.println("++++++++++++++++++++++++++++++ JUST ENTERED /addeducation GET route ++++++++++++++++++");
-
         // disable the submit button if >= 10 records in db, it would never be possible for the user to click to get
         // here from the navi page if there were already >= 10 records, however they could manually type in the URL
         // so I want to disable the submit button if they do that and there are already 10 records
         model.addAttribute("disableSubmit", educationRepo.count() >= 10);
+
+        // each resume section (expect personal) shows a running count of the number of records currently in the db
         model.addAttribute("currentNumRecords", educationRepo.count());
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightEdNav(true);
         model.addAttribute("pageState", pageState);
 
+        // the users name is displayed at the top of each resume section (except personal details), we need to check
+        // every time a view is returned, because the user can change their personal details at any time, and we want
+        // to make sure the displayed name is always up to date
         addPersonNameToModel(model);
 
+        // return a new ed achievement for the user to populate
         model.addAttribute("newEdAchievement", new EducationAchievement());
 
         return "addeducation";
