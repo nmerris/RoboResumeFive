@@ -11,6 +11,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    // uncommment this to disable security for testing
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http.authorizeRequests()
@@ -29,6 +30,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                // always allow access to all our static folders
                 .antMatchers("/css/**", "/js/**", "/fonts/**", "/img/**")
                     .permitAll()
                 .antMatchers("/add*", "/startover", "/editdetails", "/delete/*", "/update/*", "/finalresume")
@@ -38,13 +40,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().formLogin().loginPage("/login")
                     .permitAll()
                 .and().httpBasic() // allows authentication in the URL itself
+                // go back to the login page after user logs out
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().
-//                withUser("newuser").password("newuserpa$$").roles("USER");
                 withUser("user").password("pass").roles("USER");
     }
 

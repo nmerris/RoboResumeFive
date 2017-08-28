@@ -22,6 +22,8 @@
 <body>
 
     <!-- Fixed navbar -->
+    <!-- navState is passed in from each page that uses navbar, it allows navbar to know which links to highlight, -->
+    <!-- which links to disable, and what number to put in each badge -->
     <nav th:fragment="navbar (navState)" class="navbar navbar-default navbar-fixed-top card-3">
         
         <div class="container">
