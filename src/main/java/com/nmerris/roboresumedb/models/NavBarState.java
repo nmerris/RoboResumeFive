@@ -1,21 +1,23 @@
 package com.nmerris.roboresumedb.models;
 
 public class NavBarState {
-    
+
+    // navbar fragment will use these to know which navbar item to highlight
     private boolean highlightPersonNav;
     private boolean highlightEdNav;
     private boolean highlightWorkNav;
     private boolean highlightSkillNav;
     private boolean highlightEditNav;
     private boolean highlightFinalNav;
-    
-//    private boolean disablePersonLink;
+
+    // navbar fragment will use these to know when to disable various links
     private boolean disableAddEdLink;
     private boolean disableAddSkillLink;
     private boolean disableAddWorkExpLink;
     private boolean disableEditDetailsLink;
     private boolean disableShowFinalLink;
 
+    // navbar fragment will use these to know what number to put in the 'badges'
     private long numEdAchievements;
     private long numWorkExps;
     private long numSkills;
@@ -67,14 +69,6 @@ public class NavBarState {
     public void setHighlightFinalNav(boolean highlightFinalNav) {
         this.highlightFinalNav = highlightFinalNav;
     }
-
-//    public boolean getDisablePersonLink() {
-//        return disablePersonLink;
-//    }
-
-//    public void setDisablePersonLink(boolean disablePersonLink) {
-//        this.disablePersonLink = disablePersonLink;
-//    }
 
     public boolean getDisableAddEdLink() {
         return disableAddEdLink;
