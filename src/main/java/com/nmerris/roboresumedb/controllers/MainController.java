@@ -340,7 +340,8 @@ public class MainController {
             // will simply be redisplayed
         }
 
-        // this should never happen, but is necessary to compile
+        // should never happen, but need it to compile, better to redirect, just in case something does go wrong, at
+        // least this way the app will not crash
         return "redirect:/editdetails";
     }
 
@@ -388,21 +389,20 @@ public class MainController {
                 return "addskill";
         }
 
-        // should never happen, but need it to compile
-        return"editdetails";
+        // should never happen, but need it to compile, better to redirect, just in case something does go wrong, at
+        // least this way the app will not crash
+        return"redirect:/editdetails";
     }
-
 
 
     @GetMapping("/finalresume")
     public String finalResumeGet(Model model) {
-
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightFinalNav(true);
         model.addAttribute("pageState", pageState);
 
         // get the one and only person from the db
-        // it is not possible to get here unless a Person exists, and the other resume data has been entered
+        // it is not possible to get here unless a Person exists, and at least one skill and ed achievement has been entered
         Person p = personRepo.findAll().iterator().next();
 
         // populate the empty ArrayLists in our single Person from data in other tables
@@ -413,11 +413,16 @@ public class MainController {
         return "finalresume";
     }
 
-    
-
+    /**
+     * The navbar links are disabled depending on the number of records in the various db tables.  For example, we
+     * do not want to allow the user to click the EditDetails link if there are no records in any db table.
+     * Note: the 'highlighted' nav bar link is set individually in each route.  Also, the navbar links contain badges
+     * that show the current counts for various db tables.  These counts are updated here and will always reflect the
+     * current state of the db tables.
+     * @return an updated NavBarState, but the highlighted navbar link must still be set individually
+     */
     private NavBarState getPageLinkState() {
-        // the navi links are disabled depending on the number of records in the various db tables
-        // note: the 'highlighted' nav bar choice is set individually in each route
+
         NavBarState pageState = new NavBarState();
 
         // add the current stat of the table counts, so the navbar badges know what to display
@@ -425,10 +430,10 @@ public class MainController {
         pageState.setNumWorkExps(workExperienceRepo.count());
         pageState.setNumEdAchievements(educationRepo.count());
 
+        // disable links as necessary... don't allow user to add any resume data until AFTER they have entered their
+        // personal info, also don't allow them to click any links if the repos contain too many records
         pageState.setDisableAddEdLink(personRepo.count() == 0 || educationRepo.count() >= 10);
-
         pageState.setDisableAddSkillLink(personRepo.count() == 0 || skillRepo.count() >= 20);
-
         pageState.setDisableAddWorkExpLink(personRepo.count() == 0 || workExperienceRepo.count() >= 10);
 
         // disable edit link if no data has been entered yet
@@ -442,11 +447,11 @@ public class MainController {
     }
     
     
-    
-
     /**
      * Adds the entire contents of each database table to model. Note that the object names used here must match
-     * the names in the template being used.
+     * the names in the template being used: 'persons', 'edAchievements', 'workExperiences', 'skills'
+     *
+     * @return model, now with the entire contents of each repo
      */
     private void addDbContentsToModel(Model model) {
         // there is only one person
@@ -490,7 +495,11 @@ public class MainController {
     /**
      * Adds an object (firstAndLastName) to model, that is a String of the first and last name of the Person for this
      * resume. If the Person table is empty, an appropriate message is added to the model that will indicate to the user
-     * that they need to add start the resume by adding personal details.
+     * that they need to add start the resume by adding personal details.  This 'backup' String should never be seen..
+     * unless the user manually types in, for example, /addskill in their browser BEFORE they have entered personal details.
+     * NOTE: each template that uses this must refer to it as 'firstAndLastName'
+     *
+     * @return model, now with 'firstAndLastName' attribute already added and ready to use in a template
      */
     private void addPersonNameToModel(Model model) {
         try {
