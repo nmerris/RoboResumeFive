@@ -41,6 +41,7 @@ public class EducationAchievement {
 
     // no need for customer constructor here, because there are no Sets
 
+
     // GETTERS AND SETTERS ===================================================
 
     public String getMajor() {

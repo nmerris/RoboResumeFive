@@ -476,19 +476,19 @@ public class MainController {
             edsArrayList.add(item);
         }
         // add it to our Person
-        person.setEducationAchievements(edsArrayList);
+//        person.setEducationAchievements(edsArrayList);
 
         ArrayList<WorkExperience> weArrayList = new ArrayList<>();
         for(WorkExperience item : workExperienceRepo.findAll()) {
             weArrayList.add(item);
         }
-        person.setWorkExperiences(weArrayList);
+//        person.setWorkExperiences(weArrayList);
 
         ArrayList<Skill> skillsArrayList = new ArrayList<>();
         for(Skill item : skillRepo.findAll()) {
             skillsArrayList.add(item);
         }
-        person.setSkills(skillsArrayList);
+//        person.setSkills(skillsArrayList);
     }
 
 
