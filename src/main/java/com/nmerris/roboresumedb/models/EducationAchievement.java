@@ -32,13 +32,6 @@ public class EducationAchievement {
 
 
 
-    // should NEVER need to call this from controller, because this is called
-    // from inside Person every time a new EdAchievement is added to Person
-    // but I think you could do it manually if you wanted, but don't want to do it twice!
-    public void setPerson(Person p) {
-        person = p;
-    }
-
     // no need for customer constructor here, because there are no Sets
 
 
@@ -74,5 +67,13 @@ public class EducationAchievement {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

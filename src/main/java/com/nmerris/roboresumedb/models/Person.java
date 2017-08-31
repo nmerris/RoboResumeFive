@@ -53,7 +53,7 @@ public class Person {
 
     // need to instantiate new Sets when a new Person is created
     public Person() {
-        edAchievements = new HashSet<EducationAchievement>();
+        edAchievements = new HashSet<>();
         // need other set instantiations here
     }
 
