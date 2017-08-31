@@ -33,6 +33,7 @@ public class MainController {
     @Autowired
     CurrentPerson currentPerson;
 
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -61,6 +62,7 @@ public class MainController {
     public String startOver() {
 
         // TODO: this will need work with new db config
+
         personRepo.deleteAll();
         educationRepo.deleteAll();
         skillRepo.deleteAll();
@@ -73,14 +75,13 @@ public class MainController {
     // to it is if you are creating a brand new resume for a brand new person
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% just entered /addperson GET");
+        System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId: (we are about to add a new person, so doesn't really matter here: " + currentPerson.getPersonId());
 
         // always create a new Person in THIS route, but now the link in the navbar will point to
         // '/update/{id}?type=person', so navbar won't create a new Person every time Personal is clicked
         model.addAttribute("newPerson", new Person());
 
-        // pass -1 so that navbar will know that a new person is being entered, so it will know
-        // to disable the Personal link, which makes sense because the user has not even entered
-        // any personal details yet, they are doing that right now on this page
         NavBarState pageState = getNavBarState();
         // set the navbar to highlight the appropriate link
         pageState.setHighlightPersonNav(true);
@@ -91,9 +92,12 @@ public class MainController {
 
 
     // this route only fires after a NEW person has been entered
+    // all other person editing is done in /update
     @PostMapping("/addperson")
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% just entered /addperson POST");
+        System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId: " + currentPerson.getPersonId());
 
         // return the same view (now with validation error messages) if there were any validation problems
         if(bindingResult.hasErrors()) {
@@ -105,8 +109,12 @@ public class MainController {
             return "addperson";
         }
 
-        // save the new Perons to the db, get it's id, and set it in currentPerson bean
+        System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS about to save to personRepo");
+        // save the new Person to the db, get the new id, and set it in currentPerson bean so it can be used elsewhere
+        // CrudRepository.save returns the object that was just added
         currentPerson.setPersonId(personRepo.save(person).getId());
+        System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId AFTER personRepo.save: " + currentPerson.getPersonId());
+
 
         // go to education section automatically, it's the most logical
         // since there is no confirmation page for addperson, we want to redirect here
@@ -119,15 +127,16 @@ public class MainController {
 
     @GetMapping("/addeducation")
     public String addEdGet(Model model) {
-
-//       System.out.println("********************* currentPerson.getId: " +currentPerson.getPersonId());
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% just entered /addeducation GET");
+        System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId: " + currentPerson.getPersonId());
 
         // TODO: update for new db structure
 
         // disable the submit button if >= 10 records in db, it would never be possible for the user to click to get
         // here from the navi page if there were already >= 10 records, however they could manually type in the URL
         // so I want to disable the submit button if they do that and there are already 10 records
-        model.addAttribute("disableSubmit", educationRepo.count() >= 10);
+        model.addAttribute("disableSubmit", personRepo.findOne(currentPerson.getPersonId()).getEdAchievementCount() >= 10);
+//        model.addAttribute("disableSubmit", educationRepo.count() >= 10);
 
         // each resume section (except personal) shows a running count of the number of records currently in the db
         model.addAttribute("currentNumRecords", educationRepo.count());
@@ -152,6 +161,9 @@ public class MainController {
     @PostMapping("/addeducation")
     public String addEdPost(@Valid @ModelAttribute("newEdAchievement") EducationAchievement educationAchievement,
                             BindingResult bindingResult, Model model) {
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% just entered /addeducation POST");
+        System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId: " + currentPerson.getPersonId());
+
         // TODO update for new db
 
         // the persons name is show at the top of each 'add' section AND each confirmation page, so we want to add
@@ -175,12 +187,18 @@ public class MainController {
         // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
         // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
         if(educationRepo.count() < 10) {
-            // get the person, add the edAchievement (which also attaches the Person to the edAchievement)
+            // get the person, add the edAchievement (which also attaches the Person to the edAchievement AND adds
+            // this ea to the Persons edAchievement Set)
             // and finally save the new edAchievement, all db relations should now be up to date
             personRepo.findOne(currentPerson.getPersonId()).addEdAchievement(educationAchievement);
+            System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS about to save to educationRepo");
             educationRepo.save(educationAchievement);
 
-            System.out.println("############################### currentPerson" );
+            System.out.println("############################### list of ea's for personRepo.findOne.getNameFirst: " + personRepo.findOne(currentPerson.getPersonId()).getNameFirst());
+            for( EducationAchievement ea : personRepo.findOne(currentPerson.getPersonId()).getEdAchievements()) {
+                System.out.println("school: " + ea.getSchool() + ", major: " + ea.getMajor() + ", ea.getPerson.getNameFirst: " + ea.getPerson().getNameFirst());
+            }
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% personRepo...getEdAchievements.size: " + personRepo.findOne(currentPerson.getPersonId()).getEdAchievements().size());
         }
 
         // need to get the count AFTER successfully adding to db, so it is up to date

@@ -44,6 +44,10 @@ public class Person {
         edAchievements.add(ea);
     }
 
+    public long getEdAchievementCount() {
+        return edAchievements.size();
+    }
+
     // in order to delete and employee, you must first remove it from it's department's Set of employees
     public void removeEdAchievement(EducationAchievement ea) {
         edAchievements.remove(ea);
@@ -56,6 +60,7 @@ public class Person {
         edAchievements = new HashSet<>();
         // need other set instantiations here
     }
+
 
 
 
