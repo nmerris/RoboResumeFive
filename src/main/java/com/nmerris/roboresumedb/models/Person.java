@@ -3,13 +3,11 @@ package com.nmerris.roboresumedb.models;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Person {
@@ -31,22 +29,39 @@ public class Person {
     @Size(max = 50)
     private String email;
 
-    // the date the resume was created, automatically generated, not a user input
-    // TODO remove this and update the db
-    private Date resumeCreationDate;
-    
-    // data to store temporarily for this project
-    private ArrayList<EducationAchievement> educationAchievements = new ArrayList<EducationAchievement>();
-    private ArrayList<WorkExperience> workExperiences = new ArrayList<WorkExperience>();
-    private ArrayList<Skill> skills = new ArrayList<Skill>();
 
-    public Date getResumeCreationDate() {
-        return resumeCreationDate;
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<EducationAchievement> edAchievements;
+
+    // a convenience method to add an EdAchievement
+    // this will 1. associate this Person with the incoming ea, and
+    // 2. add the incoming ea to this Person's edAchivements list
+    // this is all necessary for JPA to work properly
+    public void addEdAchievement(EducationAchievement ea) {
+        // if I don't include ea.setPerson here, I would just need to do it
+        // manually in the controller before I save a new ea
+        ea.setPerson(this); // I am not sure if I want this line????
+        edAchievements.add(ea);
     }
 
-    public void setResumeCreationDate(Date resumeCreationDate) {
-        this.resumeCreationDate = resumeCreationDate;
+    // in order to delete and employee, you must first remove it from it's department's Set of employees
+    public void removeEdAchievement(EducationAchievement ea) {
+        edAchievements.remove(ea);
     }
+
+
+
+    // need to instantiate new Sets when a new Person is created
+    public Person() {
+        edAchievements = new HashSet<EducationAchievement>();
+        // need other set instantiations here
+    }
+
+
+
+
+
+    // GETTERS AND SETTERS ===================================================
 
     public String getNameFirst() {
         return nameFirst;
@@ -72,35 +87,19 @@ public class Person {
         this.email = email;
     }
 
-    public ArrayList<EducationAchievement> getEducationAchievements() {
-        return educationAchievements;
-    }
-
-    public void setEducationAchievements(ArrayList<EducationAchievement> educationAchievements) {
-        this.educationAchievements = educationAchievements;
-    }
-
-    public ArrayList<WorkExperience> getWorkExperiences() {
-        return workExperiences;
-    }
-
-    public void setWorkExperiences(ArrayList<WorkExperience> workExperiences) {
-        this.workExperiences = workExperiences;
-    }
-
-    public ArrayList<Skill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(ArrayList<Skill> skills) {
-        this.skills = skills;
-    }
-
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Set<EducationAchievement> getEdAchievements() {
+        return edAchievements;
+    }
+
+    public void setEdAchievements(Set<EducationAchievement> edAchievements) {
+        this.edAchievements = edAchievements;
     }
 }
