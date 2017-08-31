@@ -120,8 +120,9 @@ public class MainController {
     @GetMapping("/addeducation")
     public String addEdGet(Model model) {
 
-       System.out.println("********************* currentPerson.getId: " +currentPerson.getPersonId());
+//       System.out.println("********************* currentPerson.getId: " +currentPerson.getPersonId());
 
+        // TODO: update for new db structure
 
         // disable the submit button if >= 10 records in db, it would never be possible for the user to click to get
         // here from the navi page if there were already >= 10 records, however they could manually type in the URL
@@ -141,6 +142,7 @@ public class MainController {
         addPersonNameToModel(model);
 
         // return a new ed achievement for the user to populate
+        // always add a new one here, no matter what personId is
         model.addAttribute("newEdAchievement", new EducationAchievement());
 
         return "addeducation";
@@ -150,6 +152,7 @@ public class MainController {
     @PostMapping("/addeducation")
     public String addEdPost(@Valid @ModelAttribute("newEdAchievement") EducationAchievement educationAchievement,
                             BindingResult bindingResult, Model model) {
+        // TODO update for new db
 
         // the persons name is show at the top of each 'add' section AND each confirmation page, so we want to add
         // it to the model no matter which view is returned
@@ -172,7 +175,12 @@ public class MainController {
         // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
         // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
         if(educationRepo.count() < 10) {
+            // get the person, add the edAchievement (which also attaches the Person to the edAchievement)
+            // and finally save the new edAchievement, all db relations should now be up to date
+            personRepo.findOne(currentPerson.getPersonId()).addEdAchievement(educationAchievement);
             educationRepo.save(educationAchievement);
+
+            System.out.println("############################### currentPerson" );
         }
 
         // need to get the count AFTER successfully adding to db, so it is up to date
