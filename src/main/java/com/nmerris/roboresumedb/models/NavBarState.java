@@ -22,6 +22,11 @@ public class NavBarState {
     private long numWorkExps;
     private long numSkills;
 
+    // navbar fragment needs to know the id of the Person whose resume is currently
+    // being entered, so that when you click the Personal link, it can take you to the
+    // update page with the correct ID to use to save in the person repo
+    private long personId;
+
     public boolean getHighlightPersonNav() {
         return highlightPersonNav;
     }
@@ -132,5 +137,13 @@ public class NavBarState {
 
     public void setNumSkills(long numSkills) {
         this.numSkills = numSkills;
+    }
+
+    public long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(long personId) {
+        this.personId = personId;
     }
 }

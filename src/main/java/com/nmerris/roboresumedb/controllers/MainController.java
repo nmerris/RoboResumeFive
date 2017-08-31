@@ -1,5 +1,6 @@
 package com.nmerris.roboresumedb.controllers;
 
+import com.nmerris.roboresumedb.CurrentPerson;
 import com.nmerris.roboresumedb.Utilities;
 import com.nmerris.roboresumedb.models.*;
 import com.nmerris.roboresumedb.repositories.EducationRepo;
@@ -27,6 +28,10 @@ public class MainController {
     @Autowired
     WorkExperienceRepo workExperienceRepo;
 
+    // used to store the id of the person currently being edited
+    // it's a simple bean with only one field: long personId
+    @Autowired
+    CurrentPerson currentPerson;
 
     @GetMapping("/login")
     public String login() {
@@ -43,6 +48,7 @@ public class MainController {
     // go through the login route first, then Spring will automatically take them to addperson
     @GetMapping("/")
     public String indexPageGet() {
+        // TODO this should point to 'home page' instead of addperson, it's like an admin page
         // redirect is like clicking a link on a web page, this route will not even show a view, it just redirects
         // the user to the addperson route
         return "redirect:/addperson";
@@ -53,6 +59,8 @@ public class MainController {
     // there is a button to start a new resume in the startover.html view which this route displays
     @GetMapping("/startover")
     public String startOver() {
+
+        // TODO: this will need work with new db config
         personRepo.deleteAll();
         educationRepo.deleteAll();
         skillRepo.deleteAll();
@@ -61,20 +69,19 @@ public class MainController {
     }
 
 
+    // this route does not need a personId request param in it, because the only way you can get
+    // to it is if you are creating a brand new resume for a brand new person
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
-        if(personRepo.count() < 1) {
-            // user has not yet entered personal details, so create a new Person and add it to the model so the user
-            // can enter their new personal details
-            model.addAttribute("newPerson", new Person());
-        }
-        else {
-            // personRepo can only ever have one entry, although the id may change, so just get the existing single entry
-            // which we can use to populate the personal details form
-            model.addAttribute("newPerson", personRepo.findAll().iterator().next());
-        }
 
-        NavBarState pageState = getPageLinkState();
+        // always create a new Person in THIS route, but now the link in the navbar will point to
+        // '/update/{id}?type=person', so navbar won't create a new Person every time Personal is clicked
+        model.addAttribute("newPerson", new Person());
+
+        // pass -1 so that navbar will know that a new person is being entered, so it will know
+        // to disable the Personal link, which makes sense because the user has not even entered
+        // any personal details yet, they are doing that right now on this page
+        NavBarState pageState = getNavBarState();
         // set the navbar to highlight the appropriate link
         pageState.setHighlightPersonNav(true);
         model.addAttribute("pageState", pageState);
@@ -83,6 +90,7 @@ public class MainController {
     }
 
 
+    // this route only fires after a NEW person has been entered
     @PostMapping("/addperson")
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
@@ -90,22 +98,15 @@ public class MainController {
         // return the same view (now with validation error messages) if there were any validation problems
         if(bindingResult.hasErrors()) {
             // always need to set up the navbar, every time a view is returned
-            NavBarState pageState = getPageLinkState();
+            NavBarState pageState = getNavBarState();
             pageState.setHighlightPersonNav(true);
             model.addAttribute("pageState", pageState);
 
             return "addperson";
         }
 
-        // TODO remove res creation date from Person model, recreate db
-        // set the resume creation date to right now
-//        person.setResumeCreationDate(new Date());
-
-        // there is no need to check to see if the Person table already has an entry here, there is only ever one
-        // entry, and the save method will automatically update the entry in question, it knows that if the id is the
-        // same, it should update the entry instead of creating a new one, this is true here even if the user
-        // refreshes the page.
-        personRepo.save(person);
+        // save the new Perons to the db, get it's id, and set it in currentPerson bean
+        currentPerson.setPersonId(personRepo.save(person).getId());
 
         // go to education section automatically, it's the most logical
         // since there is no confirmation page for addperson, we want to redirect here
@@ -118,6 +119,10 @@ public class MainController {
 
     @GetMapping("/addeducation")
     public String addEdGet(Model model) {
+
+       System.out.println("********************* currentPerson.getId: " +currentPerson.getPersonId());
+
+
         // disable the submit button if >= 10 records in db, it would never be possible for the user to click to get
         // here from the navi page if there were already >= 10 records, however they could manually type in the URL
         // so I want to disable the submit button if they do that and there are already 10 records
@@ -126,7 +131,7 @@ public class MainController {
         // each resume section (except personal) shows a running count of the number of records currently in the db
         model.addAttribute("currentNumRecords", educationRepo.count());
 
-        NavBarState pageState = getPageLinkState();
+        NavBarState pageState = getNavBarState();
         pageState.setHighlightEdNav(true);
         model.addAttribute("pageState", pageState);
 
@@ -153,7 +158,7 @@ public class MainController {
         // return the same view (now with validation error messages) if there were any validation problems
         if(bindingResult.hasErrors()) {
             // update the navbar state and add it to our model
-            NavBarState pageState = getPageLinkState();
+            NavBarState pageState = getNavBarState();
             pageState.setHighlightEdNav(true);
             model.addAttribute("pageState", pageState);
 
@@ -184,7 +189,7 @@ public class MainController {
 
         // the navbar state depends on the db table counts in various ways, so always need to have an updated navbar
         // state after saving to the repo
-        NavBarState pageState = getPageLinkState();
+        NavBarState pageState = getNavBarState();
         pageState.setHighlightEdNav(true);
         model.addAttribute("pageState", pageState);
 
@@ -195,7 +200,7 @@ public class MainController {
     // logic in this route is identical to /addeducation, see /addeducation GetMapping for explanatory comments
     @GetMapping("/addworkexperience")
     public String addWorkGet(Model model) {
-        NavBarState pageState = getPageLinkState();
+        NavBarState pageState = getNavBarState();
         pageState.setHighlightWorkNav(true);
         model.addAttribute("pageState", pageState);
 
@@ -216,7 +221,7 @@ public class MainController {
         addPersonNameToModel(model);
 
         if(bindingResult.hasErrors()) {
-            NavBarState pageState = getPageLinkState();
+            NavBarState pageState = getNavBarState();
             pageState.setHighlightWorkNav(true);
             model.addAttribute("pageState", pageState);
             model.addAttribute("currentNumRecords", workExperienceRepo.count());
@@ -234,7 +239,7 @@ public class MainController {
             workExperienceRepo.save(workExperience);
         }
 
-        NavBarState pageState = getPageLinkState();
+        NavBarState pageState = getNavBarState();
         pageState.setHighlightWorkNav(true);
         model.addAttribute("pageState", pageState);
         model.addAttribute("currentNumRecords", workExperienceRepo.count());
@@ -252,7 +257,7 @@ public class MainController {
         model.addAttribute("newSkill", new Skill());
         model.addAttribute("disableSubmit", skillRepo.count() >= 20);
 
-        NavBarState pageState = getPageLinkState();
+        NavBarState pageState = getNavBarState();
         pageState.setHighlightSkillNav(true);
         model.addAttribute("pageState", pageState);
 
@@ -268,7 +273,7 @@ public class MainController {
         addPersonNameToModel(model);
 
         if(bindingResult.hasErrors()) {
-            NavBarState pageState = getPageLinkState();
+            NavBarState pageState = getNavBarState();
             pageState.setHighlightSkillNav(true);
             model.addAttribute("pageState", pageState);
             model.addAttribute("currentNumRecords", skillRepo.count());
@@ -280,7 +285,7 @@ public class MainController {
             skillRepo.save(skill);
         }
 
-        NavBarState pageState = getPageLinkState();
+        NavBarState pageState = getNavBarState();
         pageState.setHighlightSkillNav(true);
         model.addAttribute("pageState", pageState);
 
@@ -300,7 +305,7 @@ public class MainController {
         // add all the contents of every repo to the model, so the tables have data to display
         addDbContentsToModel(model);
 
-        NavBarState pageState = getPageLinkState();
+        NavBarState pageState = getNavBarState();
         pageState.setHighlightEditNav(true);
         model.addAttribute("pageState", pageState);
 
@@ -357,7 +362,7 @@ public class MainController {
         model.addAttribute("disableSubmit", false);
         addPersonNameToModel(model);
 
-        NavBarState pageState = getPageLinkState();
+        NavBarState pageState = getNavBarState();
 
         switch (type) {
             case "person" :
@@ -397,7 +402,7 @@ public class MainController {
 
     @GetMapping("/finalresume")
     public String finalResumeGet(Model model) {
-        NavBarState pageState = getPageLinkState();
+        NavBarState pageState = getNavBarState();
         pageState.setHighlightFinalNav(true);
         model.addAttribute("pageState", pageState);
 
@@ -421,29 +426,38 @@ public class MainController {
      * current state of the db tables.
      * @return an updated NavBarState, but the highlighted navbar link must still be set individually
      */
-    private NavBarState getPageLinkState() {
+    private NavBarState getNavBarState() {
 
-        NavBarState pageState = new NavBarState();
+        // TODO: update this to reflect new db structure
+        // TODO: disable Personal link in navbar until personal details have been entered
+        // otherwise clicking on Personal link will not work, because there will be no id for
+        // the current person in the db yet because they have not yet entered data
+
+        NavBarState navState = new NavBarState();
+
+        // set the ID of the Person whose resume is being edited
+        navState.setPersonId(currentPerson.getPersonId());
+
 
         // add the current stat of the table counts, so the navbar badges know what to display
-        pageState.setNumSkills(skillRepo.count());
-        pageState.setNumWorkExps(workExperienceRepo.count());
-        pageState.setNumEdAchievements(educationRepo.count());
+        navState.setNumSkills(skillRepo.count());
+        navState.setNumWorkExps(workExperienceRepo.count());
+        navState.setNumEdAchievements(educationRepo.count());
 
         // disable links as necessary... don't allow user to add any resume data until AFTER they have entered their
         // personal info, also don't allow them to click any links if the repos contain too many records
-        pageState.setDisableAddEdLink(personRepo.count() == 0 || educationRepo.count() >= 10);
-        pageState.setDisableAddSkillLink(personRepo.count() == 0 || skillRepo.count() >= 20);
-        pageState.setDisableAddWorkExpLink(personRepo.count() == 0 || workExperienceRepo.count() >= 10);
+        navState.setDisableAddEdLink(personRepo.count() == 0 || educationRepo.count() >= 10);
+        navState.setDisableAddSkillLink(personRepo.count() == 0 || skillRepo.count() >= 20);
+        navState.setDisableAddWorkExpLink(personRepo.count() == 0 || workExperienceRepo.count() >= 10);
 
         // disable edit link if no data has been entered yet
-        pageState.setDisableEditDetailsLink(personRepo.count() == 0 && skillRepo.count() == 0 && educationRepo.count() == 0
+        navState.setDisableEditDetailsLink(personRepo.count() == 0 && skillRepo.count() == 0 && educationRepo.count() == 0
                 && workExperienceRepo.count() == 0);
 
         // disable show final resume link until at least one ed achievement, skill, and personal info has been entered
-        pageState.setDisableShowFinalLink(personRepo.count() == 0 || skillRepo.count() == 0 || educationRepo.count() == 0);
+        navState.setDisableShowFinalLink(personRepo.count() == 0 || skillRepo.count() == 0 || educationRepo.count() == 0);
 
-        return pageState;
+        return navState;
     }
     
     
@@ -454,6 +468,8 @@ public class MainController {
      * @return model, now with the entire contents of each repo
      */
     private void addDbContentsToModel(Model model) {
+        // TODO: need to update to reflect db changes
+
         // there is only one person
         model.addAttribute("persons", personRepo.findAll());
         model.addAttribute("edAchievements", educationRepo.findAll());
@@ -470,6 +486,8 @@ public class MainController {
      * @param person the Person to compose
      */
     private void composePerson(Person person) {
+        // TODO: not going to work anymore with new db structure
+
         // get all the records from the db
         ArrayList<EducationAchievement> edsArrayList = new ArrayList<>();
         for(EducationAchievement item : educationRepo.findAll()) {
@@ -503,6 +521,8 @@ public class MainController {
      */
     private void addPersonNameToModel(Model model) {
         try {
+            // TODO: this will need to be updated with new db changes
+
             // try to get the single Person from the db
             Person p = personRepo.findAll().iterator().next();
             // if there was a Person, add their full name to the model

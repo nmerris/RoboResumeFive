@@ -43,9 +43,17 @@
             <div id="navbar" class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav">
+                    <!-- for the Personal link, always want to go to /update, beause it makes sense that clicking Personal
+                         would take you to a form that already has previously entered data, since there is only one
+                         person per resume.  the other links always present a blank form ready for new data -->
                     <li th:classappend="${navState.highlightPersonNav ? 'active' : ''}">
-                        <a th:href="@{/addperson}"><span class="glyphicon glyphicon-sunglasses hidden-md hidden-lg"></span>Personal</a>
+                        <a th:href="@{|/update/${navState.personId}?type=person|}">
+                            <span class="glyphicon glyphicon-sunglasses hidden-md hidden-lg"></span>Personal</a>
                     </li>
+                    <!--<li th:classappend="${navState.highlightPersonNav ? 'active' : ''}">-->
+                        <!--<a th:href="@{/addperson}">-->
+                            <!--<span class="glyphicon glyphicon-sunglasses hidden-md hidden-lg"></span>Personal</a>-->
+                    <!--</li>-->
 
                     <li th:classappend="${navState.highlightEdNav ? 'active' : ''}">
                         <a th:href="@{/addeducation}" th:classappend="${navState.disableAddEdLink ? 'disable-click' : ''}">
