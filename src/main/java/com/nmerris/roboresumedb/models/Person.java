@@ -3,13 +3,11 @@ package com.nmerris.roboresumedb.models;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Person {
@@ -31,21 +29,31 @@ public class Person {
     @Size(max = 50)
     private String email;
 
-    // the date the resume was created, automatically generated, not a user input
-    // TODO remove this and update the db
-    private Date resumeCreationDate;
+    @OneToMany(mappedBy = "myPerson", cascade= CascadeType.ALL, fetch= FetchType.EAGER)
+    public Set<EducationAchievement> educationAchievements;
+
+    public Person(){
+        setEducationAchievements(new HashSet<EducationAchievement>());
+    }
+
+
     
     // data to store temporarily for this project
-    private ArrayList<EducationAchievement> educationAchievements = new ArrayList<EducationAchievement>();
+//    private ArrayList<EducationAchievement> educationAchievements = new ArrayList<EducationAchievement>();
     private ArrayList<WorkExperience> workExperiences = new ArrayList<WorkExperience>();
     private ArrayList<Skill> skills = new ArrayList<Skill>();
 
-    public Date getResumeCreationDate() {
-        return resumeCreationDate;
+
+
+
+
+
+    public Set<EducationAchievement> getEducationAchievements() {
+        return educationAchievements;
     }
 
-    public void setResumeCreationDate(Date resumeCreationDate) {
-        this.resumeCreationDate = resumeCreationDate;
+    public void setEducationAchievements(Set<EducationAchievement> educationAchievements) {
+        this.educationAchievements = educationAchievements;
     }
 
     public String getNameFirst() {
@@ -72,13 +80,13 @@ public class Person {
         this.email = email;
     }
 
-    public ArrayList<EducationAchievement> getEducationAchievements() {
-        return educationAchievements;
-    }
-
-    public void setEducationAchievements(ArrayList<EducationAchievement> educationAchievements) {
-        this.educationAchievements = educationAchievements;
-    }
+//    public ArrayList<EducationAchievement> getEducationAchievements() {
+//        return educationAchievements;
+//    }
+//
+//    public void setEducationAchievements(ArrayList<EducationAchievement> educationAchievements) {
+//        this.educationAchievements = educationAchievements;
+//    }
 
     public ArrayList<WorkExperience> getWorkExperiences() {
         return workExperiences;
