@@ -471,30 +471,54 @@ public class MainController {
 
         NavBarState navState = new NavBarState();
 
+        // true only if this NavBarState is created when no personId has been set in currentPerson...
+        // this should only happen in /addperson, because that is the only route that would not have a
+        // Person defined yet, because a new Person is being created in that route
+        boolean noPersonEntered = false;
         // get the current Person
-//        Person p = p
+        Person p = null;
+        long numEdAchievements = 0;
+        try {
+            p = getCurrentPerson();
+            numEdAchievements = p.getEdAchievementCount();
 
-        // set the ID of the Person whose resume is being edited
-        navState.setPersonId(currentPerson.getPersonId());
+            // set the ID of the Person whose resume is being edited
+            // this is only used when the Personal link is clicked, so that it takes the user to the
+            // personal update page: /update/[id]?type=personal
+            navState.setPersonId(p.getId());
+        } catch (Exception e) {
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! caught exception in getNavBarState while calling getCurrentPerson: " + e);
+
+            // there must be no Person yet, so getCurrentPerson 
+            noPersonEntered = true;
+
+            // must set personId in navState, it doesn't matter what we set it to, becaue the Personal link
+            // will be disabled if user is in /addperson route
+            navState.setPersonId(0);
+
+        }
+
+
+
 
 
         // add the current stat of the table counts, so the navbar badges know what to display
         navState.setNumSkills(skillRepo.count());
         navState.setNumWorkExps(workExperienceRepo.count());
-        navState.setNumEdAchievements(educationRepo.count());
+        navState.setNumEdAchievements(numEdAchievements);
 
         // disable links as necessary... don't allow user to add any resume data until AFTER they have entered their
         // personal info, also don't allow them to click any links if the repos contain too many records
-        navState.setDisableAddEdLink(personRepo.count() == 0 || educationRepo.count() >= 10);
-        navState.setDisableAddSkillLink(personRepo.count() == 0 || skillRepo.count() >= 20);
-        navState.setDisableAddWorkExpLink(personRepo.count() == 0 || workExperienceRepo.count() >= 10);
+        navState.setDisableAddEdLink(noPersonEntered || numEdAchievements >= 10);
+        navState.setDisableAddSkillLink(noPersonEntered || skillRepo.count() >= 20);
+        navState.setDisableAddWorkExpLink(noPersonEntered || workExperienceRepo.count() >= 10);
 
         // disable edit link if no data has been entered yet
-        navState.setDisableEditDetailsLink(personRepo.count() == 0 && skillRepo.count() == 0 && educationRepo.count() == 0
+        navState.setDisableEditDetailsLink(noPersonEntered && skillRepo.count() == 0 && numEdAchievements == 0
                 && workExperienceRepo.count() == 0);
 
         // disable show final resume link until at least one ed achievement, skill, and personal info has been entered
-        navState.setDisableShowFinalLink(personRepo.count() == 0 || skillRepo.count() == 0 || educationRepo.count() == 0);
+        navState.setDisableShowFinalLink(noPersonEntered || skillRepo.count() == 0 || numEdAchievements == 0);
 
         return navState;
     }
@@ -561,9 +585,11 @@ public class MainController {
     private void addPersonNameToModel(Model model) {
         try {
             // TODO: this will need to be updated with new db changes
+            // done pending testing
 
             // try to get the single Person from the db
-            Person p = personRepo.findAll().iterator().next();
+//            Person p = personRepo.findAll().iterator().next();
+            Person p = getCurrentPerson();
             // if there was a Person, add their full name to the model
             model.addAttribute("firstAndLastName", p.getNameFirst() + " " + p.getNameLast());
         } catch (Exception e) {
