@@ -20,8 +20,10 @@
                 </div>
 
                 <form action="#" th:action="@{/addeducation}" th:object="${newEdAchievement}" method="post">
+
                     <!-- need this or id is zero every time and keep getting additional records when updating -->
-                    <input type="hidden" th:field="*{id}" />
+                    <input type="text" th:field="*{id}" />
+                    <input type="text" th:field="*{myPerson.id}"/>
 
                     <div class="form-group">
                         <label class="section-heading" for="school">School</label>

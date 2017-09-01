@@ -30,7 +30,7 @@ public class Person {
     private String email;
 
     @OneToMany(mappedBy = "myPerson", cascade= CascadeType.ALL, fetch= FetchType.EAGER)
-    public Set<EducationAchievement> educationAchievements;
+    private Set<EducationAchievement> educationAchievements;
 
     public Person(){
         setEducationAchievements(new HashSet<EducationAchievement>());

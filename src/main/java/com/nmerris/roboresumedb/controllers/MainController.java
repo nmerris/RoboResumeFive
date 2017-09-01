@@ -137,6 +137,7 @@ public class MainController {
         addPersonNameToModel(model);
 
 
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% created new ea, attached currPerson to it, about to add it to model");
         // create a new ea, attach the curr person to it, and add it to model
         EducationAchievement ea = new EducationAchievement();
         ea.setMyPerson(personRepo.findOne(currPerson.getPersonId()));
@@ -173,6 +174,7 @@ public class MainController {
         // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
         // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
         if(educationRepo.count() < 10) {
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% about to save ea to educationRepo");
             educationRepo.save(educationAchievement);
         }
 

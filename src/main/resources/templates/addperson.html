@@ -17,8 +17,8 @@
                 </div>
 
                 <form action="#" th:action="@{/addperson}" th:object="${newPerson}" method="post">
-                    <!-- need this or id is zero every time and keep getting additional records when updating -->
-                    <input type="hidden" th:field="*{id}" />
+
+                    <input type="hidden" th:field="*{id}"/>
 
                         <div class="form-group">
                             <label class="section-heading" for="nameFirst">First Name</label>
