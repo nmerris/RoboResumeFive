@@ -1,5 +1,6 @@
 package com.nmerris.roboresumedb.controllers;
 
+import com.nmerris.roboresumedb.CurrPerson;
 import com.nmerris.roboresumedb.Utilities;
 import com.nmerris.roboresumedb.models.*;
 import com.nmerris.roboresumedb.repositories.EducationRepo;
@@ -26,6 +27,8 @@ public class MainController {
     SkillRepo skillRepo;
     @Autowired
     WorkExperienceRepo workExperienceRepo;
+    @Autowired
+    CurrPerson currPerson;
 
 
     @GetMapping("/login")
@@ -63,16 +66,9 @@ public class MainController {
 
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
-//        if(personRepo.count() < 1) {
-            // user has not yet entered personal details, so create a new Person and add it to the model so the user
-            // can enter their new personal details
-            model.addAttribute("newPerson", new Person());
-//        }
-//        else {
-            // personRepo can only ever have one entry, although the id may change, so just get the existing single entry
-            // which we can use to populate the personal details form
-//            model.addAttribute("newPerson", personRepo.findAll().iterator().next());
-//        }
+        System.out.println("=============================================================== just entered /addperson GET");
+
+        model.addAttribute("newPerson", new Person());
 
         NavBarState pageState = getPageLinkState();
         // set the navbar to highlight the appropriate link
@@ -86,6 +82,8 @@ public class MainController {
     @PostMapping("/addperson")
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
+        System.out.println("=============================================================== just entered /addperson POST");
+
 
         // return the same view (now with validation error messages) if there were any validation problems
         if(bindingResult.hasErrors()) {
@@ -97,15 +95,16 @@ public class MainController {
             return "addperson";
         }
 
-        // TODO remove res creation date from Person model, recreate db
-        // set the resume creation date to right now
-//        person.setResumeCreationDate(new Date());
-
         // there is no need to check to see if the Person table already has an entry here, there is only ever one
         // entry, and the save method will automatically update the entry in question, it knows that if the id is the
         // same, it should update the entry instead of creating a new one, this is true here even if the user
         // refreshes the page.
-        personRepo.save(person);
+        Person p = personRepo.save(person);
+
+        // get the id of the person just saved
+        System.out.println("############################### personRepo.save id was: " + p.getId() + ", fname was: " + p.getNameFirst());
+        currPerson.setPersonId(p.getId());
+        System.out.println("############################### now currPerson.getId is: " + currPerson.getPersonId());
 
         // go to education section automatically, it's the most logical
         // since there is no confirmation page for addperson, we want to redirect here
@@ -118,6 +117,8 @@ public class MainController {
 
     @GetMapping("/addeducation")
     public String addEdGet(Model model) {
+        System.out.println("=============================================================== just entered /addeducation GET");
+
         // disable the submit button if >= 10 records in db, it would never be possible for the user to click to get
         // here from the navi page if there were already >= 10 records, however they could manually type in the URL
         // so I want to disable the submit button if they do that and there are already 10 records
@@ -135,8 +136,11 @@ public class MainController {
         // to make sure the displayed name is always up to date
         addPersonNameToModel(model);
 
-        // return a new ed achievement for the user to populate
-        model.addAttribute("newEdAchievement", new EducationAchievement());
+
+        // create a new ea, attach the curr person to it, and add it to model
+        EducationAchievement ea = new EducationAchievement();
+        ea.setMyPerson(personRepo.findOne(currPerson.getPersonId()));
+        model.addAttribute("newEdAchievement", ea);
 
         return "addeducation";
     }
@@ -145,6 +149,8 @@ public class MainController {
     @PostMapping("/addeducation")
     public String addEdPost(@Valid @ModelAttribute("newEdAchievement") EducationAchievement educationAchievement,
                             BindingResult bindingResult, Model model) {
+        System.out.println("=============================================================== just entered /addeducation POST");
+
 
         // the persons name is show at the top of each 'add' section AND each confirmation page, so we want to add
         // it to the model no matter which view is returned
