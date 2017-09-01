@@ -97,7 +97,7 @@ public class MainController {
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% just entered /addperson POST");
-        System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId: " + currentPerson.getPersonId());
+        System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId: (keep in mind the new person has not been saved yet)" + currentPerson.getPersonId());
 
         // return the same view (now with validation error messages) if there were any validation problems
         if(bindingResult.hasErrors()) {
@@ -114,6 +114,7 @@ public class MainController {
         // CrudRepository.save returns the object that was just added
         currentPerson.setPersonId(personRepo.save(person).getId());
         System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId AFTER personRepo.save: " + currentPerson.getPersonId());
+        System.out.println("%%%%%%%%%%%%%%%%%%%% and local method getCurrentPerson().getId AFTER personRepo.save: " + getCurrentPerson().getId());
 
 
         // go to education section automatically, it's the most logical
@@ -129,17 +130,22 @@ public class MainController {
     public String addEdGet(Model model) {
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% just entered /addeducation GET");
         System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId: " + currentPerson.getPersonId());
+        System.out.println("%%%%%%%%%%%%%%%%%%%% and local method getCurrentPerson().getId: " + getCurrentPerson().getId());
+
+        // get the current Person
+//        Person p = personRepo.findOne(currentPerson.getPersonId());
+        Person p = getCurrentPerson();
 
         // TODO: update for new db structure
 
         // disable the submit button if >= 10 records in db, it would never be possible for the user to click to get
         // here from the navi page if there were already >= 10 records, however they could manually type in the URL
         // so I want to disable the submit button if they do that and there are already 10 records
-        model.addAttribute("disableSubmit", personRepo.findOne(currentPerson.getPersonId()).getEdAchievementCount() >= 10);
+        model.addAttribute("disableSubmit", p.getEdAchievementCount() >= 10);
 //        model.addAttribute("disableSubmit", educationRepo.count() >= 10);
 
         // each resume section (except personal) shows a running count of the number of records currently in the db
-        model.addAttribute("currentNumRecords", educationRepo.count());
+        model.addAttribute("currentNumRecords", p.getEdAchievementCount());
 
         NavBarState pageState = getNavBarState();
         pageState.setHighlightEdNav(true);
@@ -163,6 +169,10 @@ public class MainController {
                             BindingResult bindingResult, Model model) {
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% just entered /addeducation POST");
         System.out.println("%%%%%%%%%%%%%%%%%%%% currentPerson.getId: " + currentPerson.getPersonId());
+        System.out.println("%%%%%%%%%%%%%%%%%%%% and local method getCurrentPerson().getId: " + getCurrentPerson().getId());
+
+        // get the current Person
+        Person p = getCurrentPerson();
 
         // TODO update for new db
 
@@ -178,31 +188,31 @@ public class MainController {
             model.addAttribute("pageState", pageState);
 
             // disable the form submit button if there are 10 or more records in the education repo
-            model.addAttribute("disableSubmit", educationRepo.count() >= 10);
-            model.addAttribute("currentNumRecords", educationRepo.count());
+            model.addAttribute("disableSubmit", p.getEdAchievementCount() >= 10);
+            model.addAttribute("currentNumRecords", p.getEdAchievementCount());
 
             return "addeducation";
         }
 
         // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
         // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
-        if(educationRepo.count() < 10) {
+        if(p.getEdAchievementCount() < 10) {
             // get the person, add the edAchievement (which also attaches the Person to the edAchievement AND adds
             // this ea to the Persons edAchievement Set)
             // and finally save the new edAchievement, all db relations should now be up to date
-            personRepo.findOne(currentPerson.getPersonId()).addEdAchievement(educationAchievement);
+            p.addEdAchievement(educationAchievement);
             System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS about to save to educationRepo");
             educationRepo.save(educationAchievement);
 
-            System.out.println("############################### list of ea's for personRepo.findOne.getNameFirst: " + personRepo.findOne(currentPerson.getPersonId()).getNameFirst());
-            for( EducationAchievement ea : personRepo.findOne(currentPerson.getPersonId()).getEdAchievements()) {
+            System.out.println("############################### list of ea's for p.getNameFirst: " + p.getNameFirst());
+            for( EducationAchievement ea : p.getEdAchievements()) {
                 System.out.println("school: " + ea.getSchool() + ", major: " + ea.getMajor() + ", ea.getPerson.getNameFirst: " + ea.getPerson().getNameFirst());
             }
-            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% personRepo...getEdAchievements.size: " + personRepo.findOne(currentPerson.getPersonId()).getEdAchievements().size());
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% p.getEdAchievementCount: " + p.getEdAchievementCount());
         }
 
         // need to get the count AFTER successfully adding to db, so it is up to date
-        model.addAttribute("currentNumRecords", educationRepo.count());
+        model.addAttribute("currentNumRecords", p.getEdAchievementCount());
 
         // add the EducationAchievement just entered to the model, so we can show a confirmation page
         model.addAttribute("edAchievementJustAdded", educationAchievement);
@@ -211,7 +221,7 @@ public class MainController {
         // because the 'add another' button will work, but then the entry form button will be disabled, this
         // way the user will not be confused... I am repurposing 'disableSubmit' here, it's actually being used to
         // disable the 'Add Another' button in the confirmation page
-        model.addAttribute("disableSubmit", educationRepo.count() >= 10);
+        model.addAttribute("disableSubmit", p.getEdAchievementCount() >= 10);
 
         // the navbar state depends on the db table counts in various ways, so always need to have an updated navbar
         // state after saving to the repo
@@ -461,6 +471,9 @@ public class MainController {
 
         NavBarState navState = new NavBarState();
 
+        // get the current Person
+//        Person p = p
+
         // set the ID of the Person whose resume is being edited
         navState.setPersonId(currentPerson.getPersonId());
 
@@ -561,6 +574,12 @@ public class MainController {
             // has entered their personal info
             model.addAttribute("firstAndLastName", "Please start by entering personal details");
         }
+    }
+
+
+    // get the current Person from personRepo
+    private Person getCurrentPerson() {
+        return personRepo.findOne(currentPerson.getPersonId());
     }
 
 
