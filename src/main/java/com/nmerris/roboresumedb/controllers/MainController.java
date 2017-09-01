@@ -63,16 +63,16 @@ public class MainController {
 
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
-        if(personRepo.count() < 1) {
+//        if(personRepo.count() < 1) {
             // user has not yet entered personal details, so create a new Person and add it to the model so the user
             // can enter their new personal details
             model.addAttribute("newPerson", new Person());
-        }
-        else {
+//        }
+//        else {
             // personRepo can only ever have one entry, although the id may change, so just get the existing single entry
             // which we can use to populate the personal details form
-            model.addAttribute("newPerson", personRepo.findAll().iterator().next());
-        }
+//            model.addAttribute("newPerson", personRepo.findAll().iterator().next());
+//        }
 
         NavBarState pageState = getPageLinkState();
         // set the navbar to highlight the appropriate link
@@ -476,7 +476,7 @@ public class MainController {
             edsArrayList.add(item);
         }
         // add it to our Person
-        person.setEducationAchievements(edsArrayList);
+//        person.setEducationAchievements(edsArrayList);
 
         ArrayList<WorkExperience> weArrayList = new ArrayList<>();
         for(WorkExperience item : workExperienceRepo.findAll()) {
