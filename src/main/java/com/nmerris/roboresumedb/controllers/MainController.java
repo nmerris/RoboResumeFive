@@ -234,8 +234,8 @@ public class MainController {
         // get the current Person
         Person p = personRepo.findOne(currPerson.getPersonId());
 
-        model.addAttribute("disableSubmit", workExperienceRepo.count() >= 10);
-        model.addAttribute("currentNumRecords", workExperienceRepo.count());
+        model.addAttribute("disableSubmit", workExperienceRepo.countAllByMyPersonIs(p) >= 10);
+        model.addAttribute("currentNumRecords", workExperienceRepo.countAllByMyPersonIs(p));
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightWorkNav(true);
@@ -286,13 +286,13 @@ public class MainController {
             System.out.println("=========================================== repo count for currPerson is: " + count);
         }
 
-        model.addAttribute("currentNumRecords", workExperienceRepo.count());
+        model.addAttribute("currentNumRecords", count);
 
         // work experience end date can be left null by user, in which case we want to show 'Present' in the
         // confirmation page
         model.addAttribute("dateEndString", Utilities.getMonthDayYearFromDate(workExperience.getDateEnd()));
         model.addAttribute("workExperienceJustAdded", workExperience);
-        model.addAttribute("disableSubmit", workExperienceRepo.count() >= 10);
+        model.addAttribute("disableSubmit", count >= 10);
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightWorkNav(true);
@@ -400,7 +400,7 @@ public class MainController {
                     workExperienceRepo.delete(id);
                     return "redirect:/editdetails#workexperiences";
                 case "skill" :
-                    p.removeSkill(skillRepo.findOne(id);
+                    p.removeSkill(skillRepo.findOne(id));
                     skillRepo.delete(id);
                     return "redirect:/editdetails#skills";
             }
@@ -513,6 +513,7 @@ public class MainController {
         model.addAttribute("numEds", educationRepo.countAllByMyPersonIs(p));
         model.addAttribute("numWorkExps", workExperienceRepo.countAllByMyPersonIs(p));
         model.addAttribute("numSkills", skillRepo.countAllByMyPersonIs(p));
+        addPersonNameToModel(model);
 
 //        model.addAttribute("courses", p.)
         // ......
