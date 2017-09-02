@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,11 +38,31 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="EducationRepo.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="EducationRepo.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+                <state relative-caret-position="90">
+                  <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="12" selection-end-column="52" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SkillRepo.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="105">
+                  <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WorkExperienceRepo.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="105">
+                  <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
@@ -129,20 +150,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="addeducation.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addeducation.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-                  <folding>
-                    <marker date="1504351737402" expanded="true" signature="1304:1643" ph="..." />
-                    <marker date="1504351737402" expanded="true" signature="1688:2011" ph="..." />
-                    <marker date="1504351737402" expanded="true" signature="2056:2453" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -192,8 +199,8 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="647">
-                  <caret line="412" column="54" lean-forward="true" selection-start-line="412" selection-start-column="54" selection-end-line="412" selection-end-column="54" />
+                <state relative-caret-position="347">
+                  <caret line="505" column="24" lean-forward="false" selection-start-line="505" selection-start-column="24" selection-end-line="505" selection-end-column="24" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
                     <element signature="e#1085#1086#0" expanded="true" />
@@ -287,8 +294,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Skill.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/WorkExperience.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/PersonRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/Utilities.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/Week4ProjectApplication.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
@@ -307,6 +312,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/summary.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" />
       </list>
     </option>
   </component>
@@ -564,13 +571,6 @@
       <workItem from="1503751677840" duration="22267000" />
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
-    </task>
-    <task id="LOCAL-00025" summary="navbar collapses at 992px, and displays a slightly different menu that looks nicer on mobile devices">
-      <created>1503766098924</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1503766098924</updated>
     </task>
     <task id="LOCAL-00026" summary="fix bug: if user refreshed editdetails page after deleting an item, the app will no longer crash, also added custom mobile hamburger menu if navbar collapses under 992px">
       <created>1503766499260</created>
@@ -908,11 +908,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504365535231</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="modify /update to reflect current ed repo count, also extracted Person p from switch so you don't need to find it multiple times, tested ok">
+      <created>1504365977524</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1504365977524</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107792000" />
+    <option name="totallyTimeSpent" value="108094000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -1004,7 +1011,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="fix bug in finalresume display work exp dates" />
     <MESSAGE value="final resume page looks nice" />
     <MESSAGE value="minor edits final page" />
     <MESSAGE value="properties file fix" />
@@ -1029,7 +1035,8 @@
     <MESSAGE value="update educationRepo counts to reflect curr person in  /addeducation get, tested ok every way I can think of" />
     <MESSAGE value="update /addeducation post to use ed repo counts of curr person, tested ok" />
     <MESSAGE value="add comments, also tested /addeducation post route disable submit if &gt;= 10 records... ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="add comments, also tested /addeducation post route disable submit if &gt;= 10 records... ok" />
+    <MESSAGE value="modify /update to reflect current ed repo count, also extracted Person p from switch so you don't need to find it multiple times, tested ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify /update to reflect current ed repo count, also extracted Person p from switch so you don't need to find it multiple times, tested ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1229,13 +1236,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/PersonRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1269,13 +1269,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1465,8 +1458,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
-          <caret line="412" column="54" lean-forward="true" selection-start-line="412" selection-start-column="54" selection-end-line="412" selection-end-column="54" />
+        <state relative-caret-position="347">
+          <caret line="505" column="24" lean-forward="false" selection-start-line="505" selection-start-column="24" selection-end-line="505" selection-end-column="24" />
           <folding>
             <element signature="e#1055#1056#0" expanded="true" />
             <element signature="e#1085#1086#0" expanded="true" />
@@ -1479,8 +1472,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        <state relative-caret-position="90">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="12" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding />
         </state>
       </provider>
