@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/editdetails.html" afterPath="$PROJECT_DIR$/target/classes/templates/editdetails.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +51,8 @@
           <file leaf-file-name="studentdirectory.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="465">
-                  <caret line="31" column="117" lean-forward="false" selection-start-line="31" selection-start-column="117" selection-end-line="31" selection-end-column="117" />
+                <state relative-caret-position="645">
+                  <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
                   <folding />
                 </state>
               </provider>
@@ -291,8 +289,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/editdetails.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html" />
       </list>
     </option>
   </component>
@@ -550,13 +548,6 @@
       <workItem from="1503751677840" duration="22267000" />
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
-    </task>
-    <task id="LOCAL-00018" summary="add autofocus attributes to all forms">
-      <created>1503756882266</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1503756882266</updated>
     </task>
     <task id="LOCAL-00019" summary="add table-responsive class to all tables in editdetails, now they stay inside the card and will become scrollable under 768px width">
       <created>1503758944308</created>
@@ -894,11 +885,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504354390897</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="studentdirectory route and view are showing as intended">
+      <created>1504355579685</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1504355579685</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98668000" />
+    <option name="totallyTimeSpent" value="98767000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -990,7 +988,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="fix bug in pom file" />
     <MESSAGE value="ready to try heroku again" />
     <MESSAGE value="login page background image now using css cover property.. magical!" />
     <MESSAGE value="removed dropdown menu item from navbar when collapsed" />
@@ -1015,7 +1012,8 @@
     <MESSAGE value="add remove ed method to Person, modify /delete route to delete an ed from curr person, tested in browser ok" />
     <MESSAGE value="commit on new branch" />
     <MESSAGE value="add studentdirectory.html template" />
-    <option name="LAST_COMMIT_MESSAGE" value="add studentdirectory.html template" />
+    <MESSAGE value="studentdirectory route and view are showing as intended" />
+    <option name="LAST_COMMIT_MESSAGE" value="studentdirectory route and view are showing as intended" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1542,8 +1540,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="117" lean-forward="false" selection-start-line="31" selection-start-column="117" selection-end-line="31" selection-end-column="117" />
+        <state relative-caret-position="645">
+          <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
           <folding />
         </state>
       </provider>
