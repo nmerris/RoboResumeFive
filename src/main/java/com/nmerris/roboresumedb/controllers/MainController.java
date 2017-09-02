@@ -214,8 +214,7 @@ public class MainController {
         // disable the 'Add Another' button in the confirmation page
         model.addAttribute("disableSubmit", edsCount >= 10);
 
-        // the navbar state depends on the db table counts in various ways, so always need to have an updated navbar
-        // state after saving to the repo
+        // the navbar state depends on the db table counts in various ways, so update after db changes
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightEdNav(true);
         model.addAttribute("pageState", pageState);
