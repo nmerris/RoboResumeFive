@@ -44,6 +44,19 @@ public class WorkExperience {
     @Size(max = 50)
     private String dutyTwo;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "person_id")
+    private Person myPerson;
+
+
+    public Person getMyPerson() {
+        return myPerson;
+    }
+
+    public void setMyPerson(Person myPerson) {
+        this.myPerson = myPerson;
+    }
+
     public String getJobTitle() {
         return jobTitle;
     }

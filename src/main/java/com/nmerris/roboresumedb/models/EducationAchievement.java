@@ -26,7 +26,7 @@ public class EducationAchievement {
 
 //    @ManyToOne(fetch = FetchType.EAGER, cascade= CascadeType.ALL) ?necessary?
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="person_id")
+    @JoinColumn(name = "person_id")
     private Person myPerson;
 
 

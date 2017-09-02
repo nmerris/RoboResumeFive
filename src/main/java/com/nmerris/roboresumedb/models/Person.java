@@ -29,11 +29,20 @@ public class Person {
     @Size(max = 50)
     private String email;
 
-    @OneToMany(mappedBy = "myPerson", cascade= CascadeType.ALL, fetch= FetchType.EAGER)
+    @OneToMany(mappedBy = "myPerson", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
     private Set<EducationAchievement> educationAchievements;
 
-    public Person(){
+    @OneToMany(mappedBy = "myPerson", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
+    private Set<WorkExperience> workExperiences;
+
+    @OneToMany(mappedBy = "myPerson", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
+    private Set<Skill> skills;
+
+
+    public Person() {
         setEducationAchievements(new HashSet<EducationAchievement>());
+        setWorkExperiences(new HashSet<WorkExperience>());
+        setSkills(new HashSet<Skill>());
     }
 
 
@@ -42,17 +51,36 @@ public class Person {
         educationAchievements.remove(ea);
     }
 
+    public void removeWorkExperience(WorkExperience we) {
+        workExperiences.remove(we);
+    }
+
+    public void removeSkill(Skill skill) {
+        skills.remove(skill);
+    }
 
     
     // data to store temporarily for this project
 //    private ArrayList<EducationAchievement> educationAchievements = new ArrayList<EducationAchievement>();
-    private ArrayList<WorkExperience> workExperiences = new ArrayList<WorkExperience>();
-    private ArrayList<Skill> skills = new ArrayList<Skill>();
+//    private ArrayList<WorkExperience> workExperiences = new ArrayList<WorkExperience>();
+//    private ArrayList<Skill> skills = new ArrayList<Skill>();
 
 
+    public Set<WorkExperience> getWorkExperiences() {
+        return workExperiences;
+    }
 
+    public void setWorkExperiences(Set<WorkExperience> workExperiences) {
+        this.workExperiences = workExperiences;
+    }
 
+    public Set<Skill> getSkills() {
+        return skills;
+    }
 
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
 
     public Set<EducationAchievement> getEducationAchievements() {
         return educationAchievements;
@@ -94,22 +122,22 @@ public class Person {
 //        this.educationAchievements = educationAchievements;
 //    }
 
-    public ArrayList<WorkExperience> getWorkExperiences() {
-        return workExperiences;
-    }
-
-    public void setWorkExperiences(ArrayList<WorkExperience> workExperiences) {
-        this.workExperiences = workExperiences;
-    }
-
-    public ArrayList<Skill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(ArrayList<Skill> skills) {
-        this.skills = skills;
-    }
-
+//    public ArrayList<WorkExperience> getWorkExperiences() {
+//        return workExperiences;
+//    }
+//
+//    public void setWorkExperiences(ArrayList<WorkExperience> workExperiences) {
+//        this.workExperiences = workExperiences;
+//    }
+//
+//    public ArrayList<Skill> getSkills() {
+//        return skills;
+//    }
+//
+//    public void setSkills(ArrayList<Skill> skills) {
+//        this.skills = skills;
+//    }
+//
     public long getId() {
         return id;
     }

@@ -2,10 +2,7 @@ package com.nmerris.roboresumedb.models;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -21,6 +18,19 @@ public class Skill {
 
     @NotEmpty
     private String rating;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "person_id")
+    private Person myPerson;
+
+
+    public Person getMyPerson() {
+        return myPerson;
+    }
+
+    public void setMyPerson(Person myPerson) {
+        this.myPerson = myPerson;
+    }
 
     public String getSkill() {
         return skill;
