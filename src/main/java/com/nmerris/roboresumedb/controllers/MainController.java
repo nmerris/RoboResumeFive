@@ -93,7 +93,7 @@ public class MainController {
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
         System.out.println("=============================================================== just entered /addperson POST");
-        System.out.println("############################### now currPerson.getId is: " + currPerson.getPersonId());
+        System.out.println("############################### currPerson.getId is: " + currPerson.getPersonId());
 
 
         // return the same view (now with validation error messages) if there were any validation problems
@@ -141,7 +141,7 @@ public class MainController {
 //        model.addAttribute("disableSubmit", educationRepo.count() >= 10);
 
         // each resume section (except personal) shows a running count of the number of records currently in the db
-        model.addAttribute("currentNumRecords", p.getEducationAchievements().size());
+        model.addAttribute("currentNumRecords", p.getEducationAchievements().size()); // where is my cute little 'o:'?
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightEdNav(true);
@@ -169,6 +169,9 @@ public class MainController {
         System.out.println("=============================================================== just entered /addeducation POST");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
+        // get the current count from educationRepo for the current Person
+        long edsCount = educationRepo.countAllByMyPersonIs(personRepo.findOne(currPerson.getPersonId()));
+        System.out.println("=========================================== repo count for currPerson is: " + edsCount);
 
         // the persons name is show at the top of each 'add' section AND each confirmation page, so we want to add
         // it to the model no matter which view is returned
@@ -182,21 +185,25 @@ public class MainController {
             model.addAttribute("pageState", pageState);
 
             // disable the form submit button if there are 10 or more records in the education repo
-            model.addAttribute("disableSubmit", educationRepo.count() >= 10);
-            model.addAttribute("currentNumRecords", educationRepo.count());
+            model.addAttribute("disableSubmit", edsCount >= 10);
+            model.addAttribute("currentNumRecords", edsCount);
 
             return "addeducation";
         }
 
         // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
         // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
-        if(educationRepo.count() < 10) {
+        if(edsCount < 10) {
             System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% about to save ea to educationRepo");
             educationRepo.save(educationAchievement);
+
+            // need to get an updated edsCount after saving to repo
+            edsCount = educationRepo.countAllByMyPersonIs(personRepo.findOne(currPerson.getPersonId()));
+            System.out.println("=========================================== repo count for currPerson is: " + edsCount);
         }
 
         // need to get the count AFTER successfully adding to db, so it is up to date
-        model.addAttribute("currentNumRecords", educationRepo.count());
+        model.addAttribute("currentNumRecords", edsCount);
 
         // add the EducationAchievement just entered to the model, so we can show a confirmation page
         model.addAttribute("edAchievementJustAdded", educationAchievement);
@@ -205,7 +212,7 @@ public class MainController {
         // because the 'add another' button will work, but then the entry form button will be disabled, this
         // way the user will not be confused... I am repurposing 'disableSubmit' here, it's actually being used to
         // disable the 'Add Another' button in the confirmation page
-        model.addAttribute("disableSubmit", educationRepo.count() >= 10);
+        model.addAttribute("disableSubmit", edsCount >= 10);
 
         // the navbar state depends on the db table counts in various ways, so always need to have an updated navbar
         // state after saving to the repo
