@@ -336,6 +336,7 @@ public class MainController {
         try {
             switch (type) {
                 case "ed" :
+                    // remove the ed from person, then delete it from it's repo
                     personRepo.findOne(currPerson.getPersonId()).removeEdAchievement(educationRepo.findOne(id));
                     educationRepo.delete(id);
                     // return with an anchor tag so that the user is still at the same section after deleting

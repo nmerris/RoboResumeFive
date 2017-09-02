@@ -4,7 +4,6 @@
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/addeducation.html" afterPath="$PROJECT_DIR$/target/classes/templates/addeducation.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/editdetails.html" afterPath="$PROJECT_DIR$/target/classes/templates/editdetails.html" />
     </list>
@@ -162,8 +161,8 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="572">
-                  <caret line="333" column="117" lean-forward="false" selection-start-line="333" selection-start-column="117" selection-end-line="333" selection-end-column="117" />
+                <state relative-caret-position="647">
+                  <caret line="338" column="79" lean-forward="false" selection-start-line="338" selection-start-column="79" selection-end-line="338" selection-end-column="79" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
                     <element signature="e#1085#1086#0" expanded="true" />
@@ -219,7 +218,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="186e43afb347e97e739ede9ef62261a9219f3df5" />
+        <entry key="$PROJECT_DIR$" value="58f40ea505f90ab7b2e9ede4e94fbd7ed31b2c97" />
       </map>
     </option>
   </component>
@@ -518,13 +517,6 @@
       <workItem from="1503751677840" duration="22267000" />
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
-    </task>
-    <task id="LOCAL-00015" summary="all pages except finalresume should now have material design cards">
-      <created>1503755194692</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1503755194692</updated>
     </task>
     <task id="LOCAL-00016" summary="remove unnecessary columns in addworkexperience">
       <created>1503756374380</created>
@@ -862,11 +854,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504301256218</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="add remove ed method to Person, modify /delete route to delete an ed from curr person, tested in browser ok">
+      <created>1504352572683</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1504352572684</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95987000" />
+    <option name="totallyTimeSpent" value="96135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -958,7 +957,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="refactor navbar in fragments: hiding glyphicons for certain items on larger screens, add logout text on smaller screens" />
     <MESSAGE value="ready to test deploy to heroku" />
     <MESSAGE value="changed pom and properties files to use postgresql" />
     <MESSAGE value="fix bug in pom file" />
@@ -983,7 +981,8 @@
     <MESSAGE value="comment out a few lines in addperson GET, add session variable class" />
     <MESSAGE value="added new ed achievement, attached curr person to it, in addeducation get" />
     <MESSAGE value="was able to 1. add new person, 2. add ea, 3. type in /update/1?type=ed and it worked.  not clear why it's any different than from this morning.  did need to add the hidden field in addeducation form for ea.person.id or the the ea person_id column was null" />
-    <option name="LAST_COMMIT_MESSAGE" value="was able to 1. add new person, 2. add ea, 3. type in /update/1?type=ed and it worked.  not clear why it's any different than from this morning.  did need to add the hidden field in addeducation form for ea.person.id or the the ea person_id column was null" />
+    <MESSAGE value="add remove ed method to Person, modify /delete route to delete an ed from curr person, tested in browser ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="add remove ed method to Person, modify /delete route to delete an ed from curr person, tested in browser ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1292,6 +1291,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1442,19 +1442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="333" column="117" lean-forward="false" selection-start-line="333" selection-start-column="117" selection-end-line="333" selection-end-column="117" />
-          <folding>
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-            <element signature="e#1143#1144#0" expanded="true" />
-            <element signature="e#1173#1174#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -1491,6 +1478,19 @@
             <element signature="e#2865#2866#0" expanded="true" />
             <element signature="e#2899#2900#0" expanded="true" />
             <element signature="e#2927#2928#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="338" column="79" lean-forward="false" selection-start-line="338" selection-start-column="79" selection-end-line="338" selection-end-column="79" />
+          <folding>
+            <element signature="e#1055#1056#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1143#1144#0" expanded="true" />
+            <element signature="e#1173#1174#0" expanded="true" />
           </folding>
         </state>
       </provider>
