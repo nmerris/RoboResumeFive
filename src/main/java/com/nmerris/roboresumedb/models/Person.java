@@ -37,6 +37,12 @@ public class Person {
     }
 
 
+    // in order to delete and employee, you must first remove it from it's department's Set of employees
+    public void removeEdAchievement(EducationAchievement ea) {
+        educationAchievements.remove(ea);
+    }
+
+
     
     // data to store temporarily for this project
 //    private ArrayList<EducationAchievement> educationAchievements = new ArrayList<EducationAchievement>();

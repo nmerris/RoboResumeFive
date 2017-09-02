@@ -310,9 +310,6 @@ public class MainController {
         System.out.println("=============================================================== just entered /editdetails GET");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
-        // add all the contents of every repo to the model, so the tables have data to display
-//        addDbContentsToModel(model);
-
         model.addAttribute("person", personRepo.findOne(currPerson.getPersonId()));
         model.addAttribute("edAchievements", educationRepo.findAllByMyPersonIs(personRepo.findOne(currPerson.getPersonId())));
         model.addAttribute("workExperiences", workExperienceRepo.findAll());
@@ -333,13 +330,16 @@ public class MainController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id, @RequestParam("type") String type)
     {
+        System.out.println("=============================================================== just entered /delete/{id} GET");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
         try {
             switch (type) {
                 case "ed" :
+                    personRepo.findOne(currPerson.getPersonId()).removeEdAchievement(educationRepo.findOne(id));
                     educationRepo.delete(id);
                     // return with an anchor tag so that the user is still at the same section after deleting
                     // this is not perfect, but it's better than jumping to the top of the page each time
-                    // TODO have the page stay at the same position after deleting a record
                     return "redirect:/editdetails#education";
                 case "person" :
                     personRepo.delete(id);
