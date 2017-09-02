@@ -67,15 +67,25 @@ public class MainController {
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
         System.out.println("=============================================================== just entered /addperson GET");
+        System.out.println("############################### currPerson.getId is: " + currPerson.getPersonId());
 
-        model.addAttribute("newPerson", new Person());
+        if(currPerson.getPersonId() == 0) {
+            System.out.println("*************** about to create a brand new person");
+            // must be entering a new person if currPerson has not been set yet, so add a brand new Person to model
+            model.addAttribute("newPerson", new Person());
+            NavBarState pageState = getPageLinkState();
+            // set the navbar to highlight the appropriate link
+            pageState.setHighlightPersonNav(true);
+            model.addAttribute("pageState", pageState);
 
-        NavBarState pageState = getPageLinkState();
-        // set the navbar to highlight the appropriate link
-        pageState.setHighlightPersonNav(true);
-        model.addAttribute("pageState", pageState);
+            return "addperson";
+        }
+        else {
+            System.out.println("*************** about to redirect to /update/{id} because person ID was NOT zero");
 
-        return "addperson";
+            // person must already have been entered, or we are editing an existing person, so need to go to update route instead
+            return "redirect:/update/" + currPerson.getPersonId() + "/?type=person";
+        }
     }
 
 
@@ -83,6 +93,7 @@ public class MainController {
     public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
         System.out.println("=============================================================== just entered /addperson POST");
+        System.out.println("############################### now currPerson.getId is: " + currPerson.getPersonId());
 
 
         // return the same view (now with validation error messages) if there were any validation problems
@@ -562,7 +573,8 @@ public class MainController {
     private void addPersonNameToModel(Model model) {
         try {
             // try to get the single Person from the db
-            Person p = personRepo.findAll().iterator().next();
+//            Person p = personRepo.findAll().iterator().next();
+            Person p = personRepo.findOne(currPerson.getPersonId());
             // if there was a Person, add their full name to the model
             model.addAttribute("firstAndLastName", p.getNameFirst() + " " + p.getNameLast());
         } catch (Exception e) {
