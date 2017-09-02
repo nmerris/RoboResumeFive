@@ -534,6 +534,11 @@ public class MainController {
 
         // add all the persons to the model
         model.addAttribute("students", personRepo.findAll());
+
+        // no separate object here, there are only two navbar links and they do not have counts and are never disabled
+        // there is much less data to pass to the adminNavbar
+        model.addAttribute("highlightDirectory", true);
+        model.addAttribute("highlightCourses", false);
         return "studentdirectory";
     }
 

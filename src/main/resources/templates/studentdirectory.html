@@ -5,7 +5,7 @@
 
 <body>
 
-<nav th:replace="fragments :: adminNavbar"></nav>
+<nav th:replace="fragments :: adminNavbar(${highlightDirectory}, ${highlightCourses})"></nav>
 
 <div class="container">
     <div class="col-lg-8 col-lg-offset-2">

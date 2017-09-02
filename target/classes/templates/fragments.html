@@ -21,10 +21,51 @@
 
 <body>
 
-    <!-- Fixed navbar -->
+
+    <!-- fixed navbar for use in admin section of app -->
+    <nav th:fragment="adminNavbar(highlightDirectory, highlightCourses)" class="navbar navbar-inverse navbar-fixed-top card-3">
+        <div class="container">
+
+            <div class="navbar-header">
+                <!-- hamburger menu only shows if width < 992px -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#adminnavbar">
+                    <!-- make a basic hamburger icon from 3 bars -->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- TODO make a new github repo and change this link -->
+                <a class="navbar-brand" href="https://github.com/nmerris/RoboResumeFive">STUDBOT 5K</a>
+            </div><!-- navbar header -->
+
+            <div class="navbar-collapse collapse" id="adminnavbar">
+
+                <ul class="nav navbar-nav">
+                    <li th:classappend="${highlightDirectory ? 'active' : ''}">
+                        <a th:href="@{~/studentdirectory}"><span class="glyphicon glyphicon-list"></span>Student Directory</a>
+                    </li>
+
+                    <li th:classappend="${highlightCourses ? 'active' : ''}">
+                        <a th:href="@{~/courses}"><span class="glyphicon glyphicon-book"></span>Course List</a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a th:href="@{~/logout}"><span class="glyphicon glyphicon-user"></span>Logout</a>
+                    </li>
+                </ul>
+
+            </div><!-- navbar-collapse -->
+        </div><!-- container -->
+    </nav>
+
+
+    <!-- Fixed navbar for use in resume section of app -->
     <!-- navState is passed in from each page that uses navbar, it allows navbar to know which links to highlight, -->
     <!-- which links to disable, and what number to put in each badge -->
-    <nav th:fragment="navbar (navState)" class="navbar navbar-default navbar-fixed-top card-3">
+    <nav th:fragment="navbar(navState)" class="navbar navbar-default navbar-fixed-top card-3">
         
         <div class="container">
 
