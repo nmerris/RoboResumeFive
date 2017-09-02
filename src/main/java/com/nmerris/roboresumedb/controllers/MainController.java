@@ -438,10 +438,30 @@ public class MainController {
 
     @GetMapping("/studentdirectory")
     public String studentDirectory(Model model) {
+        System.out.println("=============================================================== just entered /studentdirectory GET");
 
         // add all the persons to the model
         model.addAttribute("students", personRepo.findAll());
         return "studentdirectory";
+    }
+
+
+    @GetMapping("/summary/{id}")
+    public String summary(@PathVariable("id") long id, Model model) {
+        System.out.println("=============================================================== just entered /summary/{id} GET");
+
+        // set the current person id to the incoming path variable, which is the id of student that was just clicked
+        currPerson.setPersonId(id);
+        System.out.println("=========================================== just set currPerson.getPersonId(): " + currPerson.getPersonId());
+
+        Person p = personRepo.findOne(id);
+        model.addAttribute("numEds", p.getEducationAchievements().size());
+//        model.addAttribute("numWorkExps", p)
+        // ......
+
+//        model.addAttribute("courses", p.)
+        // ......
+        return "summary";
     }
 
 
@@ -451,14 +471,14 @@ public class MainController {
 
 
 
-    /**
-     * The navbar links are disabled depending on the number of records in the various db tables.  For example, we
-     * do not want to allow the user to click the EditDetails link if there are no records in any db table.
-     * Note: the 'highlighted' nav bar link is set individually in each route.  Also, the navbar links contain badges
-     * that show the current counts for various db tables.  These counts are updated here and will always reflect the
-     * current state of the db tables.
-     * @return an updated NavBarState, but the highlighted navbar link must still be set individually
-     */
+        /**
+         * The navbar links are disabled depending on the number of records in the various db tables.  For example, we
+         * do not want to allow the user to click the EditDetails link if there are no records in any db table.
+         * Note: the 'highlighted' nav bar link is set individually in each route.  Also, the navbar links contain badges
+         * that show the current counts for various db tables.  These counts are updated here and will always reflect the
+         * current state of the db tables.
+         * @return an updated NavBarState, but the highlighted navbar link must still be set individually
+         */
     private NavBarState getPageLinkState() {
 
         NavBarState pageState = new NavBarState();

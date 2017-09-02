@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/summary.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +31,8 @@
           <file leaf-file-name="editdetails.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editdetails.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1005">
-                  <caret line="67" column="36" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="67" selection-end-column="36" />
+                <state relative-caret-position="510">
+                  <caret line="46" column="50" lean-forward="true" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
                   <folding />
                 </state>
               </provider>
@@ -48,11 +48,31 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="studentdirectory.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="studentdirectory.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="645">
-                  <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+                <state relative-caret-position="405">
+                  <caret line="27" column="83" lean-forward="true" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="summary.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/summary.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="315">
+                  <caret line="21" column="80" lean-forward="false" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="addskill.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addskill.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="615">
+                  <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -153,35 +173,9 @@
           <file leaf-file-name="fragments.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="720">
-                  <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-                  <folding>
-                    <marker date="1504351570751" expanded="true" signature="2016:2344" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="2140:2318" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="2431:2762" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="2565:2736" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="2850:3165" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="2973:3139" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="3245:4610" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="3332:3551" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="3640:4010" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="3735:3984" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="4073:4401" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="4272:4375" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="4455:4587" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="4742:5037" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="4774:5023" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="4827:5008" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="4879:4989" ph="..." />
-                    <marker date="1504351570751" expanded="false" signature="4935:4941" ph="©" />
-                    <marker date="1504351570751" expanded="true" signature="5152:6160" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="5261:6148" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="5325:6133" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="5369:6114" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="5416:5768" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="5958:6091" ph="..." />
-                    <marker date="1504351570751" expanded="true" signature="6270:6469" ph="..." />
-                  </folding>
+                <state relative-caret-position="338">
+                  <caret line="78" column="47" lean-forward="false" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="47" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -189,14 +183,24 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="758">
-                  <caret line="439" column="35" lean-forward="false" selection-start-line="439" selection-start-column="35" selection-end-line="439" selection-end-column="35" />
+                <state relative-caret-position="195">
+                  <caret line="290" column="9" lean-forward="true" selection-start-line="290" selection-start-column="9" selection-end-line="290" selection-end-column="9" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
                     <element signature="e#1085#1086#0" expanded="true" />
                     <element signature="e#1143#1144#0" expanded="true" />
                     <element signature="e#1173#1174#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="finalresume.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/finalresume.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="420">
+                  <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -232,6 +236,7 @@
       <find>workEx</find>
       <find>delete</find>
       <find>item</find>
+      <find>~</find>
     </findStrings>
     <replaceStrings>
       <replace>ple</replace>
@@ -288,9 +293,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/editdetails.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/summary.html" />
       </list>
     </option>
   </component>
@@ -548,13 +554,6 @@
       <workItem from="1503751677840" duration="22267000" />
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
-    </task>
-    <task id="LOCAL-00019" summary="add table-responsive class to all tables in editdetails, now they stay inside the card and will become scrollable under 768px width">
-      <created>1503758944308</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1503758944308</updated>
     </task>
     <task id="LOCAL-00020" summary="cleaned up html in editdetails, moved th:each div inside table body">
       <created>1503759961582</created>
@@ -892,11 +891,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504355579685</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Delete link not properly disabled">
+      <created>1504355668465</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1504355668465</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98767000" />
+    <option name="totallyTimeSpent" value="101846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -916,7 +922,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11992188" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11992188" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -988,7 +994,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="ready to try heroku again" />
     <MESSAGE value="login page background image now using css cover property.. magical!" />
     <MESSAGE value="removed dropdown menu item from navbar when collapsed" />
     <MESSAGE value="working on finalresume" />
@@ -1013,57 +1018,19 @@
     <MESSAGE value="commit on new branch" />
     <MESSAGE value="add studentdirectory.html template" />
     <MESSAGE value="studentdirectory route and view are showing as intended" />
-    <option name="LAST_COMMIT_MESSAGE" value="studentdirectory route and view are showing as intended" />
+    <MESSAGE value="Delete link not properly disabled" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete link not properly disabled" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7542">
-          <caret line="419" column="0" lean-forward="false" selection-start-line="419" selection-start-column="0" selection-end-line="419" selection-end-column="0" />
-          <folding>
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-            <element signature="e#1143#1144#0" expanded="true" />
-            <element signature="e#1173#1174#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
           <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding>
-            <marker date="1504351570751" expanded="true" signature="2016:2344" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2140:2318" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2431:2762" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2565:2736" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2850:3165" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2973:3139" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3245:4610" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3332:3551" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3640:4010" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3735:3984" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4073:4401" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4272:4375" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4455:4587" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4742:5037" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4774:5023" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4827:5008" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4879:4989" ph="..." />
-            <marker date="1504351570751" expanded="false" signature="4935:4941" ph="©" />
-            <marker date="1504351570751" expanded="true" signature="5152:6160" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5261:6148" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5325:6133" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5369:6114" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5416:5768" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5958:6091" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="6270:6469" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,33 +1090,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1836">
           <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding>
-            <marker date="1504351570751" expanded="true" signature="2016:2344" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2140:2318" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2431:2762" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2565:2736" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2850:3165" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2973:3139" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3245:4610" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3332:3551" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3640:4010" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3735:3984" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4073:4401" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4272:4375" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4455:4587" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4742:5037" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4774:5023" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4827:5008" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4879:4989" ph="..." />
-            <marker date="1504351570751" expanded="false" signature="4935:4941" ph="©" />
-            <marker date="1504351570751" expanded="true" signature="5152:6160" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5261:6148" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5325:6133" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5369:6114" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5416:5768" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5958:6091" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="6270:6469" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1246,13 +1187,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addskill.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -1345,47 +1279,6 @@
         <state relative-caret-position="108">
           <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/finalresume.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1206">
-          <caret line="67" column="7" lean-forward="false" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <marker date="1504351570751" expanded="true" signature="2016:2344" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2140:2318" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2431:2762" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2565:2736" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2850:3165" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="2973:3139" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3245:4610" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3332:3551" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3640:4010" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="3735:3984" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4073:4401" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4272:4375" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4455:4587" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4742:5037" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4774:5023" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4827:5008" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="4879:4989" ph="..." />
-            <marker date="1504351570751" expanded="false" signature="4935:4941" ph="©" />
-            <marker date="1504351570751" expanded="true" signature="5152:6160" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5261:6148" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5325:6133" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5369:6114" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5416:5768" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="5958:6091" ph="..." />
-            <marker date="1504351570751" expanded="true" signature="6270:6469" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1509,24 +1402,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editdetails.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/finalresume.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="67" column="36" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="67" selection-end-column="36" />
+        <state relative-caret-position="420">
+          <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="758">
-          <caret line="439" column="35" lean-forward="false" selection-start-line="439" selection-start-column="35" selection-end-line="439" selection-end-column="35" />
-          <folding>
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-            <element signature="e#1143#1144#0" expanded="true" />
-            <element signature="e#1173#1174#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="405">
+          <caret line="27" column="83" lean-forward="true" selection-start-line="27" selection-start-column="83" selection-end-line="27" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addskill.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1538,11 +1434,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editdetails.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+        <state relative-caret-position="510">
+          <caret line="46" column="50" lean-forward="true" selection-start-line="46" selection-start-column="50" selection-end-line="46" selection-end-column="50" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/summary.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="80" lean-forward="false" selection-start-line="21" selection-start-column="80" selection-end-line="21" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="78" column="47" lean-forward="false" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="290" column="9" lean-forward="true" selection-start-line="290" selection-start-column="9" selection-end-line="290" selection-end-column="9" />
+          <folding>
+            <element signature="e#1055#1056#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1143#1144#0" expanded="true" />
+            <element signature="e#1173#1174#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
