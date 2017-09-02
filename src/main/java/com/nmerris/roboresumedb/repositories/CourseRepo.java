@@ -4,8 +4,7 @@ import com.nmerris.roboresumedb.models.Course;
 import com.nmerris.roboresumedb.models.Person;
 import org.springframework.data.repository.CrudRepository;
 
-public interface PersonRepo extends CrudRepository<Person, Long> {
+public interface CourseRepo extends CrudRepository<Course, Long> {
 
-    Iterable<Person> findAllByCoursesIs(Course someCourse); // ????????????
-
+    Iterable<Course> findAllByPeopleIs(Person currentPerson); // ????????????
 }
