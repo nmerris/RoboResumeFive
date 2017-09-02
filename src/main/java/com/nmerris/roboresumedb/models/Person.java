@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,13 +38,21 @@ public class Person {
     @OneToMany(mappedBy = "myPerson", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
     private Set<Skill> skills;
 
+    @ManyToMany(mappedBy = "people", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Course> courses;
 
     public Person() {
-        setEducationAchievements(new HashSet<EducationAchievement>());
-        setWorkExperiences(new HashSet<WorkExperience>());
-        setSkills(new HashSet<Skill>());
+        setEducationAchievements(new HashSet<>());
+        setWorkExperiences(new HashSet<>());
+        setSkills(new HashSet<>());
+        setCourses(new HashSet<>());
     }
 
+
+    // TODO need to test removing as a collection, also don't forget had to use @Transactional with clear() in /startover
+    public void removeCourses(Collection<Course> courseCollection) {
+        courses.removeAll(courseCollection);
+    }
 
     // in order to delete and employee, you must first remove it from it's department's Set of employees
     public void removeEdAchievement(EducationAchievement ea) {
@@ -71,12 +79,14 @@ public class Person {
         skills.clear();
     }
 
-    
-    // data to store temporarily for this project
-//    private ArrayList<EducationAchievement> educationAchievements = new ArrayList<EducationAchievement>();
-//    private ArrayList<WorkExperience> workExperiences = new ArrayList<WorkExperience>();
-//    private ArrayList<Skill> skills = new ArrayList<Skill>();
 
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
 
     public Set<WorkExperience> getWorkExperiences() {
         return workExperiences;
@@ -126,30 +136,6 @@ public class Person {
         this.email = email;
     }
 
-//    public ArrayList<EducationAchievement> getEducationAchievements() {
-//        return educationAchievements;
-//    }
-//
-//    public void setEducationAchievements(ArrayList<EducationAchievement> educationAchievements) {
-//        this.educationAchievements = educationAchievements;
-//    }
-
-//    public ArrayList<WorkExperience> getWorkExperiences() {
-//        return workExperiences;
-//    }
-//
-//    public void setWorkExperiences(ArrayList<WorkExperience> workExperiences) {
-//        this.workExperiences = workExperiences;
-//    }
-//
-//    public ArrayList<Skill> getSkills() {
-//        return skills;
-//    }
-//
-//    public void setSkills(ArrayList<Skill> skills) {
-//        this.skills = skills;
-//    }
-//
     public long getId() {
         return id;
     }
