@@ -118,6 +118,7 @@ public class MainController {
     @GetMapping("/addeducation")
     public String addEdGet(Model model) {
         System.out.println("=============================================================== just entered /addeducation GET");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
         // disable the submit button if >= 10 records in db, it would never be possible for the user to click to get
         // here from the navi page if there were already >= 10 records, however they could manually type in the URL
@@ -151,6 +152,7 @@ public class MainController {
     public String addEdPost(@Valid @ModelAttribute("newEdAchievement") EducationAchievement educationAchievement,
                             BindingResult bindingResult, Model model) {
         System.out.println("=============================================================== just entered /addeducation POST");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
 
         // the persons name is show at the top of each 'add' section AND each confirmation page, so we want to add
@@ -305,8 +307,16 @@ public class MainController {
     // every record (except the single personal details record) can also be deleted by clicking a link next to it
     @GetMapping("/editdetails")
     public String editDetails(Model model) {
+        System.out.println("=============================================================== just entered /editdetails GET");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
         // add all the contents of every repo to the model, so the tables have data to display
-        addDbContentsToModel(model);
+//        addDbContentsToModel(model);
+
+        model.addAttribute("person", personRepo.findOne(currPerson.getPersonId()));
+        model.addAttribute("edAchievements", educationRepo.findAllByMyPersonIs(personRepo.findOne(currPerson.getPersonId())));
+        model.addAttribute("workExperiences", workExperienceRepo.findAll());
+        model.addAttribute("skills", skillRepo.findAll());
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightEditNav(true);
@@ -360,6 +370,9 @@ public class MainController {
     @GetMapping("/update/{id}")
     public String update(@PathVariable("id") long id, @RequestParam("type") String type, Model model)
     {
+        System.out.println("=============================================================== just entered /update/{id} GET");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
         // no matter what view is returned, we ALWAYS will allow the submit button to work, since the form that is
         // displays can only contain a record that already exists in a repo
         model.addAttribute("disableSubmit", false);
@@ -461,13 +474,13 @@ public class MainController {
      *
      * @return model, now with the entire contents of each repo
      */
-    private void addDbContentsToModel(Model model) {
-        // there is only one person
-        model.addAttribute("persons", personRepo.findAll());
-        model.addAttribute("edAchievements", educationRepo.findAll());
-        model.addAttribute("workExperiences", workExperienceRepo.findAll());
-        model.addAttribute("skills", skillRepo.findAll());
-    }
+//    private void addDbContentsToModel(Model model) {
+//        // there is only one person
+//        model.addAttribute("persons", personRepo.findAll());
+//        model.addAttribute("edAchievements", educationRepo.findAll());
+//        model.addAttribute("workExperiences", workExperienceRepo.findAll());
+//        model.addAttribute("skills", skillRepo.findAll());
+//    }
 
 
     /**

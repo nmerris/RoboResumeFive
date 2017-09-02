@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/addeducation.html" afterPath="$PROJECT_DIR$/target/classes/templates/addeducation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/addperson.html" afterPath="$PROJECT_DIR$/target/classes/templates/addperson.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/addeducation.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/addeducation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/editdetails.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/editdetails.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,18 +23,28 @@
           <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
-                  <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+                <state relative-caret-position="390">
+                  <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="addeducation.html" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addeducation.html">
+          <file leaf-file-name="editdetails.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editdetails.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="453">
-                  <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+                <state relative-caret-position="495">
+                  <caret line="33" column="40" lean-forward="false" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="EducationRepo.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="8" column="77" lean-forward="false" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="77" />
                   <folding />
                 </state>
               </provider>
@@ -41,17 +53,21 @@
           <file leaf-file-name="Person.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="226">
-                  <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+                <state relative-caret-position="195">
+                  <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
                   <folding>
-                    <element signature="e#784#785#0" expanded="true" />
-                    <element signature="e#861#862#0" expanded="true" />
-                    <element signature="e#1250#1251#0" expanded="true" />
-                    <element signature="e#1294#1295#0" expanded="true" />
-                    <element signature="e#1489#1490#0" expanded="true" />
-                    <element signature="e#1521#1522#0" expanded="true" />
-                    <marker date="1504300436517" expanded="false" signature="1003:1025" ph="&lt;~&gt;" />
+                    <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="addeducation.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addeducation.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="750">
+                  <caret line="50" column="10" lean-forward="true" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -63,15 +79,48 @@
           <file leaf-file-name="EducationAchievement.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/EducationAchievement.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+                <state relative-caret-position="825">
+                  <caret line="73" column="5" lean-forward="false" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
                   <folding>
-                    <element signature="e#727#728#0" expanded="true" />
-                    <element signature="e#758#759#0" expanded="true" />
-                    <element signature="e#806#807#0" expanded="true" />
-                    <element signature="e#846#847#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
                     <element signature="e#1392#1393#0" expanded="true" />
                     <element signature="e#1420#1421#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="fragments.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="720">
+                  <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+                  <folding>
+                    <marker date="1504347479636" expanded="true" signature="2016:2344" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="2140:2318" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="2431:2762" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="2565:2736" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="2850:3165" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="2973:3139" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="3245:4610" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="3332:3551" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="3640:4010" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="3735:3984" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="4073:4401" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="4272:4375" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="4455:4587" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="4742:5037" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="4774:5023" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="4827:5008" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="4879:4989" ph="..." />
+                    <marker date="1504347479636" expanded="false" signature="4935:4941" ph="©" />
+                    <marker date="1504347479636" expanded="true" signature="5152:6160" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="5261:6148" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="5325:6133" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="5369:6114" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="5416:5768" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="5958:6091" ph="..." />
+                    <marker date="1504347479636" expanded="true" signature="6270:6469" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -80,25 +129,13 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2430">
-                  <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="242">
+                  <caret line="363" column="5" lean-forward="true" selection-start-line="363" selection-start-column="5" selection-end-line="363" selection-end-column="5" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
                     <element signature="e#1085#1086#0" expanded="true" />
                     <element signature="e#1143#1144#0" expanded="true" />
                     <element signature="e#1173#1174#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="CurrPerson.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/CurrPerson.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
-                  <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -133,6 +170,7 @@
       <find>workE</find>
       <find>workEx</find>
       <find>delete</find>
+      <find>item</find>
     </findStrings>
     <replaceStrings>
       <replace>ple</replace>
@@ -141,6 +179,7 @@
       <replace>sm-offset</replace>
       <replace>lg-offset</replace>
       <replace>update</replace>
+      <replace>person</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -166,13 +205,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/addworkexperience.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addworkexperienceconfirmation.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addeducationconfirmation.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/editdetails.html" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/NavBarState.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Skill.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/WorkExperience.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/PersonRepo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" />
@@ -187,9 +224,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/SecurityConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/CurrPerson.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addperson.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addeducation.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/editdetails.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
       </list>
     </option>
   </component>
@@ -223,10 +262,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -267,16 +302,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="roboresumedb" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RoboResumeSixTakeTwo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RoboResumeSixTakeTwo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="roboresumedb" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="repositories" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RoboResumeSixTakeTwo" type="b2602c69:ProjectViewProjectNode" />
@@ -297,6 +323,10 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -803,10 +833,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92204000" />
+    <option name="totallyTimeSpent" value="95226000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-1" width="1922" height="1061" extended-state="6" />
+    <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -817,13 +847,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14655173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25538793" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19288793" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16882129" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11992188" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -949,31 +979,31 @@
         <state relative-caret-position="1836">
           <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding>
-            <marker date="1504295469052" expanded="true" signature="2016:2344" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2140:2318" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2431:2762" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2565:2736" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2850:3165" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2973:3139" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3245:4610" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3332:3551" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3640:4010" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3735:3984" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4073:4401" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4272:4375" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4455:4587" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4742:5037" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4774:5023" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4827:5008" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4879:4989" ph="..." />
-            <marker date="1504295469052" expanded="false" signature="4935:4941" ph="©" />
-            <marker date="1504295469052" expanded="true" signature="5152:6160" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5261:6148" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5325:6133" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5369:6114" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5416:5768" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5958:6091" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="6270:6469" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2016:2344" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2140:2318" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2431:2762" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2565:2736" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2850:3165" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2973:3139" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3245:4610" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3332:3551" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3640:4010" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3735:3984" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4073:4401" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4272:4375" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4455:4587" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4742:5037" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4774:5023" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4827:5008" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4879:4989" ph="..." />
+            <marker date="1504347479636" expanded="false" signature="4935:4941" ph="©" />
+            <marker date="1504347479636" expanded="true" signature="5152:6160" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5261:6148" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5325:6133" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5369:6114" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5416:5768" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5958:6091" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="6270:6469" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1035,31 +1065,31 @@
         <state relative-caret-position="1836">
           <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
           <folding>
-            <marker date="1504295469052" expanded="true" signature="2016:2344" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2140:2318" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2431:2762" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2565:2736" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2850:3165" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2973:3139" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3245:4610" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3332:3551" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3640:4010" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3735:3984" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4073:4401" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4272:4375" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4455:4587" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4742:5037" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4774:5023" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4827:5008" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4879:4989" ph="..." />
-            <marker date="1504295469052" expanded="false" signature="4935:4941" ph="©" />
-            <marker date="1504295469052" expanded="true" signature="5152:6160" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5261:6148" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5325:6133" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5369:6114" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5416:5768" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5958:6091" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="6270:6469" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2016:2344" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2140:2318" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2431:2762" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2565:2736" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2850:3165" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2973:3139" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3245:4610" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3332:3551" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3640:4010" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3735:3984" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4073:4401" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4272:4375" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4455:4587" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4742:5037" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4774:5023" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4827:5008" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4879:4989" ph="..." />
+            <marker date="1504347479636" expanded="false" signature="4935:4941" ph="©" />
+            <marker date="1504347479636" expanded="true" signature="5152:6160" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5261:6148" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5325:6133" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5369:6114" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5416:5768" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5958:6091" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="6270:6469" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1190,58 +1220,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-          <folding>
-            <element signature="e#882#883#0" expanded="true" />
-            <element signature="e#923#924#0" expanded="true" />
-            <element signature="e#992#993#0" expanded="true" />
-            <element signature="e#1052#1053#0" expanded="true" />
-            <element signature="e#1094#1095#0" expanded="true" />
-            <element signature="e#1131#1132#0" expanded="true" />
-            <element signature="e#1192#1193#0" expanded="true" />
-            <element signature="e#1244#1245#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1327#1328#0" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1448#1449#0" expanded="true" />
-            <element signature="e#1493#1494#0" expanded="true" />
-            <element signature="e#1533#1534#0" expanded="true" />
-            <element signature="e#1600#1601#0" expanded="true" />
-            <element signature="e#1658#1659#0" expanded="true" />
-            <element signature="e#1702#1703#0" expanded="true" />
-            <element signature="e#1741#1742#0" expanded="true" />
-            <element signature="e#1806#1807#0" expanded="true" />
-            <element signature="e#1862#1863#0" expanded="true" />
-            <element signature="e#1907#1908#0" expanded="true" />
-            <element signature="e#1947#1948#0" expanded="true" />
-            <element signature="e#2014#2015#0" expanded="true" />
-            <element signature="e#2072#2073#0" expanded="true" />
-            <element signature="e#2116#2117#0" expanded="true" />
-            <element signature="e#2155#2156#0" expanded="true" />
-            <element signature="e#2220#2221#0" expanded="true" />
-            <element signature="e#2276#2277#0" expanded="true" />
-            <element signature="e#2323#2324#0" expanded="true" />
-            <element signature="e#2365#2366#0" expanded="true" />
-            <element signature="e#2436#2437#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
-            <element signature="e#2547#2548#0" expanded="true" />
-            <element signature="e#2591#2592#0" expanded="true" />
-            <element signature="e#2782#2783#0" expanded="true" />
-            <element signature="e#2827#2828#0" expanded="true" />
-            <element signature="e#3020#3021#0" expanded="true" />
-            <element signature="e#3063#3064#0" expanded="true" />
-            <element signature="e#3242#3243#0" expanded="true" />
-            <element signature="e#3282#3283#0" expanded="true" />
-            <element signature="e#3346#3347#0" expanded="true" />
-            <element signature="e#3404#3405#0" expanded="true" />
-            <element signature="e#3440#3441#0" expanded="true" />
-            <element signature="e#3474#3475#0" expanded="true" />
-            <element signature="e#3526#3527#0" expanded="true" />
-            <element signature="e#3572#3573#0" expanded="true" />
-            <element signature="e#3606#3607#0" expanded="true" />
-            <element signature="e#3638#3639#0" expanded="true" />
-            <element signature="e#3686#3687#0" expanded="true" />
-            <element signature="e#3728#3729#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1255,14 +1234,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/PersonRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
         </state>
       </provider>
@@ -1279,7 +1250,7 @@
         <state relative-caret-position="0">
           <caret line="25" column="18" lean-forward="false" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1326,49 +1297,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1206">
           <caret line="67" column="7" lean-forward="false" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
+        <state relative-caret-position="720">
           <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <marker date="1504295469052" expanded="true" signature="2016:2344" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2140:2318" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2431:2762" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2565:2736" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2850:3165" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="2973:3139" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3245:4610" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3332:3551" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3640:4010" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="3735:3984" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4073:4401" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4272:4375" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4455:4587" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4742:5037" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4774:5023" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4827:5008" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="4879:4989" ph="..." />
-            <marker date="1504295469052" expanded="false" signature="4935:4941" ph="©" />
-            <marker date="1504295469052" expanded="true" signature="5152:6160" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5261:6148" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5325:6133" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5369:6114" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5416:5768" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="5958:6091" ph="..." />
-            <marker date="1504295469052" expanded="true" signature="6270:6469" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2016:2344" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2140:2318" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2431:2762" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2565:2736" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2850:3165" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="2973:3139" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3245:4610" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3332:3551" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3640:4010" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="3735:3984" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4073:4401" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4272:4375" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4455:4587" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4742:5037" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4774:5023" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4827:5008" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="4879:4989" ph="..." />
+            <marker date="1504347479636" expanded="false" signature="4935:4941" ph="©" />
+            <marker date="1504347479636" expanded="true" signature="5152:6160" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5261:6148" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5325:6133" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5369:6114" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5416:5768" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="5958:6091" ph="..." />
+            <marker date="1504347479636" expanded="true" signature="6270:6469" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editdetails.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="66" lean-forward="false" selection-start-line="19" selection-start-column="66" selection-end-line="19" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1384,10 +1346,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding>
-            <marker date="1504297562640" expanded="true" signature="1490:2309" ph="{...}" />
-            <marker date="1504297562640" expanded="true" signature="2071:2180" ph="//..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1395,46 +1354,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="58" lean-forward="true" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="44" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/EducationAchievement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#758#759#0" expanded="true" />
-            <element signature="e#806#807#0" expanded="true" />
-            <element signature="e#846#847#0" expanded="true" />
-            <element signature="e#1392#1393#0" expanded="true" />
-            <element signature="e#1420#1421#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding>
-            <element signature="e#784#785#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
-            <element signature="e#1250#1251#0" expanded="true" />
-            <element signature="e#1294#1295#0" expanded="true" />
-            <element signature="e#1489#1490#0" expanded="true" />
-            <element signature="e#1521#1522#0" expanded="true" />
-            <marker date="1504300436517" expanded="false" signature="1003:1025" ph="&lt;~&gt;" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1442,30 +1361,73 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="4" lean-forward="true" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addeducation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="50" column="10" lean-forward="true" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/EducationAchievement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="73" column="5" lean-forward="false" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1392#1393#0" expanded="true" />
+            <element signature="e#1420#1421#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="77" lean-forward="false" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editdetails.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="40" lean-forward="false" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2430">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="242">
+          <caret line="363" column="5" lean-forward="true" selection-start-line="363" selection-start-column="5" selection-end-line="363" selection-end-column="5" />
           <folding>
             <element signature="e#1055#1056#0" expanded="true" />
             <element signature="e#1085#1086#0" expanded="true" />
             <element signature="e#1143#1144#0" expanded="true" />
             <element signature="e#1173#1174#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addeducation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
