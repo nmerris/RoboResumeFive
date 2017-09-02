@@ -164,15 +164,15 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="811">
-                  <caret line="336" column="0" lean-forward="true" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
+                <state relative-caret-position="1070">
+                  <caret line="381" column="49" lean-forward="false" selection-start-line="381" selection-start-column="49" selection-end-line="381" selection-end-column="49" />
                   <folding>
                     <element signature="e#1120#1121#0" expanded="true" />
                     <element signature="e#1150#1151#0" expanded="true" />
                     <element signature="e#1208#1209#0" expanded="true" />
                     <element signature="e#1238#1239#0" expanded="true" />
                     <element signature="e#10624#10727#0" expanded="false" />
-                    <element signature="method#addWorkPost#0;class#MainController#0" expanded="false" />
+                    <element signature="method#addSkillGet#0;class#MainController#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -569,13 +569,6 @@
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
     </task>
-    <task id="LOCAL-00038" summary="refactor navbar in fragments: hiding glyphicons for certain items on larger screens, add logout text on smaller screens">
-      <created>1503848525668</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1503848525668</updated>
-    </task>
     <task id="LOCAL-00039" summary="ready to test deploy to heroku">
       <created>1503848776890</created>
       <option name="number" value="00039" />
@@ -912,11 +905,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504383332761</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="modify /addskill to reflect db changes">
+      <created>1504383692445</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1504383692445</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119576000" />
+    <option name="totallyTimeSpent" value="119963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -1008,7 +1008,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="added new ed achievement, attached curr person to it, in addeducation get" />
     <MESSAGE value="was able to 1. add new person, 2. add ea, 3. type in /update/1?type=ed and it worked.  not clear why it's any different than from this morning.  did need to add the hidden field in addeducation form for ea.person.id or the the ea person_id column was null" />
     <MESSAGE value="add remove ed method to Person, modify /delete route to delete an ed from curr person, tested in browser ok" />
     <MESSAGE value="commit on new branch" />
@@ -1033,7 +1032,8 @@
     <MESSAGE value="modify /editdetails to reflect db changes" />
     <MESSAGE value="tested work exps... ok" />
     <MESSAGE value="add @Transactional to startOver get route method, necessary to allow simultaneous deletion of all records from the repos" />
-    <option name="LAST_COMMIT_MESSAGE" value="add @Transactional to startOver get route method, necessary to allow simultaneous deletion of all records from the repos" />
+    <MESSAGE value="modify /addskill to reflect db changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify /addskill to reflect db changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1097,7 +1097,7 @@
             <element signature="e#1208#1209#0" expanded="true" />
             <element signature="e#1238#1239#0" expanded="true" />
             <element signature="e#10624#10727#0" expanded="false" />
-            <element signature="method#addWorkPost#0;class#MainController#0" expanded="false" />
+            <element signature="method#addSkillGet#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1159,7 +1159,7 @@
             <element signature="e#1208#1209#0" expanded="true" />
             <element signature="e#1238#1239#0" expanded="true" />
             <element signature="e#10624#10727#0" expanded="false" />
-            <element signature="method#addWorkPost#0;class#MainController#0" expanded="false" />
+            <element signature="method#addSkillGet#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1500,15 +1500,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="811">
-          <caret line="336" column="0" lean-forward="true" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
+        <state relative-caret-position="1070">
+          <caret line="381" column="49" lean-forward="false" selection-start-line="381" selection-start-column="49" selection-end-line="381" selection-end-column="49" />
           <folding>
             <element signature="e#1120#1121#0" expanded="true" />
             <element signature="e#1150#1151#0" expanded="true" />
             <element signature="e#1208#1209#0" expanded="true" />
             <element signature="e#1238#1239#0" expanded="true" />
             <element signature="e#10624#10727#0" expanded="false" />
-            <element signature="method#addWorkPost#0;class#MainController#0" expanded="false" />
+            <element signature="method#addSkillGet#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>

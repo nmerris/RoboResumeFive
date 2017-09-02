@@ -343,6 +343,15 @@ public class MainController {
     @PostMapping("/addskill")
     public String addSkillPost(@Valid @ModelAttribute("newSkill") Skill skill,
                               BindingResult bindingResult, Model model) {
+        System.out.println("=============================================================== just entered /addskill POST");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
+        // get the current Person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+
+        // get the current count from work repo for the current Person
+        long count = skillRepo.countAllByMyPersonIs(p);
+        System.out.println("=========================================== repo count for currPerson is: " + count);
 
         addPersonNameToModel(model);
 
@@ -350,22 +359,27 @@ public class MainController {
             NavBarState pageState = getPageLinkState();
             pageState.setHighlightSkillNav(true);
             model.addAttribute("pageState", pageState);
-            model.addAttribute("currentNumRecords", skillRepo.count());
+            model.addAttribute("currentNumRecords", count);
+            model.addAttribute("disableSubmit", count >= 20);
 
             return "addskill";
         }
 
         if(skillRepo.count() < 20) {
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% about to save skill to Repo");
             skillRepo.save(skill);
+
+            count = skillRepo.countAllByMyPersonIs(p);
+            System.out.println("=========================================== repo count for currPerson is: " + count);
         }
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightSkillNav(true);
         model.addAttribute("pageState", pageState);
 
+        model.addAttribute("currentNumRecords", count);
         model.addAttribute("skillJustAdded", skill);
-        model.addAttribute("currentNumRecords", skillRepo.count());
-        model.addAttribute("disableSubmit", skillRepo.count() >= 20);
+        model.addAttribute("disableSubmit", count >= 20);
 
         return "addskillconfirmation";
     }
