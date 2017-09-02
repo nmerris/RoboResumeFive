@@ -131,13 +131,17 @@ public class MainController {
         System.out.println("=============================================================== just entered /addeducation GET");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
+        // get the current Person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+
         // disable the submit button if >= 10 records in db, it would never be possible for the user to click to get
         // here from the navi page if there were already >= 10 records, however they could manually type in the URL
         // so I want to disable the submit button if they do that and there are already 10 records
-        model.addAttribute("disableSubmit", educationRepo.count() >= 10);
+        model.addAttribute("disableSubmit", p.getEducationAchievements().size() >= 10);
+//        model.addAttribute("disableSubmit", educationRepo.count() >= 10);
 
         // each resume section (except personal) shows a running count of the number of records currently in the db
-        model.addAttribute("currentNumRecords", educationRepo.count());
+        model.addAttribute("currentNumRecords", p.getEducationAchievements().size());
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightEdNav(true);
@@ -152,7 +156,7 @@ public class MainController {
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% created new ea, attached currPerson to it, about to add it to model");
         // create a new ea, attach the curr person to it, and add it to model
         EducationAchievement ea = new EducationAchievement();
-        ea.setMyPerson(personRepo.findOne(currPerson.getPersonId()));
+        ea.setMyPerson(p);
         model.addAttribute("newEdAchievement", ea);
 
         return "addeducation";

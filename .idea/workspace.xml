@@ -70,8 +70,8 @@
           <file leaf-file-name="addperson.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addperson.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="870">
-                  <caret line="58" column="7" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+                <state relative-caret-position="885">
+                  <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -192,8 +192,8 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="758">
-                  <caret line="576" column="68" lean-forward="false" selection-start-line="576" selection-start-column="68" selection-end-line="576" selection-end-column="68" />
+                <state relative-caret-position="782">
+                  <caret line="158" column="24" lean-forward="false" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
                     <element signature="e#1085#1086#0" expanded="true" />
@@ -564,13 +564,6 @@
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
     </task>
-    <task id="LOCAL-00021" summary="changed all col and offsets from sm to lg">
-      <created>1503760741277</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1503760741277</updated>
-    </task>
     <task id="LOCAL-00022" summary="about to make navbar collapsable, just renamed github project">
       <created>1503761529823</created>
       <option name="number" value="00022" />
@@ -907,11 +900,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504359191378</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="update addPersonNameToModel to use current person, modify /addperson get route to redirect to /update when currPerson id is zero">
+      <created>1504362403533</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1504362403534</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104178000" />
+    <option name="totallyTimeSpent" value="104841000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -1003,7 +1003,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="removed dropdown menu item from navbar when collapsed" />
     <MESSAGE value="working on finalresume" />
     <MESSAGE value="add background images" />
     <MESSAGE value="about to do another heroku commit" />
@@ -1028,7 +1027,8 @@
     <MESSAGE value="studentdirectory route and view are showing as intended" />
     <MESSAGE value="Delete link not properly disabled" />
     <MESSAGE value="add student summary page, tested in browser: add multiple students, see them all in studentdirectory, click them to see their summary, edit resume, go back, everything working as expected" />
-    <option name="LAST_COMMIT_MESSAGE" value="add student summary page, tested in browser: add multiple students, see them all in studentdirectory, click them to see their summary, edit resume, go back, everything working as expected" />
+    <MESSAGE value="update addPersonNameToModel to use current person, modify /addperson get route to redirect to /update when currPerson id is zero" />
+    <option name="LAST_COMMIT_MESSAGE" value="update addPersonNameToModel to use current person, modify /addperson get route to redirect to /update when currPerson id is zero" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1462,8 +1462,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="758">
-          <caret line="576" column="68" lean-forward="false" selection-start-line="576" selection-start-column="68" selection-end-line="576" selection-end-column="68" />
+        <state relative-caret-position="782">
+          <caret line="158" column="24" lean-forward="false" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
           <folding>
             <element signature="e#1055#1056#0" expanded="true" />
             <element signature="e#1085#1086#0" expanded="true" />
@@ -1475,8 +1475,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addperson.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="7" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+        <state relative-caret-position="885">
+          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
