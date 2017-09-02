@@ -27,16 +27,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!--<th:block th:each="item:${persons}">-->
-                                    <!--<tr>-->
-                                        <td><p th:text="${person.nameFirst}"></p></td>
-                                        <td><p th:text="${person.nameLast}"></p></td>
-                                        <td><p th:text="${person.email}"></p></td>
-                                        <td>
-                                            <a th:href="@{|/update/${person.id}?type=person|}" class="action-link">Edit</a>
-                                        </td>
-                                    <!--</tr>-->
-                                <!--</th:block>-->
+                                <td><p th:text="${person.nameFirst}"></p></td>
+                                <td><p th:text="${person.nameLast}"></p></td>
+                                <td><p th:text="${person.email}"></p></td>
+                                <td>
+                                    <a th:href="@{|/update/${person.id}?type=person|}" class="action-link">Edit</a>
+                                </td>
                             </tbody>
                         </table>
                     </div>

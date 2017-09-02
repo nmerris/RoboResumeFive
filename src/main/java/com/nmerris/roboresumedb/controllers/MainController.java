@@ -435,6 +435,22 @@ public class MainController {
         return "finalresume";
     }
 
+
+    @GetMapping("/studentdirectory")
+    public String studentDirectory(Model model) {
+
+        // add all the persons to the model
+        model.addAttribute("students", personRepo.findAll());
+        return "studentdirectory";
+    }
+
+
+
+
+
+
+
+
     /**
      * The navbar links are disabled depending on the number of records in the various db tables.  For example, we
      * do not want to allow the user to click the EditDetails link if there are no records in any db table.
