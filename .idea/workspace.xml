@@ -4,11 +4,6 @@
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/EducationAchievement.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/EducationAchievement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -169,14 +164,15 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="293">
-                  <caret line="58" column="99" lean-forward="false" selection-start-line="58" selection-start-column="99" selection-end-line="58" selection-end-column="99" />
+                <state relative-caret-position="811">
+                  <caret line="336" column="0" lean-forward="true" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
                   <folding>
                     <element signature="e#1120#1121#0" expanded="true" />
                     <element signature="e#1150#1151#0" expanded="true" />
                     <element signature="e#1208#1209#0" expanded="true" />
                     <element signature="e#1238#1239#0" expanded="true" />
                     <element signature="e#10624#10727#0" expanded="false" />
+                    <element signature="method#addWorkPost#0;class#MainController#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -573,13 +569,6 @@
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
     </task>
-    <task id="LOCAL-00037" summary="tidy up a few things in MainController">
-      <created>1503840957531</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1503840957531</updated>
-    </task>
     <task id="LOCAL-00038" summary="refactor navbar in fragments: hiding glyphicons for certain items on larger screens, add logout text on smaller screens">
       <created>1503848525668</created>
       <option name="number" value="00038" />
@@ -916,11 +905,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504381586956</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="add @Transactional to startOver get route method, necessary to allow simultaneous deletion of all records from the repos">
+      <created>1504383332761</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1504383332761</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119157000" />
+    <option name="totallyTimeSpent" value="119576000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -935,7 +931,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19239543" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16882129" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16882129" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1012,7 +1008,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="comment out a few lines in addperson GET, add session variable class" />
     <MESSAGE value="added new ed achievement, attached curr person to it, in addeducation get" />
     <MESSAGE value="was able to 1. add new person, 2. add ea, 3. type in /update/1?type=ed and it worked.  not clear why it's any different than from this morning.  did need to add the hidden field in addeducation form for ea.person.id or the the ea person_id column was null" />
     <MESSAGE value="add remove ed method to Person, modify /delete route to delete an ed from curr person, tested in browser ok" />
@@ -1037,7 +1032,8 @@
     <MESSAGE value="add hidden myPerson.id form fields in addskill and addeducation" />
     <MESSAGE value="modify /editdetails to reflect db changes" />
     <MESSAGE value="tested work exps... ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="tested work exps... ok" />
+    <MESSAGE value="add @Transactional to startOver get route method, necessary to allow simultaneous deletion of all records from the repos" />
+    <option name="LAST_COMMIT_MESSAGE" value="add @Transactional to startOver get route method, necessary to allow simultaneous deletion of all records from the repos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1101,6 +1097,7 @@
             <element signature="e#1208#1209#0" expanded="true" />
             <element signature="e#1238#1239#0" expanded="true" />
             <element signature="e#10624#10727#0" expanded="false" />
+            <element signature="method#addWorkPost#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1162,6 +1159,7 @@
             <element signature="e#1208#1209#0" expanded="true" />
             <element signature="e#1238#1239#0" expanded="true" />
             <element signature="e#10624#10727#0" expanded="false" />
+            <element signature="method#addWorkPost#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1502,14 +1500,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="58" column="99" lean-forward="false" selection-start-line="58" selection-start-column="99" selection-end-line="58" selection-end-column="99" />
+        <state relative-caret-position="811">
+          <caret line="336" column="0" lean-forward="true" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
           <folding>
             <element signature="e#1120#1121#0" expanded="true" />
             <element signature="e#1150#1151#0" expanded="true" />
             <element signature="e#1208#1209#0" expanded="true" />
             <element signature="e#1238#1239#0" expanded="true" />
             <element signature="e#10624#10727#0" expanded="false" />
+            <element signature="method#addWorkPost#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>

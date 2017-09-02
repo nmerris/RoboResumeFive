@@ -315,14 +315,25 @@ public class MainController {
     // logic in this route is identical to /addeducation, see /addeducation GetMapping for explanatory comments
     @GetMapping("/addskill")
     public String addSkillGet(Model model) {
-        addPersonNameToModel(model);
-        model.addAttribute("currentNumRecords", skillRepo.count());
-        model.addAttribute("newSkill", new Skill());
-        model.addAttribute("disableSubmit", skillRepo.count() >= 20);
+        System.out.println("=============================================================== just entered /addskill GET");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
+        // get the current Person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+
+        model.addAttribute("disableSubmit", skillRepo.countAllByMyPersonIs(p) >= 20);
+        model.addAttribute("currentNumRecords", skillRepo.countAllByMyPersonIs(p));
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightSkillNav(true);
         model.addAttribute("pageState", pageState);
+
+        addPersonNameToModel(model);
+
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% created new skill, attached currPerson to it, about to add it to model");
+        Skill skill = new Skill();
+        skill.setMyPerson(p);
+        model.addAttribute("newSkill", skill);
 
         return "addskill";
     }
