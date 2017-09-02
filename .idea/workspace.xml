@@ -4,7 +4,6 @@
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +40,8 @@
           <file leaf-file-name="EducationRepo.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="11" column="73" lean-forward="false" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+                <state relative-caret-position="180">
+                  <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -193,8 +192,8 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="559">
-                  <caret line="216" column="102" lean-forward="true" selection-start-line="216" selection-start-column="102" selection-end-line="216" selection-end-column="102" />
+                <state relative-caret-position="647">
+                  <caret line="412" column="54" lean-forward="true" selection-start-line="412" selection-start-column="54" selection-end-line="412" selection-end-column="54" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
                     <element signature="e#1085#1086#0" expanded="true" />
@@ -566,13 +565,6 @@
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
     </task>
-    <task id="LOCAL-00024" summary="add custom @media query css to change navbar collapse breakpoint to 1000px instead of the default 768px">
-      <created>1503764416512</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1503764416512</updated>
-    </task>
     <task id="LOCAL-00025" summary="navbar collapses at 992px, and displays a slightly different menu that looks nicer on mobile devices">
       <created>1503766098924</created>
       <option name="number" value="00025" />
@@ -909,11 +901,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504365288194</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="add comments, also tested /addeducation post route disable submit if &gt;= 10 records... ok">
+      <created>1504365535231</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1504365535231</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107366000" />
+    <option name="totallyTimeSpent" value="107792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -1005,7 +1004,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="about to do another heroku commit" />
     <MESSAGE value="fix bug in finalresume display work exp dates" />
     <MESSAGE value="final resume page looks nice" />
     <MESSAGE value="minor edits final page" />
@@ -1030,7 +1028,8 @@
     <MESSAGE value="update addPersonNameToModel to use current person, modify /addperson get route to redirect to /update when currPerson id is zero" />
     <MESSAGE value="update educationRepo counts to reflect curr person in  /addeducation get, tested ok every way I can think of" />
     <MESSAGE value="update /addeducation post to use ed repo counts of curr person, tested ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="update /addeducation post to use ed repo counts of curr person, tested ok" />
+    <MESSAGE value="add comments, also tested /addeducation post route disable submit if &gt;= 10 records... ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="add comments, also tested /addeducation post route disable submit if &gt;= 10 records... ok" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1464,18 +1463,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="73" lean-forward="false" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="216" column="102" lean-forward="true" selection-start-line="216" selection-start-column="102" selection-end-line="216" selection-end-column="102" />
+        <state relative-caret-position="647">
+          <caret line="412" column="54" lean-forward="true" selection-start-line="412" selection-start-column="54" selection-end-line="412" selection-end-column="54" />
           <folding>
             <element signature="e#1055#1056#0" expanded="true" />
             <element signature="e#1085#1086#0" expanded="true" />
@@ -1483,6 +1474,14 @@
             <element signature="e#1173#1174#0" expanded="true" />
             <element signature="e#10200#10303#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

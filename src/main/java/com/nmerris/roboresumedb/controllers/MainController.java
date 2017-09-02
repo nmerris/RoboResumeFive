@@ -402,10 +402,13 @@ public class MainController {
 
         NavBarState pageState = getPageLinkState();
 
+        // get the current Person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+
         switch (type) {
             case "person" :
                 // get the appropriate record from the repo
-                model.addAttribute("newPerson",personRepo.findOne(id));
+                model.addAttribute("newPerson", p);
                 // set the appropriate nav bar highlight
                 pageState.setHighlightPersonNav(true);
                 // add the navbar state object to the model
@@ -414,7 +417,7 @@ public class MainController {
                 return "addperson";
             case "ed" :
                 model.addAttribute("newEdAchievement",educationRepo.findOne(id));
-                model.addAttribute("currentNumRecords", educationRepo.count());
+                model.addAttribute("currentNumRecords", educationRepo.countAllByMyPersonIs(p));
                 pageState.setHighlightEdNav(true);
                 model.addAttribute("pageState", pageState);
                 return "addeducation";
