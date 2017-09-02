@@ -137,11 +137,11 @@ public class MainController {
         // disable the submit button if >= 10 records in db, it would never be possible for the user to click to get
         // here from the navi page if there were already >= 10 records, however they could manually type in the URL
         // so I want to disable the submit button if they do that and there are already 10 records
-        model.addAttribute("disableSubmit", p.getEducationAchievements().size() >= 10);
+        model.addAttribute("disableSubmit", educationRepo.countAllByMyPersonIs(p) >= 10);
 //        model.addAttribute("disableSubmit", educationRepo.count() >= 10);
 
         // each resume section (except personal) shows a running count of the number of records currently in the db
-        model.addAttribute("currentNumRecords", p.getEducationAchievements().size()); // where is my cute little 'o:'?
+        model.addAttribute("currentNumRecords", educationRepo.countAllByMyPersonIs(p)); // where is my cute little 'o:'?
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightEdNav(true);
@@ -151,7 +151,6 @@ public class MainController {
         // every time a view is returned, because the user can change their personal details at any time, and we want
         // to make sure the displayed name is always up to date
         addPersonNameToModel(model);
-
 
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% created new ea, attached currPerson to it, about to add it to model");
         // create a new ea, attach the curr person to it, and add it to model
@@ -226,14 +225,25 @@ public class MainController {
     // logic in this route is identical to /addeducation, see /addeducation GetMapping for explanatory comments
     @GetMapping("/addworkexperience")
     public String addWorkGet(Model model) {
+        System.out.println("=============================================================== just entered /addworkexperience GET");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
+        // get the current Person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+
+        model.addAttribute("disableSubmit", workExperienceRepo.count() >= 10);
+        model.addAttribute("currentNumRecords", workExperienceRepo.count());
+
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightWorkNav(true);
         model.addAttribute("pageState", pageState);
 
         addPersonNameToModel(model);
-        model.addAttribute("disableSubmit", workExperienceRepo.count() >= 10);
-        model.addAttribute("currentNumRecords", workExperienceRepo.count());
-        model.addAttribute("newWorkExperience", new WorkExperience());
+
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% created new workExp, attached currPerson to it, about to add it to model");
+        WorkExperience workExp = new WorkExperience();
+        workExp.setMyPerson(p);
+        model.addAttribute("newWorkExperience", workExp);
 
         return "addworkexperience";
     }

@@ -213,14 +213,15 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="767">
-                  <caret line="435" column="88" lean-forward="false" selection-start-line="435" selection-start-column="88" selection-end-line="435" selection-end-column="88" />
+                <state relative-caret-position="947">
+                  <caret line="245" column="55" lean-forward="false" selection-start-line="245" selection-start-column="55" selection-end-line="245" selection-end-column="55" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
                     <element signature="e#1085#1086#0" expanded="true" />
                     <element signature="e#1143#1144#0" expanded="true" />
                     <element signature="e#1173#1174#0" expanded="true" />
-                    <element signature="e#10200#10303#0" expanded="false" />
+                    <element signature="method#addEdPost#0;class#MainController#0" expanded="false" />
+                    <element signature="e#10203#10306#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -597,13 +598,6 @@
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
     </task>
-    <task id="LOCAL-00031" summary="comments">
-      <created>1503776699505</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1503776699505</updated>
-    </task>
     <task id="LOCAL-00032" summary="removed addDbCountsToModel and all refs, from MainController">
       <created>1503835415788</created>
       <option name="number" value="00032" />
@@ -940,11 +934,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504370008197</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="modify /update and /delete to reflect new Model changes">
+      <created>1504377151026</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1504377151026</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113093000" />
+    <option name="totallyTimeSpent" value="113556000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -1036,7 +1037,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="adding comments" />
     <MESSAGE value="commenting, also cleaning up some unnecessary bits in MainController" />
     <MESSAGE value="commenting" />
     <MESSAGE value="still commenting" />
@@ -1061,7 +1061,8 @@
     <MESSAGE value="modified all models to be relational with Person, dropped studentdb in mysql workbench, changed properties file to create, ready to test" />
     <MESSAGE value="tested education, working as expected just like before Model changes" />
     <MESSAGE value="change properties file back top update.. all testing ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="change properties file back top update.. all testing ok" />
+    <MESSAGE value="modify /update and /delete to reflect new Model changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify /update and /delete to reflect new Model changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1124,7 +1125,8 @@
             <element signature="e#1085#1086#0" expanded="true" />
             <element signature="e#1143#1144#0" expanded="true" />
             <element signature="e#1173#1174#0" expanded="true" />
-            <element signature="e#10200#10303#0" expanded="false" />
+            <element signature="method#addEdPost#0;class#MainController#0" expanded="false" />
+            <element signature="e#10203#10306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1185,7 +1187,8 @@
             <element signature="e#1085#1086#0" expanded="true" />
             <element signature="e#1143#1144#0" expanded="true" />
             <element signature="e#1173#1174#0" expanded="true" />
-            <element signature="e#10200#10303#0" expanded="false" />
+            <element signature="method#addEdPost#0;class#MainController#0" expanded="false" />
+            <element signature="e#10203#10306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1523,14 +1526,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="435" column="88" lean-forward="false" selection-start-line="435" selection-start-column="88" selection-end-line="435" selection-end-column="88" />
+        <state relative-caret-position="947">
+          <caret line="245" column="55" lean-forward="false" selection-start-line="245" selection-start-column="55" selection-end-line="245" selection-end-column="55" />
           <folding>
             <element signature="e#1055#1056#0" expanded="true" />
             <element signature="e#1085#1086#0" expanded="true" />
             <element signature="e#1143#1144#0" expanded="true" />
             <element signature="e#1173#1174#0" expanded="true" />
-            <element signature="e#10200#10303#0" expanded="false" />
+            <element signature="method#addEdPost#0;class#MainController#0" expanded="false" />
+            <element signature="e#10203#10306#0" expanded="false" />
           </folding>
         </state>
       </provider>
