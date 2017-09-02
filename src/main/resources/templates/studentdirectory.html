@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments :: headerFragment"></head>
+
+<body class="edit-page">
+
+<div class="container">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default card card-3">
+            <div class="panel-body">
+
+                <section id="person" class="section-heading">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <caption><h3><b>Student Directory</b></h3></caption>
+                            <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <td><p th:text="${person.nameFirst}"></p></td>
+                            <td><p th:text="${person.nameLast}"></p></td>
+                            <td><p th:text="${person.email}"></p></td>
+                            <td>
+                                <a th:href="@{|/summary/${person.id}|}" class="action-link">View Summary</a>
+                            </td>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div><!-- panel body -->
+        </div><!-- panel panel-default -->
+    </div><!-- col-lg-8 col-lg-offset-2 -->
+</div><!-- container -->
+
+<!-- Footer -->
+<footer th:replace="fragments :: footer"></footer>
+
+<!-- javascript -->
+<!-- th:block goes away after processing, but what's inside stays, so it won't affect the page layout -->
+<th:block th:replace="fragments :: javaScriptTemplate"></th:block>
+
+</body>
+
+</html>
