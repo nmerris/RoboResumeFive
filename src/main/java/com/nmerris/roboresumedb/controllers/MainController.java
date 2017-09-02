@@ -354,22 +354,26 @@ public class MainController {
         System.out.println("=============================================================== just entered /delete/{id} GET");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
+        Person p = personRepo.findOne(currPerson.getPersonId());
+
         try {
             switch (type) {
                 case "ed" :
                     // remove the ed from person, then delete it from it's repo
-                    personRepo.findOne(currPerson.getPersonId()).removeEdAchievement(educationRepo.findOne(id));
+                    p.removeEdAchievement(educationRepo.findOne(id));
                     educationRepo.delete(id);
                     // return with an anchor tag so that the user is still at the same section after deleting
                     // this is not perfect, but it's better than jumping to the top of the page each time
                     return "redirect:/editdetails#education";
                 case "person" :
-                    personRepo.delete(id);
-                    return "redirect:/editdetails#person";
+                    personRepo.delete(id); // is this all?
+                    return "redirect:/";// TODO make the 'admin' page the default route
                 case "workexp" :
+                    p.removeWorkExperience(workExperienceRepo.findOne(id));
                     workExperienceRepo.delete(id);
                     return "redirect:/editdetails#workexperiences";
                 case "skill" :
+                    p.removeSkill(skillRepo.findOne(id);
                     skillRepo.delete(id);
                     return "redirect:/editdetails#skills";
             }
@@ -416,20 +420,20 @@ public class MainController {
                 // return the appropriate view
                 return "addperson";
             case "ed" :
-                model.addAttribute("newEdAchievement",educationRepo.findOne(id));
+                model.addAttribute("newEdAchievement", educationRepo.findOne(id));
                 model.addAttribute("currentNumRecords", educationRepo.countAllByMyPersonIs(p));
                 pageState.setHighlightEdNav(true);
                 model.addAttribute("pageState", pageState);
                 return "addeducation";
             case "workexp" :
-                model.addAttribute("newWorkExperience",workExperienceRepo.findOne(id));
-                model.addAttribute("currentNumRecords", workExperienceRepo.count());
+                model.addAttribute("newWorkExperience", workExperienceRepo.findOne(id));
+                model.addAttribute("currentNumRecords", workExperienceRepo.countAllByMyPersonIs(p));
                 pageState.setHighlightWorkNav(true);
                 model.addAttribute("pageState", pageState);
                 return "addworkexperience";
             case "skill" :
-                model.addAttribute("newSkill",skillRepo.findOne(id));
-                model.addAttribute("currentNumRecords", skillRepo.count());
+                model.addAttribute("newSkill", skillRepo.findOne(id));
+                model.addAttribute("currentNumRecords", skillRepo.countAllByMyPersonIs(p));
                 pageState.setHighlightSkillNav(true);
                 model.addAttribute("pageState", pageState);
                 return "addskill";
@@ -479,9 +483,9 @@ public class MainController {
         System.out.println("=========================================== just set currPerson.getPersonId(): " + currPerson.getPersonId());
 
         Person p = personRepo.findOne(id);
-        model.addAttribute("numEds", p.getEducationAchievements().size());
-//        model.addAttribute("numWorkExps", p)
-        // ......
+        model.addAttribute("numEds", educationRepo.countAllByMyPersonIs(p));
+        model.addAttribute("numWorkExps", workExperienceRepo.countAllByMyPersonIs(p));
+        model.addAttribute("numSkills", skillRepo.countAllByMyPersonIs(p));
 
 //        model.addAttribute("courses", p.)
         // ......
