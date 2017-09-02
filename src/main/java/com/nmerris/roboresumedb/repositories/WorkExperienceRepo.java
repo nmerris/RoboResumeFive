@@ -12,4 +12,7 @@ public interface WorkExperienceRepo extends CrudRepository<WorkExperience, Long>
     // returns the count of all the records associated with currentPerson
     long countAllByMyPersonIs(Person currentPerson);
 
+    // returns the number of removed records
+    long removeAllByMyPersonIs(Person currentPerson);
+
 }

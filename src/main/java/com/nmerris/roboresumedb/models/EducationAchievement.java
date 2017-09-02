@@ -30,9 +30,6 @@ public class EducationAchievement {
     private Person myPerson;
 
 
-
-
-
     public Person getMyPerson() {
         return myPerson;
     }

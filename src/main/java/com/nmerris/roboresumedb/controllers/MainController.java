@@ -9,6 +9,7 @@ import com.nmerris.roboresumedb.repositories.SkillRepo;
 import com.nmerris.roboresumedb.repositories.WorkExperienceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -52,15 +53,24 @@ public class MainController {
     }
 
 
-    // any time this route is called, all db tables are wiped out
-    // there is a button to start a new resume in the startover.html view which this route displays
+    // wipes all the skills, work experiences, and eds from current Person
     @GetMapping("/startover")
+    // Transactional is necessary to call removeAllBy.. on the repos
+    // PersistenceContext defaults to PersistenceContextType.TRANSACTION, thank you Stack Overflow!
+    @Transactional
     public String startOver() {
-        personRepo.deleteAll();
-        educationRepo.deleteAll();
-        skillRepo.deleteAll();
-        workExperienceRepo.deleteAll();
-        return "startover";
+        // remove all items from Person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+        p.removeAllEdAchievements();
+        p.removeAllWorkExperiences();
+        p.removeAllSkills();
+
+        // remove all items from repos
+        educationRepo.removeAllByMyPersonIs(p);
+        skillRepo.removeAllByMyPersonIs(p);
+        workExperienceRepo.removeAllByMyPersonIs(p);
+
+        return "redirect:/editdetails";
     }
 
 

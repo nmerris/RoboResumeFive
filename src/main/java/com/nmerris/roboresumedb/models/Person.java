@@ -51,12 +51,24 @@ public class Person {
         educationAchievements.remove(ea);
     }
 
+    public void removeAllEdAchievements() {
+        educationAchievements.clear();
+    }
+
     public void removeWorkExperience(WorkExperience we) {
         workExperiences.remove(we);
     }
 
+    public void removeAllWorkExperiences() {
+        workExperiences.clear();
+    }
+
     public void removeSkill(Skill skill) {
         skills.remove(skill);
+    }
+
+    public void removeAllSkills() {
+        skills.clear();
     }
 
     
