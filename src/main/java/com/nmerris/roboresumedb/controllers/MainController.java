@@ -504,15 +504,14 @@ public class MainController {
          * @return an updated NavBarState, but the highlighted navbar link must still be set individually
          */
     private NavBarState getPageLinkState() {
-
         NavBarState state = new NavBarState();
 
-        try {
-            // get the current Person, this will throw an exception if currPerson has not been set yet, which is ok
-            // this will happen in /addperson GET when a new person is being entered
-            Person p = personRepo.findOne(currPerson.getPersonId());
+        // get the current Person, this will return null if currPerson has not been set yet, which is ok
+        // this will happen in /addperson GET when a new person is being entered
+        Person p = personRepo.findOne(currPerson.getPersonId());
 
-            // if this line is reached, the there must be a Person already entered
+        if(p != null) {
+            // if this line is reached, then there must be a Person already entered
 
             // add the current table counts, so the navbar badges know what to display
             state.setNumSkills(skillRepo.countAllByMyPersonIs(p));
@@ -529,8 +528,9 @@ public class MainController {
 
             // disable show final resume link until at least one ed achievement, skill, and personal info has been entered
             state.setDisableShowFinalLink(skillRepo.countAllByMyPersonIs(p) == 0 || educationRepo.countAllByMyPersonIs(p) == 0);
-        } catch (Exception e) {
-            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! caught exception in getPageLinkState, so must not have found a Person in personRepo");
+        }
+        else {
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! p == null in getPageLinkState, so must not have found a Person in personRepo");
             System.out.println("!!!!!!!!!!!!!!!!!!!!!! initializing navbar state with appropriate values....");
 
             // zero out the counts for the badges, because user has not entered a Person yet
@@ -588,13 +588,13 @@ public class MainController {
         for(WorkExperience item : workExperienceRepo.findAll()) {
             weArrayList.add(item);
         }
-        person.setWorkExperiences(weArrayList);
+//        person.setWorkExperiences(weArrayList);
 
         ArrayList<Skill> skillsArrayList = new ArrayList<>();
         for(Skill item : skillRepo.findAll()) {
             skillsArrayList.add(item);
         }
-        person.setSkills(skillsArrayList);
+//        person.setSkills(skillsArrayList);
     }
 
 
