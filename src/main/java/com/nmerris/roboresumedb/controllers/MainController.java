@@ -168,9 +168,12 @@ public class MainController {
         System.out.println("=============================================================== just entered /addeducation POST");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
+        // get the current Person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+
         // get the current count from educationRepo for the current Person
-        long edsCount = educationRepo.countAllByMyPersonIs(personRepo.findOne(currPerson.getPersonId()));
-        System.out.println("=========================================== repo count for currPerson is: " + edsCount);
+        long count = educationRepo.countAllByMyPersonIs(p);
+        System.out.println("=========================================== repo count for currPerson is: " + count);
 
         // the persons name is show at the top of each 'add' section AND each confirmation page, so we want to add
         // it to the model no matter which view is returned
@@ -184,25 +187,25 @@ public class MainController {
             model.addAttribute("pageState", pageState);
 
             // disable the form submit button if there are 10 or more records in the education repo
-            model.addAttribute("disableSubmit", edsCount >= 10);
-            model.addAttribute("currentNumRecords", edsCount);
+            model.addAttribute("disableSubmit", count >= 10);
+            model.addAttribute("currentNumRecords", count);
 
             return "addeducation";
         }
 
         // I'm being picky here, but it is possible for the user to refresh the page, which bypasses the form submit
         // button, and so they would be able to add more than 10 items, to avoid this, just condition the db save on count
-        if(edsCount < 10) {
+        if(count < 10) {
             System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% about to save ea to educationRepo");
             educationRepo.save(educationAchievement);
 
             // need to get an updated edsCount after saving to repo
-            edsCount = educationRepo.countAllByMyPersonIs(personRepo.findOne(currPerson.getPersonId()));
-            System.out.println("=========================================== repo count for currPerson is: " + edsCount);
+            count = educationRepo.countAllByMyPersonIs(p);
+            System.out.println("=========================================== repo count for currPerson is: " + count);
         }
 
         // need to get the count AFTER successfully adding to db, so it is up to date
-        model.addAttribute("currentNumRecords", edsCount);
+        model.addAttribute("currentNumRecords", count);
 
         // add the EducationAchievement just entered to the model, so we can show a confirmation page
         model.addAttribute("edAchievementJustAdded", educationAchievement);
@@ -211,7 +214,7 @@ public class MainController {
         // because the 'add another' button will work, but then the entry form button will be disabled, this
         // way the user will not be confused... I am repurposing 'disableSubmit' here, it's actually being used to
         // disable the 'Add Another' button in the confirmation page
-        model.addAttribute("disableSubmit", edsCount >= 10);
+        model.addAttribute("disableSubmit", count >= 10);
 
         // the navbar state depends on the db table counts in various ways, so update after db changes
         NavBarState pageState = getPageLinkState();
@@ -253,6 +256,15 @@ public class MainController {
     @PostMapping("/addworkexperience")
     public String addWorkPost(@Valid @ModelAttribute("newWorkExperience") WorkExperience workExperience,
                             BindingResult bindingResult, Model model) {
+        System.out.println("=============================================================== just entered /addworkexperience POST");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
+        // get the current Person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+
+        // get the current count from work repo for the current Person
+        long count = workExperienceRepo.countAllByMyPersonIs(p);
+        System.out.println("=========================================== repo count for currPerson is: " + count);
 
         addPersonNameToModel(model);
 
@@ -260,26 +272,31 @@ public class MainController {
             NavBarState pageState = getPageLinkState();
             pageState.setHighlightWorkNav(true);
             model.addAttribute("pageState", pageState);
-            model.addAttribute("currentNumRecords", workExperienceRepo.count());
-            model.addAttribute("disableSubmit", workExperienceRepo.count() >= 10);
+            model.addAttribute("currentNumRecords", count);
+            model.addAttribute("disableSubmit", count >= 10);
 
             return "addworkexperience";
         }
+
+        if(count < 10) {
+            System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% about to save workExp to workExpRepo");
+            workExperienceRepo.save(workExperience);
+
+            count = workExperienceRepo.countAllByMyPersonIs(p);
+            System.out.println("=========================================== repo count for currPerson is: " + count);
+        }
+
+        model.addAttribute("currentNumRecords", workExperienceRepo.count());
 
         // work experience end date can be left null by user, in which case we want to show 'Present' in the
         // confirmation page
         model.addAttribute("dateEndString", Utilities.getMonthDayYearFromDate(workExperience.getDateEnd()));
         model.addAttribute("workExperienceJustAdded", workExperience);
-
-        if(workExperienceRepo.count() < 10) {
-            workExperienceRepo.save(workExperience);
-        }
+        model.addAttribute("disableSubmit", workExperienceRepo.count() >= 10);
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightWorkNav(true);
         model.addAttribute("pageState", pageState);
-        model.addAttribute("currentNumRecords", workExperienceRepo.count());
-        model.addAttribute("disableSubmit", workExperienceRepo.count() >= 10);
 
         return "addworkexperienceconfirmation";
     }
