@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/addeducation.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/addeducation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/editdetails.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/editdetails.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -129,8 +125,8 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="242">
-                  <caret line="363" column="5" lean-forward="true" selection-start-line="363" selection-start-column="5" selection-end-line="363" selection-end-column="5" />
+                <state relative-caret-position="632">
+                  <caret line="389" column="59" lean-forward="true" selection-start-line="389" selection-start-column="59" selection-end-line="389" selection-end-column="59" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
                     <element signature="e#1085#1086#0" expanded="true" />
@@ -486,13 +482,6 @@
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
     </task>
-    <task id="LOCAL-00015" summary="all pages except finalresume should now have material design cards">
-      <created>1503755194692</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1503755194692</updated>
-    </task>
     <task id="LOCAL-00016" summary="remove unnecessary columns in addworkexperience">
       <created>1503756374380</created>
       <option name="number" value="00016" />
@@ -829,11 +818,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504301256218</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="modify editdetails so it doesn't use th:each loop for person (since there is only ever one in this page), eliminated addDbContentsToModel in MainController, modified /editdetails route to only add person and eds the correspond to the currPerson ID, tested via editdetails route in browser, working as expected">
+      <created>1504350745927</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1504350745927</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95226000" />
+    <option name="totallyTimeSpent" value="95521000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -922,7 +918,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="refactor navbar in fragments: hiding glyphicons for certain items on larger screens, add logout text on smaller screens" />
     <MESSAGE value="ready to test deploy to heroku" />
     <MESSAGE value="changed pom and properties files to use postgresql" />
     <MESSAGE value="fix bug in pom file" />
@@ -947,7 +942,8 @@
     <MESSAGE value="comment out a few lines in addperson GET, add session variable class" />
     <MESSAGE value="added new ed achievement, attached curr person to it, in addeducation get" />
     <MESSAGE value="was able to 1. add new person, 2. add ea, 3. type in /update/1?type=ed and it worked.  not clear why it's any different than from this morning.  did need to add the hidden field in addeducation form for ea.person.id or the the ea person_id column was null" />
-    <option name="LAST_COMMIT_MESSAGE" value="was able to 1. add new person, 2. add ea, 3. type in /update/1?type=ed and it worked.  not clear why it's any different than from this morning.  did need to add the hidden field in addeducation form for ea.person.id or the the ea person_id column was null" />
+    <MESSAGE value="modify editdetails so it doesn't use th:each loop for person (since there is only ever one in this page), eliminated addDbContentsToModel in MainController, modified /editdetails route to only add person and eds the correspond to the currPerson ID, tested via editdetails route in browser, working as expected" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify editdetails so it doesn't use th:each loop for person (since there is only ever one in this page), eliminated addDbContentsToModel in MainController, modified /editdetails route to only add person and eds the correspond to the currPerson ID, tested via editdetails route in browser, working as expected" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1420,8 +1416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="363" column="5" lean-forward="true" selection-start-line="363" selection-start-column="5" selection-end-line="363" selection-end-column="5" />
+        <state relative-caret-position="632">
+          <caret line="389" column="59" lean-forward="true" selection-start-line="389" selection-start-column="59" selection-end-line="389" selection-end-column="59" />
           <folding>
             <element signature="e#1055#1056#0" expanded="true" />
             <element signature="e#1085#1086#0" expanded="true" />
