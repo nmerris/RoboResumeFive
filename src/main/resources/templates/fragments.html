@@ -42,11 +42,11 @@
             <div class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li th:classappend="${highlightDirectory ? 'active' : ''}">
                         <a th:href="@{/~studentdirectory}"><span class="glyphicon glyphicon-list hidden-md hidden-lg"></span>Student Directory</a>
                     </li>
 
-                    <li>
+                    <li th:classappend="${highlightCourses ? 'active' : ''}">
                         <a th:href="@{/~courses}"><span class="glyphicon glyphicon-book hidden-md hidden-lg"></span>Course List</a>
                     </li>
                 </ul>
