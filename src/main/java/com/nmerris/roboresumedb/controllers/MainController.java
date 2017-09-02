@@ -505,27 +505,51 @@ public class MainController {
          */
     private NavBarState getPageLinkState() {
 
-        NavBarState pageState = new NavBarState();
+        NavBarState state = new NavBarState();
 
-        // add the current stat of the table counts, so the navbar badges know what to display
-        pageState.setNumSkills(skillRepo.count());
-        pageState.setNumWorkExps(workExperienceRepo.count());
-        pageState.setNumEdAchievements(educationRepo.count());
+        try {
+            // get the current Person, this will throw an exception if currPerson has not been set yet, which is ok
+            // this will happen in /addperson GET when a new person is being entered
+            Person p = personRepo.findOne(currPerson.getPersonId());
 
-        // disable links as necessary... don't allow user to add any resume data until AFTER they have entered their
-        // personal info, also don't allow them to click any links if the repos contain too many records
-        pageState.setDisableAddEdLink(personRepo.count() == 0 || educationRepo.count() >= 10);
-        pageState.setDisableAddSkillLink(personRepo.count() == 0 || skillRepo.count() >= 20);
-        pageState.setDisableAddWorkExpLink(personRepo.count() == 0 || workExperienceRepo.count() >= 10);
+            // if this line is reached, the there must be a Person already entered
 
-        // disable edit link if no data has been entered yet
-        pageState.setDisableEditDetailsLink(personRepo.count() == 0 && skillRepo.count() == 0 && educationRepo.count() == 0
-                && workExperienceRepo.count() == 0);
+            // add the current table counts, so the navbar badges know what to display
+            state.setNumSkills(skillRepo.countAllByMyPersonIs(p));
+            state.setNumWorkExps(workExperienceRepo.countAllByMyPersonIs(p));
+            state.setNumEdAchievements(educationRepo.countAllByMyPersonIs(p));
 
-        // disable show final resume link until at least one ed achievement, skill, and personal info has been entered
-        pageState.setDisableShowFinalLink(personRepo.count() == 0 || skillRepo.count() == 0 || educationRepo.count() == 0);
+            // disable links as necessary... don't allow them to click any links if the repos contain too many records
+            state.setDisableAddEdLink(educationRepo.countAllByMyPersonIs(p) >= 10);
+            state.setDisableAddSkillLink(skillRepo.countAllByMyPersonIs(p) >= 20);
+            state.setDisableAddWorkExpLink(workExperienceRepo.countAllByMyPersonIs(p) >= 10);
 
-        return pageState;
+            // enable the edit details link... the user has already entered a Person, so it's ok to to allow them to edit
+            state.setDisableEditDetailsLink(false);
+
+            // disable show final resume link until at least one ed achievement, skill, and personal info has been entered
+            state.setDisableShowFinalLink(skillRepo.countAllByMyPersonIs(p) == 0 || educationRepo.countAllByMyPersonIs(p) == 0);
+        } catch (Exception e) {
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! caught exception in getPageLinkState, so must not have found a Person in personRepo");
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!! initializing navbar state with appropriate values....");
+
+            // zero out the counts for the badges, because user has not entered a Person yet
+            state.setNumSkills(0);
+            state.setNumWorkExps(0);
+            state.setNumEdAchievements(0);
+
+            // disable links... user has not entered a Person yet
+            state.setDisableAddEdLink(true);
+            state.setDisableAddSkillLink(true);
+            state.setDisableAddWorkExpLink(true);
+
+            // disable edit link... user has not entered a Person yet
+            state.setDisableEditDetailsLink(true);
+
+            state.setDisableShowFinalLink(true);
+        }
+
+        return state;
     }
     
     

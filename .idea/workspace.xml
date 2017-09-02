@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -199,8 +198,8 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="347">
-                  <caret line="505" column="24" lean-forward="false" selection-start-line="505" selection-start-column="24" selection-end-line="505" selection-end-column="24" />
+                <state relative-caret-position="503">
+                  <caret line="526" column="121" lean-forward="false" selection-start-line="526" selection-start-column="121" selection-end-line="526" selection-end-column="121" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
                     <element signature="e#1085#1086#0" expanded="true" />
@@ -254,6 +253,8 @@
       <find>delete</find>
       <find>item</find>
       <find>~</find>
+      <find>skillRepo.count()</find>
+      <find>personRepo.count() == 0 ||</find>
     </findStrings>
     <replaceStrings>
       <replace>ple</replace>
@@ -263,6 +264,7 @@
       <replace>lg-offset</replace>
       <replace>update</replace>
       <replace>person</replace>
+      <replace>skillRepo.countAllByMyPersonIs(p)</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -311,9 +313,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/summary.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/SkillRepo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/WorkExperienceRepo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
       </list>
     </option>
   </component>
@@ -571,13 +573,6 @@
       <workItem from="1503751677840" duration="22267000" />
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
-    </task>
-    <task id="LOCAL-00026" summary="fix bug: if user refreshed editdetails page after deleting an item, the app will no longer crash, also added custom mobile hamburger menu if navbar collapses under 992px">
-      <created>1503766499260</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1503766499260</updated>
     </task>
     <task id="LOCAL-00027" summary="add comments">
       <created>1503766769098</created>
@@ -915,11 +910,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504365977524</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="modify skill and work exp repos, they now have methods like ed repo for count and to return iterable, not tested yet">
+      <created>1504366267797</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1504366267797</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108094000" />
+    <option name="totallyTimeSpent" value="109579000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -1011,7 +1013,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="final resume page looks nice" />
     <MESSAGE value="minor edits final page" />
     <MESSAGE value="properties file fix" />
     <MESSAGE value="fix skill list bug" />
@@ -1036,7 +1037,8 @@
     <MESSAGE value="update /addeducation post to use ed repo counts of curr person, tested ok" />
     <MESSAGE value="add comments, also tested /addeducation post route disable submit if &gt;= 10 records... ok" />
     <MESSAGE value="modify /update to reflect current ed repo count, also extracted Person p from switch so you don't need to find it multiple times, tested ok" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify /update to reflect current ed repo count, also extracted Person p from switch so you don't need to find it multiple times, tested ok" />
+    <MESSAGE value="modify skill and work exp repos, they now have methods like ed repo for count and to return iterable, not tested yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify skill and work exp repos, they now have methods like ed repo for count and to return iterable, not tested yet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1456,20 +1458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="505" column="24" lean-forward="false" selection-start-line="505" selection-start-column="24" selection-end-line="505" selection-end-column="24" />
-          <folding>
-            <element signature="e#1055#1056#0" expanded="true" />
-            <element signature="e#1085#1086#0" expanded="true" />
-            <element signature="e#1143#1144#0" expanded="true" />
-            <element signature="e#1173#1174#0" expanded="true" />
-            <element signature="e#10200#10303#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/EducationRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1483,6 +1471,20 @@
         <state relative-caret-position="105">
           <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="526" column="121" lean-forward="false" selection-start-line="526" selection-start-column="121" selection-end-line="526" selection-end-column="121" />
+          <folding>
+            <element signature="e#1055#1056#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1143#1144#0" expanded="true" />
+            <element signature="e#1173#1174#0" expanded="true" />
+            <element signature="e#10200#10303#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
