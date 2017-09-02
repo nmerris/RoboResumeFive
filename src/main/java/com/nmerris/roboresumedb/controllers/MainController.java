@@ -358,10 +358,12 @@ public class MainController {
         System.out.println("=============================================================== just entered /editdetails GET");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
-        model.addAttribute("person", personRepo.findOne(currPerson.getPersonId()));
-        model.addAttribute("edAchievements", educationRepo.findAllByMyPersonIs(personRepo.findOne(currPerson.getPersonId())));
-        model.addAttribute("workExperiences", workExperienceRepo.findAll());
-        model.addAttribute("skills", skillRepo.findAll());
+        // get the current Person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+        model.addAttribute("person", p);
+        model.addAttribute("edAchievements", educationRepo.findAllByMyPersonIs(p));
+        model.addAttribute("workExperiences", workExperienceRepo.findAllByMyPersonIs(p));
+        model.addAttribute("skills", skillRepo.findAllByMyPersonIs(p));
 
         NavBarState pageState = getPageLinkState();
         pageState.setHighlightEditNav(true);
