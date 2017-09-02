@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/addeducation.html" afterPath="$PROJECT_DIR$/target/classes/templates/addeducation.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/addskill.html" afterPath="$PROJECT_DIR$/target/classes/templates/addskill.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/addworkexperience.html" afterPath="$PROJECT_DIR$/target/classes/templates/addworkexperience.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +49,8 @@
           <file leaf-file-name="studentdirectory.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="645">
-                  <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+                <state relative-caret-position="555">
+                  <caret line="37" column="45" lean-forward="true" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
                   <folding />
                 </state>
               </provider>
@@ -203,7 +199,7 @@
           <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="728">
+                <state relative-caret-position="-3140">
                   <caret line="373" column="0" lean-forward="false" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
                   <folding>
                     <element signature="e#1055#1056#0" expanded="true" />
@@ -607,13 +603,6 @@
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
     </task>
-    <task id="LOCAL-00035" summary="cleaned up MainController">
-      <created>1503839567303</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1503839567303</updated>
-    </task>
     <task id="LOCAL-00036" summary="modify delete route so that is redirects back to editdetails in every case, and uses an anchor tag to keep the user at roughly the same spot in the page, also removed all the now unnecessary model attributes">
       <created>1503840736711</created>
       <option name="number" value="00036" />
@@ -950,11 +939,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504380351321</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="modify /editdetails to reflect db changes">
+      <created>1504380886123</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1504380886123</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116836000" />
+    <option name="totallyTimeSpent" value="117461000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -977,7 +973,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11992188" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.121875" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1469" y="152" width="441" height="869" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.121875" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="1469" y="152" width="441" height="869" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1046,7 +1042,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="add one to many and many to one, created constructor for hash set in Person" />
     <MESSAGE value="remove security stuff from SecurityConfiguration" />
     <MESSAGE value="comment out a few lines in addperson GET, add session variable class" />
     <MESSAGE value="added new ed achievement, attached curr person to it, in addeducation get" />
@@ -1071,7 +1066,8 @@
     <MESSAGE value="modify /addworkexperience get route to reflect db changes" />
     <MESSAGE value="modify /addworkexperience get and post to reflect new db changes" />
     <MESSAGE value="add hidden myPerson.id form fields in addskill and addeducation" />
-    <option name="LAST_COMMIT_MESSAGE" value="add hidden myPerson.id form fields in addskill and addeducation" />
+    <MESSAGE value="modify /editdetails to reflect db changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify /editdetails to reflect db changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1520,17 +1516,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="26" lean-forward="true" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
+        <state relative-caret-position="-3140">
           <caret line="373" column="0" lean-forward="false" selection-start-line="373" selection-start-column="0" selection-end-line="373" selection-end-column="0" />
           <folding>
             <element signature="e#1055#1056#0" expanded="true" />
@@ -1539,6 +1527,14 @@
             <element signature="e#1173#1174#0" expanded="true" />
             <element signature="e#10193#10296#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="45" lean-forward="true" selection-start-line="37" selection-start-column="45" selection-end-line="37" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
