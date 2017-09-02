@@ -49,7 +49,7 @@ public class MainController {
     public String indexPageGet() {
         // redirect is like clicking a link on a web page, this route will not even show a view, it just redirects
         // the user to the addperson route
-        return "redirect:/addperson";
+        return "redirect:/studentdirectory";
     }
 
 
