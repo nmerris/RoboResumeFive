@@ -656,6 +656,11 @@ public class MainController {
         courseRepo.save(c4);
 
 
+        // get all the persons who are enrolled in a given course
+        System.out.println("******************************** persons enrolled in courseId: " + c3.getId() + ", title: " + c3.getTitle());
+        for (Person enrolledPerson : personRepo.findAllByCoursesIs(c3)) {
+            System.out.println("*********** personId: " + enrolledPerson.getId() + ", first name: " + enrolledPerson.getNameFirst());
+        }
 
 
 

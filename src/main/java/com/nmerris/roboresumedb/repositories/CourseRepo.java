@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface CourseRepo extends CrudRepository<Course, Long> {
 
-    Iterable<Course> findAllByPeopleIs(Person currentPerson); // ????????????
+    Iterable<Course> findAllByPeopleIs(Person currentPerson);
 }

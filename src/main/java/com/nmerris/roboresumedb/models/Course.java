@@ -37,14 +37,12 @@ public class Course {
     }
 
 
-    // call this to remove a set of persons from a course, then save to courseRepo... ?????
+    // call this to remove a set of persons from a course, then save to courseRepo...
+    // BEFORE you save this course back to repo, you MUST first remove this course from EVERY person it is attached to
     public void removePersons(Collection<Person> personCollection) {
         people.removeAll(personCollection);
     }
 
-//    public void removePerson(Person person) {
-//        people.remove(person);
-//    }
 
     // need to use @Transactional annotation on any method that calls this
     // call this before deleting an entire course ???
