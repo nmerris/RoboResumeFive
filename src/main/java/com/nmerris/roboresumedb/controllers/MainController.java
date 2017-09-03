@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class MainController {
@@ -806,6 +807,36 @@ public class MainController {
         return "summary";
     }
 
+
+    @GetMapping("/studentregistration")
+    public String studentRegistrationGet(Model model) {
+        System.out.println("=============================================================== just entered /studentregistration GET");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
+        // get the current person
+        Person p = personRepo.findOne(currPerson.getPersonId());
+
+        // add ALL the courses to the model
+        model.addAttribute("allCourses", courseRepo.findAll());
+
+        // add the course that the current student is currently registered in
+        model.addAttribute("currentlyRegisteredCourses", p.getCourses());
+
+        // add an empty set for the form to fill, it will contain only the ids of the courses that remain checked after
+        // form has been submitted
+//        model.addAttribute("finalSelectedCourseIds", new HashSet<Long>());
+
+        // add a set of ids to the model, so we know which boxes to pre-check
+//        Set<Long> currentlyEnrolledCourses = new HashSet<>();
+//        for (Course c : personRepo.findOne(currPerson.getPersonId()).getCourses()) {
+//            currentlyEnrolledCourses.ad
+//        }
+
+        String s = String.format("Student: %s %s, ID: %d", p.getNameFirst(), p.getNameLast(), p.getId());
+        model.addAttribute("summaryBarTitle", s);
+
+        return "studentregistration";
+    }
 
 
 
