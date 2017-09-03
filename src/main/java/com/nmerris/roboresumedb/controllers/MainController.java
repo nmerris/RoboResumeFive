@@ -503,6 +503,13 @@ public class MainController {
                 pageState.setHighlightSkillNav(true);
                 model.addAttribute("pageState", pageState);
                 return "addskill";
+            case "course" :
+                model.addAttribute("newCourse", courseRepo.findOne(id));
+                // see boolean flag to highlight the appropriate navbar link
+                model.addAttribute("highlightDirectory", false);
+                model.addAttribute("highlightCourses", false);
+                model.addAttribute("highlightAddCourse", true);
+                return "addcourse";
         }
 
         // should never happen, but need it to compile, better to redirect, just in case something does go wrong, at
@@ -708,12 +715,8 @@ public class MainController {
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% about to save course to Repo");
         courseRepo.save(course);
 
-        model.addAttribute("highlightDirectory", false);
-        model.addAttribute("highlightCourses", true);
-        model.addAttribute("highlightAddCourse", false);
-
         // go to course listing page if successfully added a course, no need for confirmation page here
-        return "courselist";
+        return "redirect:/courselist";
     }
     
 
