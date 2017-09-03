@@ -792,8 +792,17 @@ public class MainController {
         model.addAttribute("numSkills", skillRepo.countAllByMyPersonIs(p));
         addPersonNameToModel(model);
 
-//        model.addAttribute("courses", p.)
-        // ......
+        model.addAttribute("courses", courseRepo.findAllByPeopleIs(p));
+        String s = String.format("Student: %s %s, ID: %d", p.getNameFirst(), p.getNameLast(), p.getId());
+        model.addAttribute("summaryBarTitle", s);
+
+        // add the total number of credits for this student to the model
+        long sumCredits = 0;
+        for (Course c : courseRepo.findAllByPeopleIs(p)) {
+            sumCredits += c.getCredits();
+        }
+        model.addAttribute("sumCredits", sumCredits);
+
         return "summary";
     }
 

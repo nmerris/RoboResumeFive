@@ -6,52 +6,116 @@
 
 <body>
 
+<!-- a very basic navbar for student summary page, so simple it doesn't need to collapse -->
+<nav class="navbar navbar-inverse navbar-fixed-top card-3">
+    <div class="container">
+
+        <div class="navbar-header">
+            <!-- TODO make a new github repo and change this link -->
+            <a class="navbar-brand" href="https://github.com/nmerris/RoboResumeFive">STUDBOT 5K</a>
+        </div>
+
+        <!--<div class="nav navbar-header">-->
+            <!--<span class="navbar-brand" th:text="${summaryBarTitle}"></span>-->
+        <!--</div>-->
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a th:href="@{~/studentdirectory}"><span class="glyphicon glyphicon-arrow-left"></span>Home</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
 <div class="container">
     <div class="col-lg-8 col-lg-offset-2">
         <div class="panel panel-default card card-3">
             <div class="panel-body">
 
-                <h2 th:text="'Summary for ' + ${firstAndLastName}"></h2>
-                <div class="final-section-header">
-                    <span>Resume Entries</span>
+                <h3 th:text="${summaryBarTitle}"></h3>
+
+                <!-- shows counts of different parts of students resume -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <caption><h3><b>Resume Summary</b></h3></caption>
+
+                        <thead>
+                            <tr>
+                                <th>Section</th>
+                                <th>Entries</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td><p>Educational Achievements</p></td>
+                                <td><p th:text="${numEds}"></p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Work Experiences</p></td>
+                                <td><p th:text="${numWorkExps}"></p></td>
+                            </tr>
+                            <tr>
+                                <td><p>Skills</p></td>
+                                <td><p th:text="${numSkills}"></p></td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <td><p><b>Total Entries</b></p></td>
+                                <td>
+                                    <div th:with="sum=${numEds + numWorkExps + numSkills}">
+                                        <p th:text="${sum}"></p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+
+                    </table>
                 </div>
-                <h4 th:text="'Educational Achievements entered: ' + ${numEds}"></h4>
-                <h4 th:text="'Work Experiences entered: ' + ${numWorkExps}"></h4>
-                <h4 th:text="'Skills entered: ' + ${numSkills}"></h4>
-                <!-- if this page is visible, currPerson has already been set in MainController, so /editdetails
-                     will know which person to use -->
+                <!-- go to resume edit details page to edti resume details -->
+                <!-- the currPerson session variable has already been set, so no need for any path variables -->
                 <a class="btn btn-primary bold-input" th:href="@{~/editdetails}">Edit Resume</a>
 
+                <!-- table of courses student is registered in -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <caption><h3><b>Registered Courses</b></h3></caption>
 
-                <div class="final-section-header">
-                    <span>Registered Courses</span>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Instructor</th>
+                                <th>Credits</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <th:block th:each="item:${courses}">
+                                <tr>
+                                    <td><p th:text="${item.title}"></p></td>
+                                    <td><p th:text="${item.instructor}"></p></td>
+                                    <td><p th:text="${item.credits}"></p></td>
+                                </tr>
+                            </th:block>
+                        </tbody>
+
+                        <tfoot>
+                        <tr>
+                            <td colspan="2"><p><b>Total Credits</b></p></td>
+                            <td>
+                                <p th:text="${sumCredits}"></p>
+                            </td>
+                        </tr>
+                        </tfoot>
+
+                    </table>
                 </div>
-                <!---->
-                <!--<div class="final-section-header">-->
-                    <!--<span>Work Experiences</span>-->
-                <!--</div>-->
-                <!--<th:block th:each="item:${person.workExperiences}">-->
-                    <!--&lt;!&ndash; always have thymeleaf format the start date because it MUST be present and valid &ndash;&gt;-->
-                    <!--&lt;!&ndash; however, end date may be null, in which case we want thymeleaf to insert 'Present' instead &ndash;&gt;-->
-                    <!--&lt;!&ndash; NOTE: app crashes if you feed a null Date to #dates.format(...) &ndash;&gt;-->
-                    <!--<h4 class="align-right" th:text="${#dates.format(item.dateStart, 'MMM yyyy')} + ' - ' +-->
-                        <!--(${item.dateEnd != null} ? ${#dates.format(item.dateEnd, 'MMM yyyy')} : 'Present')"></h4>-->
-
-                    <!--<h4 class="final-item-title" th:text="${item.company}"></h4>-->
-                    <!--<h4 th:text="${item.jobTitle}"></h4>-->
-                    <!--<ul>-->
-                        <!--<li th:text="${item.dutyOne}"></li>-->
-                        <!--<li th:if="${!#strings.isEmpty(item.dutyTwo)}" th:text="${item.dutyTwo}"></li>-->
-                    <!--</ul>-->
-                <!--</th:block>-->
-
-                <!--<div class="final-section-header">-->
-                    <!--<span>Skills</span>-->
-                <!--</div>-->
-                <!--<th:block th:each="item:${person.skills}">-->
-                    <!--<h4 class="align-right" th:text="${item.rating}"></h4>-->
-                    <!--<h4 class="final-item-title item-skill" th:text="${item.skill}"></h4>-->
-                <!--</th:block>-->
+                <!-- the currPerson session variable has already been set, so no need for any path variables -->
+                <a class="btn btn-primary bold-input" th:href="@{~/courseregistration}">Edit Registration</a>
 
             </div><!-- panel-body -->
         </div>
