@@ -3,10 +3,7 @@ package com.nmerris.roboresumedb.controllers;
 import com.nmerris.roboresumedb.CurrPerson;
 import com.nmerris.roboresumedb.Utilities;
 import com.nmerris.roboresumedb.models.*;
-import com.nmerris.roboresumedb.repositories.EducationRepo;
-import com.nmerris.roboresumedb.repositories.PersonRepo;
-import com.nmerris.roboresumedb.repositories.SkillRepo;
-import com.nmerris.roboresumedb.repositories.WorkExperienceRepo;
+import com.nmerris.roboresumedb.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 @Controller
 public class MainController {
@@ -28,6 +26,9 @@ public class MainController {
     SkillRepo skillRepo;
     @Autowired
     WorkExperienceRepo workExperienceRepo;
+    @Autowired
+    CourseRepo courseRepo;
+
     @Autowired
     CurrPerson currPerson;
 
@@ -535,11 +536,135 @@ public class MainController {
         // add all the persons to the model
         model.addAttribute("students", personRepo.findAll());
 
-        // no separate object here, there are only two navbar links and they do not have counts and are never disabled
-        // there is much less data to pass to the adminNavbar
+        // see boolean flag to highlight the appropriate navbar link
         model.addAttribute("highlightDirectory", true);
         model.addAttribute("highlightCourses", false);
+        model.addAttribute("highlightAddCourse", false);
         return "studentdirectory";
+    }
+
+
+    @GetMapping("/addcourse")
+    public String addCourseGet(Model model) {
+        System.out.println("=============================================================== just entered /addcourse GET");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
+
+//        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% created new skill, attached currPerson to it, about to add it to model");
+//        Skill skill = new Skill();
+//        skill.setMyPerson(p);
+//        model.addAttribute("newSkill", skill);
+
+
+        // testing
+        // create a new course with NO person attached to it
+        // result: course saved in repo ok, join table all nulls
+        Course c = new Course();
+        c.setCredits(1.5f);
+        c.setInstructor("Instructor Bob");
+        c.setTitle("Bob's course");
+        courseRepo.save(c);
+
+        // create another course
+        Course c2 = new Course();
+        c2.setCredits(2.5f);
+        c2.setInstructor("Instructor Two");
+        c2.setTitle("Course Title Two");
+        courseRepo.save(c2);
+
+        // create another course
+        Course c3 = new Course();
+        c3.setCredits(3.5f);
+        c3.setInstructor("Instructor Three");
+        c3.setTitle("Course Title Three");
+        courseRepo.save(c3);
+
+        // create another course
+        Course c4 = new Course();
+        c4.setCredits(4.5f);
+        c4.setInstructor("Instructor Four");
+        c4.setTitle("Course Title Four");
+        courseRepo.save(c4);
+
+
+        // create a new person with NO course attached to it
+        // result: exactly same as above but for person
+        Person p = new Person();
+        p.setEmail("a@b.com");
+        p.setNameFirst("Nate");
+        p.setNameLast("Merris");
+        personRepo.save(p);
+
+        Person p2 = new Person();
+        p2.setEmail("x@y.com");
+        p2.setNameLast("LastNameTwo");
+        p2.setNameFirst("FirstNameTwo");
+        personRepo.save(p2);
+
+
+        // now attach a set of courses to the person
+        HashSet<Course> myCourses = new HashSet<>();
+        myCourses.add(c);
+        myCourses.add(c2);
+        myCourses.add(c3);
+        p.addCourses(myCourses);
+        personRepo.save(p);
+
+        // check to make sure it worked
+        System.out.println("***************** just added a set of courses to person id: " + p.getId());
+        System.out.println("***************** courseRepo.findAllByMyPeopleIs(p): ");
+        for (Course anyCourse : courseRepo.findAllByPeopleIs(p)) {
+            System.out.println("********* course id: " + anyCourse.getId() + ", title: " + anyCourse.getTitle());
+        }
+
+        // remove a set of courses from the person
+        HashSet<Course> toRemove = new HashSet<>();
+        toRemove.add(c);
+        toRemove.add(c2);
+        toRemove.add(c4); // not actually attached to p, testing for check box input... !!!!!!!!!! works!!!!!!!!!!!!
+//        p.removeCourse(c);
+        p.removeCourses(toRemove);
+
+        // now add another set, this simulates a user checking/unchecking numerous course boxes in student reg page
+        HashSet<Course> toAddBack = new HashSet<>();
+        toAddBack.add(c2);
+        toAddBack.add(c4);
+        p.addCourses(toAddBack);
+
+        personRepo.save(p);
+
+        // check to make sure it worked
+        System.out.println("***************** just added, then removed, then added again courses");
+//        System.out.println("***************** just removed course id: " + c.getId());
+        System.out.println("***************** then saved to personRepo... courseRepo.findAllByMyPeopleIs(p): ");
+        for (Course anyCourse : courseRepo.findAllByPeopleIs(p)) {
+            System.out.println("********* course id: " + anyCourse.getId() + ", title: " + anyCourse.getTitle());
+        }
+
+
+        // try to remove a person from a course... WORKS!!! but must remove the course from EACH PERSON before removing
+        // the persons from the course, because database stuff
+        HashSet<Person> personsToRemove = new HashSet<>();
+        personsToRemove.add(p); // only removing one person, could do many
+        for (Person somePersonsToRemoveFromOneCourse : personsToRemove) {
+            somePersonsToRemoveFromOneCourse.removeCourse(c4);
+        }
+
+        // NOW that the course in question has been removed from EVERY person you are trying to remove from the course
+        // you can now remove the persons from the course and finally save it to repo
+        c4.removePersons(personsToRemove);
+        courseRepo.save(c4);
+
+
+
+
+
+        // see boolean flag to highlight the appropriate navbar link
+        model.addAttribute("highlightDirectory", false);
+        model.addAttribute("highlightCourses", false);
+        model.addAttribute("highlightAddCourse", true);
+
+        return "addcourse";
     }
 
 

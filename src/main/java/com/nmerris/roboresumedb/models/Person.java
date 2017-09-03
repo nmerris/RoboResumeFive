@@ -38,7 +38,7 @@ public class Person {
     @OneToMany(mappedBy = "myPerson", cascade = CascadeType.ALL, fetch= FetchType.EAGER)
     private Set<Skill> skills;
 
-    @ManyToMany(mappedBy = "people", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Course> courses;
 
     public Person() {
@@ -49,16 +49,28 @@ public class Person {
     }
 
 
-    // TODO need to test removing as a collection, also don't forget had to use @Transactional with clear() in /startover
+    // call this to add a set of Course to this Person, then save person to personRepo
+    public void addCourses(Collection<Course> courseCollection) {
+        courses.addAll(courseCollection);
+    }
+
+    // call this to remove a set of courses from this person, then save person to personRepo
     public void removeCourses(Collection<Course> courseCollection) {
         courses.removeAll(courseCollection);
     }
 
-    // in order to delete and employee, you must first remove it from it's department's Set of employees
+    public void removeCourse(Course course) {
+        courses.remove(course);
+    }
+
+    // TODO removeAllCourses, so we can delete a person?
+
+    // in order to delete an ed, you must first remove it from it's parents collection
     public void removeEdAchievement(EducationAchievement ea) {
         educationAchievements.remove(ea);
     }
 
+    // need to use @Transactional annotation on any method that calls this
     public void removeAllEdAchievements() {
         educationAchievements.clear();
     }

@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,19 +25,34 @@ public class Course {
 
     private float credits;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    private Set<Person> people;
+
+    @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Person> people;
 
 
     public Course() {
-//        people = new HashSet<>();
         setPeople(new HashSet<>());
     }
 
 
-    public void addPerson(Person p) {
-        people.add(p);
+    // call this to remove a set of persons from a course, then save to courseRepo... ?????
+    public void removePersons(Collection<Person> personCollection) {
+        people.removeAll(personCollection);
     }
+
+//    public void removePerson(Person person) {
+//        people.remove(person);
+//    }
+
+    // need to use @Transactional annotation on any method that calls this
+    // call this before deleting an entire course ???
+//    public void removeAllPersons() {
+//        people.clear();
+//    }
+
+
 
     public long getId() {
         return id;

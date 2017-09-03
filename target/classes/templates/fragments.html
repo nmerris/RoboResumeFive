@@ -23,7 +23,7 @@
 
 
     <!-- fixed navbar for use in admin section of app -->
-    <nav th:fragment="adminNavbar(highlightDirectory, highlightCourses)" class="navbar navbar-inverse navbar-fixed-top card-3">
+    <nav th:fragment="adminNavbar(highlightDirectory, highlightCourses, highlightAddCourse)" class="navbar navbar-inverse navbar-fixed-top card-3">
         <div class="container">
 
             <div class="navbar-header">
@@ -43,11 +43,15 @@
 
                 <ul class="nav navbar-nav">
                     <li th:classappend="${highlightDirectory ? 'active' : ''}">
-                        <a th:href="@{~/studentdirectory}"><span class="glyphicon glyphicon-list"></span>Student Directory</a>
+                        <a th:href="@{~/studentdirectory}"><span class="glyphicon glyphicon-list"></span>Directory</a>
                     </li>
 
                     <li th:classappend="${highlightCourses ? 'active' : ''}">
-                        <a th:href="@{~/courses}"><span class="glyphicon glyphicon-book"></span>Course List</a>
+                        <a th:href="@{~/courses}"><span class="glyphicon glyphicon-list"></span>Courses</a>
+                    </li>
+
+                    <li th:classappend="${highlightAddCourse ? 'active' : ''}">
+                        <a th:href="@{~/addcourse}"><span class="glyphicon glyphicon-plus"></span>Add Course</a>
                     </li>
                 </ul>
 
