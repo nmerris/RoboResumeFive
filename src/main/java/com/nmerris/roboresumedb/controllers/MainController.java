@@ -509,6 +509,8 @@ public class MainController {
                 model.addAttribute("highlightDirectory", false);
                 model.addAttribute("highlightCourses", false);
                 model.addAttribute("highlightAddCourse", true);
+                model.addAttribute("highlightAddStudent", false);
+
                 return "addcourse";
         }
 
@@ -548,6 +550,8 @@ public class MainController {
         model.addAttribute("highlightDirectory", true);
         model.addAttribute("highlightCourses", false);
         model.addAttribute("highlightAddCourse", false);
+        model.addAttribute("highlightAddStudent", false);
+
         return "studentdirectory";
     }
 
@@ -563,7 +567,53 @@ public class MainController {
         model.addAttribute("highlightDirectory", false);
         model.addAttribute("highlightCourses", true);
         model.addAttribute("highlightAddCourse", false);
+        model.addAttribute("highlightAddStudent", false);
+
         return "courselist";
+    }
+
+
+    @GetMapping("/addstudent")
+    public String addStudentGet(Model model) {
+        System.out.println("=============================================================== just entered /addstudent GET");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% created new person, nothing is attached to it, about to add it to model");
+
+        Person person = new Person();
+        model.addAttribute("newStudent", person);
+
+        // see boolean flag to highlight the appropriate navbar link
+        model.addAttribute("highlightDirectory", false);
+        model.addAttribute("highlightCourses", false);
+        model.addAttribute("highlightAddStudent", true);
+        model.addAttribute("highlightAddCourse", false);
+
+        return "addstudent";
+    }
+
+
+    // very similar to /addperson, except this happens in the admin section of the app, not in the resume section
+    // the same Person entity is used in both cases, so updating in either place will have the same database results
+    @PostMapping("/addstudent")
+    public String addStudentPost(@Valid @ModelAttribute("newStudent") Person person,
+                                BindingResult bindingResult, Model model) {
+        System.out.println("=============================================================== just entered /addstudent POST");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("highlightDirectory", false);
+            model.addAttribute("highlightCourses", false);
+            model.addAttribute("highlightAddCourse", false);
+            model.addAttribute("highlightAddStudent", true);
+            return "addstudent";
+        }
+
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% about to save person to Repo");
+        personRepo.save(person);
+
+        // go to student directory page if successfully added a student, no need for confirmation page here
+        return "redirect:/studentdirectory";
     }
 
 
@@ -693,6 +743,7 @@ public class MainController {
         model.addAttribute("highlightDirectory", false);
         model.addAttribute("highlightCourses", false);
         model.addAttribute("highlightAddCourse", true);
+        model.addAttribute("highlightAddStudent", false);
 
         return "addcourse";
     }
@@ -709,6 +760,7 @@ public class MainController {
             model.addAttribute("highlightDirectory", false);
             model.addAttribute("highlightCourses", false);
             model.addAttribute("highlightAddCourse", true);
+            model.addAttribute("highlightAddStudent", false);
             return "addcourse";
         }
 
