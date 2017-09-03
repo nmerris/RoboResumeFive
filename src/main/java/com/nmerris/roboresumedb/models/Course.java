@@ -3,6 +3,7 @@ package com.nmerris.roboresumedb.models;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.HashSet;
@@ -23,7 +24,8 @@ public class Course {
     @Size(max = 50)
     private String instructor;
 
-    private float credits;
+    @Min(0)
+    private long credits;
 
 //    @ManyToMany(fetch = FetchType.EAGER)
 //    private Set<Person> people;
@@ -76,11 +78,11 @@ public class Course {
         this.instructor = instructor;
     }
 
-    public float getCredits() {
+    public long getCredits() {
         return credits;
     }
 
-    public void setCredits(float credits) {
+    public void setCredits(long credits) {
         this.credits = credits;
     }
 

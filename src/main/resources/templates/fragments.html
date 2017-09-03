@@ -43,11 +43,11 @@
 
                 <ul class="nav navbar-nav">
                     <li th:classappend="${highlightDirectory ? 'active' : ''}">
-                        <a th:href="@{~/studentdirectory}"><span class="glyphicon glyphicon-list"></span>Directory</a>
+                        <a th:href="@{~/studentdirectory}"><span class="glyphicon glyphicon-list"></span>Students</a>
                     </li>
 
                     <li th:classappend="${highlightCourses ? 'active' : ''}">
-                        <a th:href="@{~/courses}"><span class="glyphicon glyphicon-list"></span>Courses</a>
+                        <a th:href="@{~/courselist}"><span class="glyphicon glyphicon-list"></span>Courses</a>
                     </li>
 
                     <li th:classappend="${highlightAddCourse ? 'active' : ''}">

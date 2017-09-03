@@ -12,32 +12,37 @@
         <div class="panel panel-default card card-3">
             <div class="panel-body">
                 <div class="text-center feedback">
-                    <h2>Add a new course</h2>
+                    <h2>Enter Course Information</h2>
                 </div>
 
-                <!--<form action="#" th:action="@{/addperson}" th:object="${newPerson}" method="post">-->
+                <form action="#" th:action="@{/addcourse}" th:object="${newCourse}" method="post">
 
-                    <!--<input type="hidden" th:field="*{id}"/>-->
+                    <input type="hidden" th:field="*{id}"/>
 
-                    <!--<div class="form-group">-->
-                        <!--<label class="section-heading" for="nameFirst">First Name</label>-->
-                        <!--<input id="nameFirst" class="form-control" type="text" th:field="*{nameFirst}" autofocus/>-->
-                        <!--<p class="alert alert-danger" th:if="${#fields.hasErrors('nameFirst')}" th:errors="*{nameFirst}"></p>-->
-                    <!--</div>-->
-                    <!--<div class="form-group">-->
-                        <!--<label class="section-heading" for="nameLast">Last Name</label>-->
-                        <!--<input id="nameLast" class="form-control" type="text" th:field="*{nameLast}"/>-->
-                        <!--<p class="alert alert-danger" th:if="${#fields.hasErrors('nameLast')}" th:errors="*{nameLast}"></p>-->
-                    <!--</div>-->
-                    <!--<div class="form-group">-->
-                        <!--<label class="section-heading" for="email">Email</label>-->
-                        <!--<input id="email" class="form-control" type="text" th:field="*{email}"/>-->
-                        <!--<p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>-->
-                    <!--</div>-->
+                    <div class="form-group">
+                        <label class="section-heading" for="title">Title</label>
+                        <input id="title" class="form-control" type="text" th:field="*{title}" autofocus/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="section-heading" for="instructor">Instructor</label>
+                        <input id="instructor" class="form-control" type="text" th:field="*{instructor}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('instructor')}" th:errors="*{instructor}"></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="section-heading" for="credits">Credits</label>
+                        <select id="credits" class="form-control" th:field="*{credits}">
+                            <!--<th:block th:each="creditValue:${courseCreditOptions}">-->
+                                <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}"></option>
+                            <!--</th:block>-->
+                        </select>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('credits')}" th:errors="*{credits}"></p>
+                    </div>
 
-                    <!--<div class="clearfix"></div>-->
-                    <!--<input class="btn btn-primary bold-input" type="submit" value="Submit" th:disabled="${disableSubmit}"/>-->
-                <!--</form>-->
+
+                    <div class="clearfix"></div>
+                    <input class="btn btn-primary bold-input" type="submit" value="Submit"/>
+                </form>
 
             </div>
         </div>
