@@ -21,7 +21,7 @@
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
-                                    <th colspan="2">Action</th>
+                                    <th colspan="3">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -33,6 +33,13 @@
                                         <td>
                                             <a th:href="@{|/summary/${item.id}|}" class="action-link">View Summary</a>
                                         </td>
+                                        <td>
+                                            <!-- updating a student is similar to updating a person from within the resume
+                                                 part of the app, except we want to stay in the admin section if you update
+                                                 from here, so we use type=student so the /update route knows where to go -->
+                                            <a th:href="@{|/update/${item.id}?type=student|}" class="action-link">Edit</a>
+                                        </td>
+
                                         <!-- TODO implement delete student, disabled for now, low priority -->
                                         <td>
                                             <a href="#" class="action-link">Delete</a>

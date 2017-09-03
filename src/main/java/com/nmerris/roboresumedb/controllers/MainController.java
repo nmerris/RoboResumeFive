@@ -510,8 +510,14 @@ public class MainController {
                 model.addAttribute("highlightCourses", false);
                 model.addAttribute("highlightAddCourse", true);
                 model.addAttribute("highlightAddStudent", false);
-
                 return "addcourse";
+            case "student" :
+                model.addAttribute("newStudent", personRepo.findOne(id));
+                model.addAttribute("highlightDirectory", false);
+                model.addAttribute("highlightCourses", false);
+                model.addAttribute("highlightAddCourse", false);
+                model.addAttribute("highlightAddStudent", true);
+                return "addstudent";
         }
 
         // should never happen, but need it to compile, better to redirect, just in case something does go wrong, at
