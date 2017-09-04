@@ -816,11 +816,23 @@ public class MainController {
         // get the current person
         Person p = personRepo.findOne(currPerson.getPersonId());
 
-        // add ALL the courses to the model
-        model.addAttribute("allCourses", courseRepo.findAll());
-
-        // add the course that the current student is currently registered in
+        // add the courses that the current student is currently registered in, these will all be pre-checked
         model.addAttribute("currentlyRegisteredCourses", p.getCourses());
+
+        // remove the currently registered courses from the set of all the courses, and add them to the model
+        Set<Course> remainingCourses = new HashSet<>();
+        for (Course c : courseRepo.findAll()) {
+            for(Course enrolledCourse : p.getCourses()) {
+                if(c.getId())
+            }
+        }
+
+
+
+
+//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ allRemainingCourses size is: " + courseRepo.findAllByPeopleIsNot(p).size());
+
+//        model.addAttribute("allRemainingCourses", courseRepo.findAllByPeopleIsNot(p));
 
         // add an empty set for the form to fill, it will contain only the ids of the courses that remain checked after
         // form has been submitted
@@ -839,7 +851,44 @@ public class MainController {
     }
 
 
+    @PostMapping("/studentregistration")
+    public String studentRegistrationPost(@RequestParam(value = "checkedIds", required = false) long[] checkedCourseIds, Model model) {
+        System.out.println("=============================================================== just entered /studentregistration POST");
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
+
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!! just got these ids from check boxes...");
+        for (long id : checkedCourseIds) {
+            System.out.print(id + ", ");
+        }
+
+
+        // get the current person
+//        Person p = personRepo.findOne(currPerson.getPersonId());
+
+        // add ALL the courses to the model
+//        model.addAttribute("allCourses", courseRepo.findAll());
+
+        // add the course that the current student is currently registered in
+//        model.addAttribute("currentlyRegisteredCourses", p.getCourses());
+
+        // add an empty set for the form to fill, it will contain only the ids of the courses that remain checked after
+        // form has been submitted
+//        model.addAttribute("finalSelectedCourseIds", new HashSet<Long>());
+
+        // add a set of ids to the model, so we know which boxes to pre-check
+//        Set<Long> currentlyEnrolledCourses = new HashSet<>();
+//        for (Course c : personRepo.findOne(currPerson.getPersonId()).getCourses()) {
+//            currentlyEnrolledCourses.ad
+//        }
+
+//        String s = String.format("Student: %s %s, ID: %d", p.getNameFirst(), p.getNameLast(), p.getId());
+//        model.addAttribute("summaryBarTitle", s);
+
+        // show the registration page, it's as good as a confirmation page, because it shows all the courses the student
+        // is registered in, and will reflect any changes just made
+        return "redirect:/studentregistration";
+    }
 
 
 
