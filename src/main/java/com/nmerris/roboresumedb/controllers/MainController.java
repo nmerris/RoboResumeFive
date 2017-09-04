@@ -816,34 +816,44 @@ public class MainController {
         // get the current person
         Person p = personRepo.findOne(currPerson.getPersonId());
 
+        // testing
+        Course c4 = new Course();
+        c4.setCredits(9);
+        c4.setInstructor("Instructor Four");
+        c4.setTitle("testingStudRegTitle");
+        courseRepo.save(c4);
+
+        // now attach a set of courses to the person
+        HashSet<Course> myCourses = new HashSet<>();
+        myCourses.add(c4);
+//        myCourses.add(c2);
+//        myCourses.add(c3);
+        p.addCourses(myCourses);
+        personRepo.save(p);
+
+
+
         // add the courses that the current student is currently registered in, these will all be pre-checked
         model.addAttribute("currentlyRegisteredCourses", p.getCourses());
 
-        // remove the currently registered courses from the set of all the courses, and add them to the model
+        // create a new HashSet to hold the courses that the current student is NOT currently registered in
         Set<Course> remainingCourses = new HashSet<>();
+        // fill it up with ALL courses initially
+        for (Course c : courseRepo.findAll()) {
+            remainingCourses.add(c);
+        }
+        // now remove each course that the current student is currently registered in
         for (Course c : courseRepo.findAll()) {
             for(Course enrolledCourse : p.getCourses()) {
-                if(c.getId())
+                if(c.getId() == enrolledCourse.getId()) {
+                    remainingCourses.remove(enrolledCourse);
+                }
             }
         }
+        // and add the set of remaining courses to the model, these will NOT be pre-checked
+        model.addAttribute("allRemainingCourses", remainingCourses);
 
-
-
-
-//        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ allRemainingCourses size is: " + courseRepo.findAllByPeopleIsNot(p).size());
-
-//        model.addAttribute("allRemainingCourses", courseRepo.findAllByPeopleIsNot(p));
-
-        // add an empty set for the form to fill, it will contain only the ids of the courses that remain checked after
-        // form has been submitted
-//        model.addAttribute("finalSelectedCourseIds", new HashSet<Long>());
-
-        // add a set of ids to the model, so we know which boxes to pre-check
-//        Set<Long> currentlyEnrolledCourses = new HashSet<>();
-//        for (Course c : personRepo.findOne(currPerson.getPersonId()).getCourses()) {
-//            currentlyEnrolledCourses.ad
-//        }
-
+        // add student name and ID to the model
         String s = String.format("Student: %s %s, ID: %d", p.getNameFirst(), p.getNameLast(), p.getId());
         model.addAttribute("summaryBarTitle", s);
 
@@ -857,9 +867,14 @@ public class MainController {
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!! just got these ids from check boxes...");
-        for (long id : checkedCourseIds) {
-            System.out.print(id + ", ");
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!! just got these ids from check boxes (these were the checked boxes)...");
+
+        try {
+            for (long id : checkedCourseIds) {
+                System.out.println(id + "  <-----");
+            }
+        } catch (Exception e) {
+            System.out.println("THERE WERE NO COURSES CHECKED, SO checkedCourseIds was NULL, that's just fine");
         }
 
 
