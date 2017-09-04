@@ -54,6 +54,11 @@ public class Person {
         courses.addAll(courseCollection);
     }
 
+    // add a single course
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
     // call this to remove a set of courses from this person, then save person to personRepo
     public void removeCourses(Collection<Course> courseCollection) {
         courses.removeAll(courseCollection);
@@ -63,7 +68,10 @@ public class Person {
         courses.remove(course);
     }
 
-    // TODO removeAllCourses, so we can delete a person?
+    // call this to remove all courses from person
+    public void removeAllCourses() {
+        courses.clear();
+    }
 
     // in order to delete an ed, you must first remove it from it's parents collection
     public void removeEdAchievement(EducationAchievement ea) {
