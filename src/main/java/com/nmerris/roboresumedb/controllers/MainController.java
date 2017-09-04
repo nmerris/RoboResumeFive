@@ -512,7 +512,7 @@ public class MainController {
                 model.addAttribute("highlightAddStudent", false);
                 return "addcourse";
             case "student" :
-                model.addAttribute("newStudent", personRepo.findOne(id));
+                model.addAttribute("newPerson", personRepo.findOne(id));
                 model.addAttribute("highlightDirectory", false);
                 model.addAttribute("highlightCourses", false);
                 model.addAttribute("highlightAddCourse", false);
@@ -801,6 +801,11 @@ public class MainController {
         }
         model.addAttribute("sumCredits", sumCredits);
 
+        model.addAttribute("highlightDirectory", true);
+        model.addAttribute("highlightCourses", false);
+        model.addAttribute("highlightAddCourse", false);
+        model.addAttribute("highlightAddStudent", false);
+
         return "summary";
     }
 
@@ -836,6 +841,18 @@ public class MainController {
         // add student name and ID to the model
         String s = String.format("Student: %s %s - ID: %d", p.getNameFirst(), p.getNameLast(), p.getId());
         model.addAttribute("summaryBarTitle", s);
+
+        model.addAttribute("highlightDirectory", true);
+        model.addAttribute("highlightCourses", false);
+        model.addAttribute("highlightAddCourse", false);
+        model.addAttribute("highlightAddStudent", false);
+
+        // sum up all the credits for courses the student is currently registered in
+        long sumCredits = 0;
+        for (Course c : p.getCourses()) {
+            sumCredits += c.getCredits();
+        }
+        model.addAttribute("sumCredits", sumCredits);
 
         return "studentregistration";
     }
@@ -902,6 +919,14 @@ public class MainController {
 
         // add the course ID to the model so that the POST method knows what course we are dealing with
         model.addAttribute("courseId", id);
+
+        model.addAttribute("highlightDirectory", false);
+        model.addAttribute("highlightCourses", true);
+        model.addAttribute("highlightAddCourse", false);
+        model.addAttribute("highlightAddStudent", false);
+
+        // disable the submit button if there are no students currently registered for this course
+        model.addAttribute("disableSubmit", c.getNumRegistered() == 0);
 
         return "courseregistration";
     }

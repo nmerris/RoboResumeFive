@@ -7,20 +7,22 @@
 <body>
 
 <!-- a very basic navbar for student summary page, so simple it doesn't need to collapse -->
-<nav class="navbar navbar-inverse navbar-fixed-top card-3">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- TODO make a new github repo and change this link -->
-            <a class="navbar-brand" href="https://github.com/nmerris/RoboResumeFive">STUDBOT 5K</a>
-        </div>
+<!--<nav class="navbar navbar-inverse navbar-fixed-top card-3">-->
+    <!--<div class="container">-->
+        <!--<div class="navbar-header">-->
+            <!--&lt;!&ndash; TODO make a new github repo and change this link &ndash;&gt;-->
+            <!--<a class="navbar-brand" href="https://github.com/nmerris/RoboResumeFive">STUDBOT 5K</a>-->
+        <!--</div>-->
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a th:href="@{~/studentdirectory}"><span class="glyphicon glyphicon-home"></span>Home</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+        <!--<ul class="nav navbar-nav navbar-right">-->
+            <!--<li>-->
+                <!--<a th:href="@{~/studentdirectory}"><span class="glyphicon glyphicon-home"></span>Home</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</nav>-->
+
+<nav th:replace="fragments :: adminNavbar(${highlightDirectory}, ${highlightCourses}, ${highlightAddCourse}, ${highlightAddStudent})"></nav>
 
 <div class="container">
     <div class="col-lg-8 col-lg-offset-2">
@@ -71,10 +73,18 @@
                                 </th:block>
                             </tbody>
 
+                            <tfoot>
+                            <tr>
+                                <td colspan="3"><p><b>Total Credits</b></p></td>
+                                <td>
+                                    <p th:text="${sumCredits}"></p>
+                                </td>
+                            </tr>
+
                         </table>
                     </div>
 
-                    <input class="btn btn-primary bold-input" type="submit" value="Submit"/>
+                    <input th:disabled="${disableSubmit}" class="btn btn-primary bold-input" type="submit" value="Submit"/>
                 </form>
 
             </div><!-- panel-body -->
