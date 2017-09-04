@@ -79,34 +79,30 @@ public class MainController {
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
         System.out.println("=============================================================== just entered /addperson GET");
-        System.out.println("############################### currPerson.getId is: " + currPerson.getPersonId());
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+        System.out.println("================================== about to create new Person and send it to form");
 
-        if(currPerson.getPersonId() == 0) {
-            System.out.println("*************** about to create a brand new person");
-            // must be entering a new person if currPerson has not been set yet, so add a brand new Person to model
-            model.addAttribute("newPerson", new Person());
-            NavBarState pageState = getPageLinkState();
-            // set the navbar to highlight the appropriate link
-            pageState.setHighlightPersonNav(true);
-            model.addAttribute("pageState", pageState);
+        Person person = new Person();
+        model.addAttribute("newPerson", person);
 
-            return "addperson";
-        }
-        else {
-            System.out.println("*************** about to redirect to /update/{id} because person ID was NOT zero");
+        NavBarState pageState = getPageLinkState();
+        // set the navbar to highlight the appropriate link
+        pageState.setHighlightPersonNav(true);
+        model.addAttribute("pageState", pageState);
 
-            // person must already have been entered, or we are editing an existing person, so need to go to update route instead
-            return "redirect:/update/" + currPerson.getPersonId() + "/?type=person";
-        }
+        return "addperson";
     }
 
 
     @PostMapping("/addperson")
-    public String addPersonPost(@Valid @ModelAttribute("newPerson") Person person,
+    public String addPersonPost(@Valid @ModelAttribute("newPerson") Person personFromForm,
                                 BindingResult bindingResult, Model model) {
         System.out.println("=============================================================== just entered /addperson POST");
-        System.out.println("############################### currPerson.getId is: " + currPerson.getPersonId());
+        System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
+        // need to always set the currPerson ID after adding a new, or updating an existing Person
+        currPerson.setPersonId(personFromForm.getId());
+        System.out.println("============================ RESETTING currPerson id now, should be new ID if got here from /addstudent GET, will be same id if got here from /update: " + currPerson.getPersonId());
 
         // return the same view (now with validation error messages) if there were any validation problems
         if(bindingResult.hasErrors()) {
@@ -118,16 +114,35 @@ public class MainController {
             return "addperson";
         }
 
-        // there is no need to check to see if the Person table already has an entry here, there is only ever one
-        // entry, and the save method will automatically update the entry in question, it knows that if the id is the
-        // same, it should update the entry instead of creating a new one, this is true here even if the user
-        // refreshes the page.
-        Person p = personRepo.save(person);
+//        // there is no need to check to see if the Person table already has an entry here, there is only ever one
+//        // entry, and the save method will automatically update the entry in question, it knows that if the id is the
+//        // same, it should update the entry instead of creating a new one, this is true here even if the user
+//        // refreshes the page.
+//        Person p = personRepo.save(personFromForm);
+//
+//        // get the id of the personFromForm just saved, set it in currPerson
+//        System.out.println("############################### personRepo.save id was: " + p.getId() + ", fname was: " + p.getNameFirst());
+//        currPerson.setPersonId(p.getId());
+//        System.out.println("############################### now currPerson.getId is: " + currPerson.getPersonId());
 
-        // get the id of the person just saved
-        System.out.println("############################### personRepo.save id was: " + p.getId() + ", fname was: " + p.getNameFirst());
-        currPerson.setPersonId(p.getId());
-        System.out.println("############################### now currPerson.getId is: " + currPerson.getPersonId());
+
+
+        // as far as I understand it, the Person coming in to this method from the form is NOT the same as the
+        // Person we sent to the model in /update/id... so even though personFromForm has the updated first and
+        // last names and email, it looses ALL of it's courses.  I could not figure out how to pass the set of courses through the form.
+        // So if you just save personFromForm here, you loose all
+        // courses.  I also tried: storing the Persons courses in currPerson session variable, then adding it back to
+        // personFromForm here.... the problem is that then I get a merge conflict error... the same darn error I was
+        // getting on Friday in class, because it thinks they are two different Persons.  So my solution is to get
+        // Person p back out from the repo, then update it's fields, and save it.  No need to add the courses back, because
+        // they never went anywhere.  Hmmmmmmmmmmmmmmm...................
+        Person p = personRepo.findOne(currPerson.getPersonId());
+        p.setNameFirst(personFromForm.getNameFirst());
+        p.setNameLast(personFromForm.getNameLast());
+        p.setEmail(personFromForm.getEmail());
+        personRepo.save(p);
+
+
 
         // go to education section automatically, it's the most logical
         // since there is no confirmation page for addperson, we want to redirect here
@@ -512,7 +527,7 @@ public class MainController {
                 model.addAttribute("highlightAddStudent", false);
                 return "addcourse";
             case "student" :
-                model.addAttribute("newPerson", personRepo.findOne(id));
+                model.addAttribute("newPerson", p);
                 model.addAttribute("highlightDirectory", false);
                 model.addAttribute("highlightCourses", false);
                 model.addAttribute("highlightAddCourse", false);
@@ -577,12 +592,15 @@ public class MainController {
     }
 
 
+    // this route only fires if a brand new student is being entered, if an existing student is being entered, it will
+    // always come through the /update/id GET route, so always set the currPerson id to zero here
     @GetMapping("/addstudent")
     public String addStudentGet(Model model) {
         System.out.println("=============================================================== just entered /addstudent GET");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+        System.out.println("================================== about to create new Person and send it to form");
 
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% created new person, nothing is attached to it, about to add it to model");
+
 
         Person person = new Person();
         model.addAttribute("newPerson", person);
@@ -600,10 +618,14 @@ public class MainController {
     // very similar to /addperson, except this happens in the admin section of the app, not in the resume section
     // the same Person entity is used in both cases, so updating in either place will have the same database results
     @PostMapping("/addstudent")
-    public String addStudentPost(@Valid @ModelAttribute("newPerson") Person person,
+    public String addStudentPost(@Valid @ModelAttribute("newPerson") Person personFromForm,
                                 BindingResult bindingResult, Model model) {
         System.out.println("=============================================================== just entered /addstudent POST");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
+
+        // need to always set the currPerson ID after adding a new, or updating an existing Person
+//        currPerson.setPersonId(personFromForm.getId());
+//        System.out.println("============================ RESETTING currPerson id now, should be 0 if we got here from /addstudent GET, will be same id if got here from /update: " + currPerson.getPersonId());
 
         if(bindingResult.hasErrors()) {
             model.addAttribute("highlightDirectory", false);
@@ -613,8 +635,30 @@ public class MainController {
             return "addstudent";
         }
 
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% about to save person to Repo");
-        personRepo.save(person);
+        // as far as I understand it, the Person coming in to this method from the form is NOT the same as the
+        // Person we sent to the model in /update/id... so even though personFromForm has the updated first and
+        // last names and email, it looses ALL of it's courses.  I could not figure out how to pass the set of courses through the form.
+        // So if you just save personFromForm here, you loose all
+        // courses.  I also tried: storing the Persons courses in currPerson session variable, then adding it back to
+        // personFromForm here.... the problem is that then I get a merge conflict error... the same darn error I was
+        // getting on Friday in class, because it thinks they are two different Persons.  So my solution is to get
+        // Person p back out from the repo, then update it's fields, and save it.  No need to add the courses back, because
+        // they never went anywhere.  Hmmmmmmmmmmmmmmm...................
+        if(personFromForm.getId() != 0) {
+            // an existing Person is being updated
+            Person p = personRepo.findOne(currPerson.getPersonId());
+            p.setNameFirst(personFromForm.getNameFirst());
+            p.setNameLast(personFromForm.getNameLast());
+            p.setEmail(personFromForm.getEmail());
+            personRepo.save(p);
+        }
+        else {
+            // a brand new person is being entered, so just save it.. it can't have anything attached to it at this point
+            // and so there are no courses to keep track of, just use whatever came in from the form,
+            // and update currPerson ID
+            currPerson.setPersonId(personRepo.save(personFromForm).getId());
+            System.out.println("======================== JUST CREATED NEW PERSON, RESET currPerson id to: " + currPerson.getPersonId());
+        }
 
         // go to student directory page if successfully added a student, no need for confirmation page here
         return "redirect:/studentdirectory";
