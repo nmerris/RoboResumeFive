@@ -960,12 +960,21 @@ public class MainController {
             studentIdsToUnregister.add(p.getId());
         }
 
-        // convert the incoming array to a Set of Longs, these are the student ids to keep registered in this course
-        Set<Long> checkedStudentIdsSet = new HashSet<>(Arrays.asList(checkedStudentIds));
 
-        // remove the students that remained checked from the original set of all students that were checked
-        // this is essentially the difference of the initial set and the final set after user possibly modified it
-        studentIdsToUnregister.removeAll(checkedStudentIdsSet);
+        try {
+            // convert the incoming array to a Set of Longs, these are the student ids to keep registered in this course
+            // this may be null if every student was unchecked, which will throw an exception
+            Set<Long> checkedStudentIdsSet = new HashSet<>(Arrays.asList(checkedStudentIds));
+
+            // remove the students that remained checked from the original set of all students that were checked
+            // this is essentially the difference of the initial set and the final set after user possibly modified it
+            studentIdsToUnregister.removeAll(checkedStudentIdsSet);
+        } catch (Exception e) {
+            // checkedStudentIds must have been null, ie ALL students were unchecked from this course, which means we
+            // want to remove all students from this course, so leave studentsToUnRegister alone, becuase it already
+            // contains a set of all the currently registered students
+        }
+
 
         // remove this course from each student that was unchecked, then remove same person from this course
         for (long idToUnregister : studentIdsToUnregister) {
