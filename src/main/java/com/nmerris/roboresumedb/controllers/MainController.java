@@ -12,10 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -794,7 +791,7 @@ public class MainController {
         addPersonNameToModel(model);
 
         model.addAttribute("courses", courseRepo.findAllByPeopleIs(p));
-        String s = String.format("Student: %s %s, ID: %d", p.getNameFirst(), p.getNameLast(), p.getId());
+        String s = String.format("Student: %s %s - ID: %d", p.getNameFirst(), p.getNameLast(), p.getId());
         model.addAttribute("summaryBarTitle", s);
 
         // add the total number of credits for this student to the model
@@ -815,24 +812,6 @@ public class MainController {
 
         // get the current person
         Person p = personRepo.findOne(currPerson.getPersonId());
-
-        // testing
-//        Course c4 = new Course();
-//        c4.setCredits(9);
-//        c4.setInstructor("Instructor Four");
-//        c4.setTitle("testingStudRegTitle");
-//        courseRepo.save(c4);
-//
-//        // now attach a set of courses to the person
-//        HashSet<Course> myCourses = new HashSet<>();
-//        myCourses.add(c4);
-////        myCourses.add(c2);
-////        myCourses.add(c3);
-//        p.addCourses(myCourses);
-//        personRepo.save(p);
-
-
-
 
         // create a new HashSet to hold the courses that the current student is NOT currently registered in
         Set<Course> remainingCourses = new HashSet<>();
@@ -855,7 +834,7 @@ public class MainController {
         model.addAttribute("currentlyRegisteredCourses", p.getCourses());
 
         // add student name and ID to the model
-        String s = String.format("Student: %s %s, ID: %d", p.getNameFirst(), p.getNameLast(), p.getId());
+        String s = String.format("Student: %s %s - ID: %d", p.getNameFirst(), p.getNameLast(), p.getId());
         model.addAttribute("summaryBarTitle", s);
 
         return "studentregistration";
@@ -863,13 +842,13 @@ public class MainController {
 
 
     @PostMapping("/studentregistration")
-    public String studentRegistrationPost(@RequestParam(value = "checkedIds", required = false) long[] checkedCourseIds, Model model) {
+    public String studentRegistrationPost(@RequestParam(value = "checkedIds", required = false) long[] checkedCourseIds) {
         System.out.println("=============================================================== just entered /studentregistration POST");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
 
+        // testing
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!! just got these ids from check boxes (these were the checked boxes)...");
-
         try {
             for (long id : checkedCourseIds) {
                 System.out.println(id + "  <-----");
@@ -905,6 +884,77 @@ public class MainController {
         return "redirect:/studentregistration";
     }
 
+
+    @GetMapping("/courseregistration/{id}")
+    public String courseRegistrationGet(@PathVariable("id") long id, Model model) {
+        System.out.println("=============================================================== just entered /courseregistration GET");
+        System.out.println("=========================================== courseId: " + id);
+
+        // get the current being viewed
+        Course c = courseRepo.findOne(id);
+
+        // add all the students that are registered to this course to the model, all will be checked initially
+        model.addAttribute("registeredStudents", c.getPeople());
+
+        // add summary course info to model
+        String s = String.format("Course: %s - Instructor: %s", c.getTitle(), c.getInstructor());
+        model.addAttribute("summaryBarTitle", s);
+
+        // add the course ID to the model so that the POST method knows what course we are dealing with
+        model.addAttribute("courseId", id);
+
+        return "courseregistration";
+    }
+
+
+    // incoming RequestParam needs to be full object type Long in order to convert it to a Set
+    @PostMapping("/courseregistration/{id}")
+    public String courseRegistrationPost(@PathVariable("id") long id,
+                                         @RequestParam(value = "checkedIds", required = false) Long[] checkedStudentIds) {
+        System.out.println("=============================================================== just entered /courseregistration POST");
+        System.out.println("=========================================== courseId: " + id);
+
+        // get the course
+        Course c = courseRepo.findOne(id);
+
+
+        // testing
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!! just got these ids from check boxes (these were the checked boxes)...");
+        try {
+            for (long checkedId : checkedStudentIds) {
+                System.out.println(checkedId + "  <-----");
+            }
+        } catch (Exception e) {
+            System.out.println("THERE WERE NO STUDENTS CHECKED, SO checkedStudentIds was NULL, that's just fine");
+        }
+
+
+        // build a set of ids to unregister from this course, start with a set of ALL the ids currently registered
+        Set<Long> studentIdsToUnregister = new HashSet<>();
+        for (Person p : c.getPeople()) {
+            studentIdsToUnregister.add(p.getId());
+        }
+
+        // convert the incoming array to a Set of Longs, these are the student ids to keep registered in this course
+        Set<Long> checkedStudentIdsSet = new HashSet<>(Arrays.asList(checkedStudentIds));
+
+        // remove the students that remained checked from the original set of all students that were checked
+        // this is essentially the difference of the initial set and the final set after user possibly modified it
+        studentIdsToUnregister.removeAll(checkedStudentIdsSet);
+
+        // remove this course from each student that was unchecked, then remove same person from this course
+        for (long idToUnregister : studentIdsToUnregister) {
+            personRepo.findOne(idToUnregister).removeCourse(c);
+            c.removePerson(personRepo.findOne(idToUnregister));
+        }
+
+        // now save this course
+        courseRepo.save(c);
+
+        // show the registration page as a confirmation
+        // TODO make some kind of toast or message to indicate confirmation
+        return "redirect:/courseregistration/" + id;
+    }
 
 
 

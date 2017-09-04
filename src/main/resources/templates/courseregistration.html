@@ -29,44 +29,34 @@
 
                 <h3 th:text="${summaryBarTitle}"></h3>
 
-                <form action="#" th:action="@{/studentregistration}" method="post">
+                <form action="#" th:action="@{~/courseregistration/{id}(id=${courseId})}" method="post">
                     <!-- table of courses student is registered in -->
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <caption>
-                                <h3><b>Registered Courses</b></h3>
-                                <h4>Check to register, uncheck to remove</h4>
+                                <h3><b>Registered Students</b></h3>
+                                <h4>Uncheck to remove student from course</h4>
                             </caption>
 
                             <thead>
-                            <tr>
-                                <th></th>
-                                <th>Title</th>
-                                <th>Instructor</th>
-                                <th>Credits</th>
-                            </tr>
+                                <tr>
+                                    <th></th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>ID</th>
+                                </tr>
                             </thead>
 
                             <tbody>
-                                <th:block th:each="item:${currentlyRegisteredCourses}">
+                                <th:block th:each="item:${registeredStudents}">
                                     <tr>
-                                        <!-- the checked Ids are available as an array of long as a request param in the post route -->
-                                        <!-- the top of the course list will have all the students currently registered courses already cheacked-->
-                                        <!-- the user can then check/uncheck as they please, only the checked ones will be returned to controller -->
+                                        <!-- all the students are prechecked here, because they are all registered to this course -->
                                         <td><input type="checkbox" name="checkedIds" th:value="${item.id}" checked/></td>
-                                        <td><p th:text="${item.title}"></p></td>
-                                        <td><p th:text="${item.instructor}"></p></td>
-                                        <td><p th:text="${item.credits}"></p></td>
-                                    </tr>
-                                </th:block>
-
-                                <!-- now display all the other courses, do not initially check any of them -->
-                                <th:block th:each="item:${allRemainingCourses}">
-                                    <tr>
-                                        <td><input type="checkbox" name="checkedIds" th:value="${item.id}"/></td>
-                                        <td><p th:text="${item.title}"></p></td>
-                                        <td><p th:text="${item.instructor}"></p></td>
-                                        <td><p th:text="${item.credits}"></p></td>
+                                        <td><p th:text="${item.nameFirst}"></p></td>
+                                        <td><p th:text="${item.nameLast}"></p></td>
+                                        <td><p th:text="${item.email}"></p></td>
+                                        <td><p th:text="${item.id}"></p></td>
                                     </tr>
                                 </th:block>
                             </tbody>

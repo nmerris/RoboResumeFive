@@ -45,6 +45,9 @@ public class Course {
         people.removeAll(personCollection);
     }
 
+    public void removePerson(Person person) {
+        people.remove(person);
+    }
 
     // need to use @Transactional annotation on any method that calls this
     // call this before deleting an entire course ???
