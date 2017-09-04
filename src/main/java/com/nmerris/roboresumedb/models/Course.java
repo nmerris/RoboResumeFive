@@ -27,9 +27,6 @@ public class Course {
     @Min(0)
     private long credits;
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    private Set<Person> people;
-
     @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Person> people;
 

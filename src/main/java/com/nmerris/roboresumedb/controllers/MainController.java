@@ -530,12 +530,10 @@ public class MainController {
         pageState.setHighlightFinalNav(true);
         model.addAttribute("pageState", pageState);
 
-        // get the one and only person from the db
-        // it is not possible to get here unless a Person exists, and at least one skill and ed achievement has been entered
-        Person p = personRepo.findAll().iterator().next();
+        Person p = personRepo.findOne(currPerson.getPersonId());
 
         // populate the empty ArrayLists in our single Person from data in other tables
-        composePerson(p);
+//        composePerson(p);
 
         model.addAttribute("person", p);
 
@@ -1038,27 +1036,27 @@ public class MainController {
      * sufficient info to create a resume.
      * @param person the Person to compose
      */
-    private void composePerson(Person person) {
-        // get all the records from the db
-        ArrayList<EducationAchievement> edsArrayList = new ArrayList<>();
-        for(EducationAchievement item : educationRepo.findAll()) {
-            edsArrayList.add(item);
-        }
-        // add it to our Person
-//        person.setEducationAchievements(edsArrayList);
-
-        ArrayList<WorkExperience> weArrayList = new ArrayList<>();
-        for(WorkExperience item : workExperienceRepo.findAll()) {
-            weArrayList.add(item);
-        }
-//        person.setWorkExperiences(weArrayList);
-
-        ArrayList<Skill> skillsArrayList = new ArrayList<>();
-        for(Skill item : skillRepo.findAll()) {
-            skillsArrayList.add(item);
-        }
-//        person.setSkills(skillsArrayList);
-    }
+//    private void composePerson(Person person) {
+//        // get all the records from the db
+//        ArrayList<EducationAchievement> edsArrayList = new ArrayList<>();
+//        for(EducationAchievement item : educationRepo.findAll()) {
+//            edsArrayList.add(item);
+//        }
+//        // add it to our Person
+////        person.setEducationAchievements(edsArrayList);
+//
+//        ArrayList<WorkExperience> weArrayList = new ArrayList<>();
+//        for(WorkExperience item : workExperienceRepo.findAll()) {
+//            weArrayList.add(item);
+//        }
+////        person.setWorkExperiences(weArrayList);
+//
+//        ArrayList<Skill> skillsArrayList = new ArrayList<>();
+//        for(Skill item : skillRepo.findAll()) {
+//            skillsArrayList.add(item);
+//        }
+////        person.setSkills(skillsArrayList);
+//    }
 
 
     /**
