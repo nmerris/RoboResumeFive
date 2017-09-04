@@ -57,7 +57,7 @@
                                         <td><input type="checkbox" name="checkedIds" th:value="${item.id}" checked/></td>
                                         <td><p th:text="${item.nameFirst}"></p></td>
                                         <td><p th:text="${item.nameLast}"></p></td>
-                                        <td><p th:text="${item.email}"></p></td>
+                                        <td><a th:href="'mailto:' + ${item.email}" th:text="${item.email}"></a></td>
                                         <td><p th:text="${item.id}"></p></td>
                                     </tr>
                                 </th:block>

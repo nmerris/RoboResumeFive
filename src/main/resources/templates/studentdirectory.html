@@ -29,7 +29,7 @@
                                     <tr>
                                         <td><p th:text="${item.nameFirst}"></p></td>
                                         <td><p th:text="${item.nameLast}"></p></td>
-                                        <td><p th:text="${item.email}"></p></td>
+                                        <td><a th:href="'mailto:' + ${item.email}" th:text="${item.email}"></a></td>
                                         <td>
                                             <a th:href="@{|/summary/${item.id}|}" class="action-link">View Summary</a>
                                         </td>
