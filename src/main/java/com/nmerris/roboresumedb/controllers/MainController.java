@@ -76,12 +76,15 @@ public class MainController {
     }
 
 
+    // the only time this GET route should fire is when a BRAND new student is being created, not when an existing student
+    // is being updated
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
         System.out.println("=============================================================== just entered /addperson GET");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
         System.out.println("================================== about to create new Person and send it to form");
 
+        // person.id initializes to 0, which is important in the POST route
         Person person = new Person();
         model.addAttribute("newPerson", person);
 
@@ -100,32 +103,14 @@ public class MainController {
         System.out.println("=============================================================== just entered /addperson POST");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
-        // need to always set the currPerson ID after adding a new, or updating an existing Person
-        currPerson.setPersonId(personFromForm.getId());
-        System.out.println("============================ RESETTING currPerson id now, should be new ID if got here from /addstudent GET, will be same id if got here from /update: " + currPerson.getPersonId());
-
         // return the same view (now with validation error messages) if there were any validation problems
         if(bindingResult.hasErrors()) {
             // always need to set up the navbar, every time a view is returned
             NavBarState pageState = getPageLinkState();
             pageState.setHighlightPersonNav(true);
             model.addAttribute("pageState", pageState);
-
             return "addperson";
         }
-
-//        // there is no need to check to see if the Person table already has an entry here, there is only ever one
-//        // entry, and the save method will automatically update the entry in question, it knows that if the id is the
-//        // same, it should update the entry instead of creating a new one, this is true here even if the user
-//        // refreshes the page.
-//        Person p = personRepo.save(personFromForm);
-//
-//        // get the id of the personFromForm just saved, set it in currPerson
-//        System.out.println("############################### personRepo.save id was: " + p.getId() + ", fname was: " + p.getNameFirst());
-//        currPerson.setPersonId(p.getId());
-//        System.out.println("############################### now currPerson.getId is: " + currPerson.getPersonId());
-
-
 
         // as far as I understand it, the Person coming in to this method from the form is NOT the same as the
         // Person we sent to the model in /update/id... so even though personFromForm has the updated first and
@@ -136,13 +121,20 @@ public class MainController {
         // getting on Friday in class, because it thinks they are two different Persons.  So my solution is to get
         // Person p back out from the repo, then update it's fields, and save it.  No need to add the courses back, because
         // they never went anywhere.  Hmmmmmmmmmmmmmmm...................
-        Person p = personRepo.findOne(currPerson.getPersonId());
-        p.setNameFirst(personFromForm.getNameFirst());
-        p.setNameLast(personFromForm.getNameLast());
-        p.setEmail(personFromForm.getEmail());
-        personRepo.save(p);
-
-
+        if(personFromForm.getId() == 0) {
+            // a brand new person is being entered, so just save it.. it can't have anything attached to it at this point
+            // and so there are no courses to keep track of, just use whatever came in from the form,
+            // and update currPerson ID
+            currPerson.setPersonId(personRepo.save(personFromForm).getId());
+            System.out.println("======================== JUST CREATED NEW PERSON, RESET currPerson id to: " + currPerson.getPersonId());
+        }
+        else {
+            Person p = personRepo.findOne(currPerson.getPersonId());
+            p.setNameFirst(personFromForm.getNameFirst());
+            p.setNameLast(personFromForm.getNameLast());
+            p.setEmail(personFromForm.getEmail());
+            personRepo.save(p);
+        }
 
         // go to education section automatically, it's the most logical
         // since there is no confirmation page for addperson, we want to redirect here
@@ -623,10 +615,6 @@ public class MainController {
         System.out.println("=============================================================== just entered /addstudent POST");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
 
-        // need to always set the currPerson ID after adding a new, or updating an existing Person
-//        currPerson.setPersonId(personFromForm.getId());
-//        System.out.println("============================ RESETTING currPerson id now, should be 0 if we got here from /addstudent GET, will be same id if got here from /update: " + currPerson.getPersonId());
-
         if(bindingResult.hasErrors()) {
             model.addAttribute("highlightDirectory", false);
             model.addAttribute("highlightCourses", false);
@@ -644,20 +632,19 @@ public class MainController {
         // getting on Friday in class, because it thinks they are two different Persons.  So my solution is to get
         // Person p back out from the repo, then update it's fields, and save it.  No need to add the courses back, because
         // they never went anywhere.  Hmmmmmmmmmmmmmmm...................
-        if(personFromForm.getId() != 0) {
-            // an existing Person is being updated
-            Person p = personRepo.findOne(currPerson.getPersonId());
-            p.setNameFirst(personFromForm.getNameFirst());
-            p.setNameLast(personFromForm.getNameLast());
-            p.setEmail(personFromForm.getEmail());
-            personRepo.save(p);
-        }
-        else {
+        if(personFromForm.getId() == 0) {
             // a brand new person is being entered, so just save it.. it can't have anything attached to it at this point
             // and so there are no courses to keep track of, just use whatever came in from the form,
             // and update currPerson ID
             currPerson.setPersonId(personRepo.save(personFromForm).getId());
             System.out.println("======================== JUST CREATED NEW PERSON, RESET currPerson id to: " + currPerson.getPersonId());
+        }
+        else {
+            Person p = personRepo.findOne(currPerson.getPersonId());
+            p.setNameFirst(personFromForm.getNameFirst());
+            p.setNameLast(personFromForm.getNameLast());
+            p.setEmail(personFromForm.getEmail());
+            personRepo.save(p);
         }
 
         // go to student directory page if successfully added a student, no need for confirmation page here
