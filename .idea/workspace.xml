@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1d429cd3-2eea-411e-b6aa-55a192693fe4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Course.java" afterPath="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Course.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/addstudent.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/addstudent.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/fragments.html" afterPath="$PROJECT_DIR$/target/classes/templates/fragments.html" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,16 +23,26 @@
     <splitter split-orientation="horizontal" split-proportion="0.4328125">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Course.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Course.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Course.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="310">
-                  <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+                <state relative-caret-position="70">
+                  <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1123#1124#0" expanded="true" />
                     <element signature="e#1160#1161#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="custom.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="810">
+                  <caret line="120" column="24" lean-forward="false" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -102,7 +113,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="courselist.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="courselist.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/courselist.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="405">
@@ -132,11 +143,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="fragments.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="fragments.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="495">
-                  <caret line="111" column="50" lean-forward="true" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
+                <state relative-caret-position="750">
+                  <caret line="140" column="32" lean-forward="true" selection-start-line="140" selection-start-column="32" selection-end-line="140" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -230,7 +241,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/NavBarState.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/Utilities.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/Week4ProjectApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/finalresume.html" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/SecurityConfiguration.java" />
@@ -249,7 +259,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/messages.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addcourse.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/addstudent.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/courselist.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/studentdirectory.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/summary.html" />
@@ -258,9 +267,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/studentregistration.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/repositories/PersonRepo.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/courseregistration.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Course.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/addstudent.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
       </list>
     </option>
   </component>
@@ -352,6 +363,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoboResumeSixTakeTwo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RoboResumeSixTakeTwo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RoboResumeSixTakeTwo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RoboResumeSixTakeTwo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RoboResumeSixTakeTwo" type="b2602c69:ProjectViewProjectNode" />
@@ -527,14 +555,7 @@
       <workItem from="1503832798143" duration="31158000" />
       <workItem from="1503925001322" duration="8123000" />
       <workItem from="1504438889393" duration="38380000" />
-      <workItem from="1504522306835" duration="13310000" />
-    </task>
-    <task id="LOCAL-00059" summary="add one to many and many to one, created constructor for hash set in Person">
-      <created>1504297528933</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1504297528933</updated>
+      <workItem from="1504522306835" duration="13989000" />
     </task>
     <task id="LOCAL-00060" summary="remove security stuff from SecurityConfiguration">
       <created>1504297592324</created>
@@ -872,11 +893,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504534720966</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="add link to go home from resume section, update /finalresume to use current db strutcture">
+      <created>1504538474714</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1504538474714</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178290000" />
+    <option name="totallyTimeSpent" value="178969000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="2562" height="1440" extended-state="6" />
@@ -945,7 +973,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="add hidden myPerson.id form fields in addskill and addeducation" />
     <MESSAGE value="modify /editdetails to reflect db changes" />
     <MESSAGE value="tested work exps... ok" />
     <MESSAGE value="add @Transactional to startOver get route method, necessary to allow simultaneous deletion of all records from the repos" />
@@ -970,7 +997,8 @@
     <MESSAGE value="pre-checking of courses working, tested with manual add of a course in /studentregistration" />
     <MESSAGE value="/studentregistration is working as intended... one thing to fix if time: order of the courses, they are basically random at this point" />
     <MESSAGE value="all many to many relations working as expected: can add courses to students and remove students from courses.. still need more thorough testing, and have not implemented delete for student or course yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="all many to many relations working as expected: can add courses to students and remove students from courses.. still need more thorough testing, and have not implemented delete for student or course yet" />
+    <MESSAGE value="add link to go home from resume section, update /finalresume to use current db strutcture" />
+    <option name="LAST_COMMIT_MESSAGE" value="add link to go home from resume section, update /finalresume to use current db strutcture" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1106,14 +1134,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1276,14 +1296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addstudent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/studentregistration.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
@@ -1296,14 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="111" column="50" lean-forward="true" selection-start-line="111" selection-start-column="50" selection-end-line="111" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1352,10 +1356,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/courselist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nmerris/roboresumedb/models/Course.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="70">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1123#1124#0" expanded="true" />
@@ -1364,10 +1376,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/courselist.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/addstudent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        <state relative-caret-position="75">
+          <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="120" column="24" lean-forward="false" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="140" column="32" lean-forward="true" selection-start-line="140" selection-start-column="32" selection-end-line="140" selection-end-column="32" />
           <folding />
         </state>
       </provider>
