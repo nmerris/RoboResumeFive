@@ -585,7 +585,7 @@ public class MainController {
         System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% created new person, nothing is attached to it, about to add it to model");
 
         Person person = new Person();
-        model.addAttribute("newStudent", person);
+        model.addAttribute("newPerson", person);
 
         // see boolean flag to highlight the appropriate navbar link
         model.addAttribute("highlightDirectory", false);
@@ -600,7 +600,7 @@ public class MainController {
     // very similar to /addperson, except this happens in the admin section of the app, not in the resume section
     // the same Person entity is used in both cases, so updating in either place will have the same database results
     @PostMapping("/addstudent")
-    public String addStudentPost(@Valid @ModelAttribute("newStudent") Person person,
+    public String addStudentPost(@Valid @ModelAttribute("newPerson") Person person,
                                 BindingResult bindingResult, Model model) {
         System.out.println("=============================================================== just entered /addstudent POST");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
