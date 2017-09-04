@@ -76,17 +76,14 @@ public class MainController {
     }
 
 
-    // the only time this GET route should fire is when a BRAND new student is being created, not when an existing student
-    // is being updated
+    // to get here, a user must have clicked on an existing students summary --> edit resume link, so the student must already exist
     @GetMapping("/addperson")
     public String addPersonGet(Model model) {
         System.out.println("=============================================================== just entered /addperson GET");
         System.out.println("=========================================== currPerson.getPersonId(): " + currPerson.getPersonId());
-        System.out.println("================================== about to create new Person and send it to form");
 
-        // person.id initializes to 0, which is important in the POST route
-        Person person = new Person();
-        model.addAttribute("newPerson", person);
+        // send the existing person to the form
+        model.addAttribute("newPerson", personRepo.findOne(currPerson.getPersonId()));
 
         NavBarState pageState = getPageLinkState();
         // set the navbar to highlight the appropriate link
@@ -121,20 +118,11 @@ public class MainController {
         // getting on Friday in class, because it thinks they are two different Persons.  So my solution is to get
         // Person p back out from the repo, then update it's fields, and save it.  No need to add the courses back, because
         // they never went anywhere.  Hmmmmmmmmmmmmmmm...................
-        if(personFromForm.getId() == 0) {
-            // a brand new person is being entered, so just save it.. it can't have anything attached to it at this point
-            // and so there are no courses to keep track of, just use whatever came in from the form,
-            // and update currPerson ID
-            currPerson.setPersonId(personRepo.save(personFromForm).getId());
-            System.out.println("======================== JUST CREATED NEW PERSON, RESET currPerson id to: " + currPerson.getPersonId());
-        }
-        else {
-            Person p = personRepo.findOne(currPerson.getPersonId());
-            p.setNameFirst(personFromForm.getNameFirst());
-            p.setNameLast(personFromForm.getNameLast());
-            p.setEmail(personFromForm.getEmail());
-            personRepo.save(p);
-        }
+        Person p = personRepo.findOne(currPerson.getPersonId());
+        p.setNameFirst(personFromForm.getNameFirst());
+        p.setNameLast(personFromForm.getNameLast());
+        p.setEmail(personFromForm.getEmail());
+        personRepo.save(p);
 
         // go to education section automatically, it's the most logical
         // since there is no confirmation page for addperson, we want to redirect here
