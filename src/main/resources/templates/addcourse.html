@@ -32,9 +32,7 @@
                     <div class="form-group">
                         <label class="section-heading" for="credits">Credits</label>
                         <select id="credits" class="form-control" th:field="*{credits}">
-                            <!--<th:block th:each="creditValue:${courseCreditOptions}">-->
-                                <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}"></option>
-                            <!--</th:block>-->
+                            <option th:each="num : ${#numbers.sequence(0, 10)}" th:value="${num}" th:text="${num}"></option>
                         </select>
                         <p class="alert alert-danger" th:if="${#fields.hasErrors('credits')}" th:errors="*{credits}"></p>
                     </div>

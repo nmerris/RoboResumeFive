@@ -30,6 +30,8 @@ public class Course {
     @ManyToMany(mappedBy = "courses", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Person> people;
 
+    private long numRegistered;
+
 
     public Course() {
         setPeople(new HashSet<>());
@@ -92,5 +94,13 @@ public class Course {
 
     public void setPeople(Set<Person> people) {
         this.people = people;
+    }
+
+    public long getNumRegistered() {
+        return people.size();
+    }
+
+    public void setNumRegistered(long numRegistered) {
+        this.numRegistered = numRegistered;
     }
 }

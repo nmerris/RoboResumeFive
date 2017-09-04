@@ -73,6 +73,13 @@
 			<artifactId>nekohtml</artifactId>
 		</dependency>
 
+		<!-- JODA time, using this to easily build a list of years in descending order in addeducation.html -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.9</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
